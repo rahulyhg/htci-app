@@ -1,9 +1,4 @@
-// Ionic Starter App
-
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
 var htci = angular.module('app', ['ionic', 'app.controllers'])
 
 htci.run(function($ionicPlatform) {
@@ -30,6 +25,15 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			controller: 'AppCtrl'
 		})
 
+		.state('app.index', {
+			url: "/index",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/index.html"
+				}
+			}
+		})
+
 		.state('app.info', {
 			url: "/info",
 			views: {
@@ -43,19 +47,11 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/browse",
 			views: {
 				'menuContent': {
-					templateUrl: "http://google.com/"
+					templateUrl: "http://htci.org"
 				}
 			}
 		})
-		.state('app.index', {
-			url: "/index",
-			views: {
-				'menuContent': {
-					templateUrl: "templates/index.html",
-					controller: 'PlaylistsCtrl'
-				}
-			}
-		})
+
 	// if none of the above states are matched, use this as the fallback
 	$urlRouterProvider.otherwise('/app/index');
 });
