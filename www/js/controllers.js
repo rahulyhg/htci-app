@@ -43,6 +43,3 @@ angular.module('app.controllers', [])
     { title: 'Cowbell', id: 6 }
   ];
 })
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
