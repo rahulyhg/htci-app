@@ -23,6 +23,10 @@
 	font-weight: 600;
 }
 
+.item .item-content.activated {
+	background-color: #F07700;
+}
+
 .list .item {
 	border: none;
 }
