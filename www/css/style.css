@@ -17,21 +17,6 @@
 	color: white;
 }
 
-.card {
-	box-shadow: none;
-	background-color: transparent;
-}
-
-.item {
-	background-color: transparent;
-}
-
-.item p {
-	color: white;
-	font-size: 16px;
-	font-weight: 600;
-}
-
 .item-complex .item-content, .item-radio .item-content {
 	background-color: #f09100;
 	color: white;
