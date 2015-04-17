@@ -1,4 +1,10 @@
 /* Empty. Add your own CSS if you like */
+hr {
+	border: 0;
+	margin: 20px 0;
+	border-top:1px solid #fff;
+}
+
 .scroll-content {
 	background-color: #059c93;
 }
@@ -14,12 +20,12 @@
 
 .bar-stable .button.button-clear,
 .bar.bar-stable .title {
-	color: white;
+	color: #fff;
 }
 
 .item-complex .item-content, .item-radio .item-content {
 	background-color: #f09100;
-	color: white;
+	color: #fff;
 	font-weight: 600;
 }
 
