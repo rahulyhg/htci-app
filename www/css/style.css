@@ -40,3 +40,15 @@ hr {
 .menu .scroll-content {
 	background-color: #f09100;
 }
+
+#calendar {
+	padding: 20px;
+}
+
+#calendar h2 {
+	color: white;
+}
+
+.fc td.fc-today {
+	color: black;
+}

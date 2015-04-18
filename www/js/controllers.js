@@ -32,3 +32,22 @@ angular.module('app.controllers', [])
     }, 1000);
   };
 })
+
+.controller('CalendarCtrl', function($scope){
+	ionic.Platform.ready(function(){
+		$('#calendar').fullCalendar({
+			googleCalendarApiKey: 'AIzaSyDWxFLiU_MMAq2RwAAVlp3o-xSsg6Iq1KE',
+			events: {
+				googleCalendarId: '6h3644bidpfp4m3da16mkjdtbk@group.calendar.google.com'
+			},
+			header: {
+				left: 'prev,next',
+				center: '',
+				right: 'title'
+			},
+			allDayText: 'All Day',
+			height: "auto"
+			//aspectRatio: 1
+		});
+	});
+})

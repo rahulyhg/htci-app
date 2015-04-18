@@ -47,7 +47,8 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/calendar",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/calendar.html"
+					templateUrl: "templates/calendar.html",
+					controller: "CalendarCtrl"
 				}
 			}
 		})
