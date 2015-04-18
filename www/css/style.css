@@ -23,7 +23,8 @@ hr {
 	color: #fff;
 }
 
-.item-complex .item-content, .item-radio .item-content {
+.nav .item,
+.nav .item .item-content {
 	background-color: #FF9A00;
 	color: #fff;
 	font-weight: 600;

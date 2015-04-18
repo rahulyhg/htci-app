@@ -14,7 +14,7 @@
 
   <ion-side-menu side="left">
     <ion-content>
-      <ion-list>
+      <ion-list class="nav">
         <ion-item nav-clear menu-close href="#/app/index" class="item-icon-left"><i class="icon ion-home"></i>
           Home
         </ion-item>
@@ -30,9 +30,16 @@
         <ion-item nav-clear menu-close href="#/app/index" class="item-icon-left"><i class="icon ion-ios-book"></i>
           Balagokulam
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/index" class="item-icon-left"><i class="icon ion-social-facebook"></i>
+        <ion-item nav-clear menu-close href="#/app/social-media" class="item-icon-left"><i class="icon ion-social-facebook"></i>
           Social Media
         </ion-item>
+				<ion-item ng-click="toggle()">Help
+				</ion-item>
+				<ion-list id="help-list" style="display:none;">
+					<ion-item>Test</ion-item>
+					<ion-item>Test</ion-item>
+					<ion-item>Test</ion-item>
+				</ion-list>
         <ion-item nav-clear menu-close href="#/app/index" class="item-icon-left"><i class="icon ion-qr-scanner"></i>
           QR Scanner
         </ion-item>
@@ -41,6 +48,9 @@
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/browse" class="item-icon-left"><i class="icon ion-earth"></i>
           Website
+        </ion-item>
+        <ion-item nav-clear menu-close ng-click="paypal()" class="item-icon-left"><i class="icon ion-earth"></i>
+          Test Modal
         </ion-item>
       </ion-list>
     </ion-content>

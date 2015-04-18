@@ -1,5 +1,5 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
-var htci = angular.module('app', ['ionic', 'app.controllers'])
+var htci = angular.module('app', ['ionic', 'app.controllers', 'ngSanitize'])
 
 htci.run(function($ionicPlatform) {
 	$ionicPlatform.ready(function() {
@@ -50,6 +50,16 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 				'menuContent': {
 					templateUrl: "templates/calendar.html",
 					controller: "CalendarCtrl"
+				}
+			}
+		})
+
+		.state('app.social-media', {
+			url: "/social-media",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/social-media.html",
+					controller: "FacebookCtrl"
 				}
 			}
 		})
