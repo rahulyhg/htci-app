@@ -2,20 +2,20 @@
 hr {
 	border: 0;
 	margin: 20px 0;
-	border-top:1px solid #fff;
+	border-top:1px solid #444;
 }
 
 .scroll-content {
-	background-color: #059c93;
+	/*background-color: #059c93;*/
 }
 
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
-	background-color: #f09100;
+	background-color: #FF9A00;
 }
 
 .bar.bar-stable {
 	border-color: #D58700;
-	background-color: #f09100;
+	background-color: #FF9A00;
 }
 
 .bar-stable .button.button-clear,
@@ -24,7 +24,7 @@ hr {
 }
 
 .item-complex .item-content, .item-radio .item-content {
-	background-color: #f09100;
+	background-color: #FF9A00;
 	color: #fff;
 	font-weight: 600;
 }
@@ -38,7 +38,7 @@ hr {
 }
 
 .menu .scroll-content {
-	background-color: #f09100;
+	background-color: #FF9A00;
 }
 
 #calendar {
@@ -46,9 +46,9 @@ hr {
 }
 
 #calendar h2 {
-	color: white;
+	/*color: white;*/
 }
 
 .fc td.fc-today {
-	color: black;
+	/*color: black;*/
 }

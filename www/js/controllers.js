@@ -51,3 +51,9 @@ angular.module('app.controllers', [])
 		});
 	});
 })
+
+.controller('IndexCtrl', function($scope){
+	ionic.Platform.ready(function(){
+		document.getElementById("date").innerHTML = Date();
+	})
+})

@@ -29,7 +29,8 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/index",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/index.html"
+					templateUrl: "templates/index.html",
+					controller: "IndexCtrl"
 				}
 			}
 		})
