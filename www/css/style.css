@@ -45,10 +45,6 @@ hr {
 	padding: 20px;
 }
 
-#calendar h2 {
-	/*color: white;*/
-}
-
-.fc td.fc-today {
-	/*color: black;*/
+.fc-toolbar h2 {
+	font-size: 25px;
 }
