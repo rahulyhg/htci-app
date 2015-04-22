@@ -64,6 +64,16 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			}
 		})
 
+		.state('app.donation', {
+			url: "/donation",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/donation.html",
+					controller: "DonationCtrl"
+				}
+			}
+		})
+
 		.state('app.browse', {
 			url: "/browse",
 			views: {

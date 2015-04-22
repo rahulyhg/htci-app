@@ -1,6 +1,14 @@
 angular.module('app.controllers', [])
 
 	.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+
+		$scope.toggle = function() {
+			$('#help-list').toggle()
+		}
+
+	})
+
+	.controller('DonationCtrl', function($scope, $ionicModal, $timeout) {
 		// Create the login modal that we will use later
 		$ionicModal.fromTemplateUrl('templates/paypal.html', {
 			scope: $scope
@@ -17,10 +25,6 @@ angular.module('app.controllers', [])
 		$scope.paypal = function() {
 			$scope.modal.show();
 		};
-
-		$scope.toggle = function() {
-			$('#help-list').toggle()
-		}
 
 	})
 
