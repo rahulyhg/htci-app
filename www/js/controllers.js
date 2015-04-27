@@ -47,7 +47,7 @@ angular.module('app.controllers', [])
 		});
 	})
 
-	.controller('IndexCtrl', function(){
+	.controller('IndexCtrl', function($scope, $ionicSlideBoxDelegate){
 		var d = new Date();
 		var day = d.getDay();
 		var month = d.getMonth();
@@ -56,6 +56,10 @@ angular.module('app.controllers', [])
 		var daysArray = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 		var monthsArray = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 		document.getElementById("date").innerHTML = daysArray[day] + ", " + monthsArray[month] + " " + date + ", " + year;
+
+		$scope.$on('$ionicView.enter', function(){
+			$ionicSlideBoxDelegate.update();
+		})
 	})
 
 	.controller('FacebookCtrl', function($scope){
