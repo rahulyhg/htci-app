@@ -48,7 +48,14 @@ angular.module('app.controllers', [])
 	})
 
 	.controller('IndexCtrl', function(){
-		document.getElementById("date").innerHTML = Date();
+		var d = new Date();
+		var day = d.getDay();
+		var month = d.getMonth();
+		var date = d.getDate();
+		var year = d.getFullYear();
+		var daysArray = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+		var monthsArray = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+		document.getElementById("date").innerHTML = daysArray[day] + ", " + monthsArray[month] + " " + date + ", " + year;
 	})
 
 	.controller('FacebookCtrl', function($scope){
