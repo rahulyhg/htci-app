@@ -33,7 +33,7 @@ angular.module('app.controllers', [])
 			$('#calendar').fullCalendar({
 				googleCalendarApiKey: 'AIzaSyDWxFLiU_MMAq2RwAAVlp3o-xSsg6Iq1KE',
 				events: {
-					googleCalendarId: '6h3644bidpfp4m3da16mkjdtbk@group.calendar.google.com'
+					googleCalendarId: 'ndevt2o5ag5rkc9aobvtp9rmdc@group.calendar.google.com'
 				},
 				header: {
 					left: 'prev,next',
