@@ -49,3 +49,7 @@ hr {
 .fc-toolbar h2 {
 	font-size: 25px;
 }
+
+ion-slide {
+	text-align: center;
+}

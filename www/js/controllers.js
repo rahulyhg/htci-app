@@ -47,10 +47,8 @@ angular.module('app.controllers', [])
 		});
 	})
 
-	.controller('IndexCtrl', function($scope){
-		ionic.Platform.ready(function(){
-			document.getElementById("date").innerHTML = Date();
-		})
+	.controller('IndexCtrl', function(){
+		document.getElementById("date").innerHTML = Date();
 	})
 
 	.controller('FacebookCtrl', function($scope){
