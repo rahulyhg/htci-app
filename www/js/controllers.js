@@ -41,7 +41,8 @@ angular.module('app.controllers', [])
 					right: 'title'
 				},
 				allDayText: 'All Day',
-				height: "auto"
+				height: "auto",
+				defaultView: "basicWeek"
 				//aspectRatio: 1
 			});
 		});
@@ -59,6 +60,12 @@ angular.module('app.controllers', [])
 
 		$scope.$on('$ionicView.enter', function(){
 			$ionicSlideBoxDelegate.update();
+
+			setSliderHeight();
+		})
+
+		$(window).on("resize",function(){
+			setSliderHeight();
 		})
 	})
 
@@ -70,9 +77,15 @@ angular.module('app.controllers', [])
 			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=342374259303120";
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
-		$('a').on('click', function(e) {
+		/*$('a').on('click', function(e) {
 			e.preventDefault();
 			window.open($(this).attr('href'), '_system');
 			return false;
-		});
+		});*/
 	})
+
+function setSliderHeight(){
+	var above = $('.slider').offset().top;
+	var windowHeight = $(window).innerHeight();
+	$('.slider').height(windowHeight - above);
+}
