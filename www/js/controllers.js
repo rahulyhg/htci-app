@@ -8,7 +8,7 @@ angular.module('app.controllers', [])
 
 	})
 
-	.controller('DonationCtrl', function($scope, $ionicModal, $timeout) {
+	.controller('SponsorshipCtrl', function($scope, $ionicModal, $timeout) {
 		// Create the login modal that we will use later
 		$ionicModal.fromTemplateUrl('templates/paypal.html', {
 			scope: $scope

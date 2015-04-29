@@ -1,4 +1,4 @@
-/* Empty. Add your own CSS if you like */
+\/* Empty. Add your own CSS if you like */
 hr {
 	border: 0;
 	margin: 20px 0;
@@ -52,4 +52,9 @@ hr {
 
 ion-slide {
 	text-align: center;
+}
+
+#help-list .item,
+#help-list .item .item-content {
+	background-color: blue; /* This is temporary */
 }

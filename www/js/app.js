@@ -64,12 +64,41 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			}
 		})
 
+		.state('app.sponsorship', {
+			url: "/sponsorship",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/sponsorship.html",
+					controller: "SponsorshipCtrl"
+				}
+			}
+		})
+
 		.state('app.donation', {
 			url: "/donation",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/donation.html",
-					controller: "DonationCtrl"
+					templateUrl: "templates/donation.html"
+				}
+			}
+		})
+
+		.state('app.volunteer', {
+			url: "/volunteer",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/volunteer.html"
+					//controller: "DonationCtrl"
+				}
+			}
+		})
+
+		.state('app.contact', {
+			url: "/contact",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/contact.html"
+					//controller: "DonationCtrl"
 				}
 			}
 		})

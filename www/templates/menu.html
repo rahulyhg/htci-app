@@ -3,7 +3,6 @@
     <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
       </ion-nav-back-button>
-
       <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
@@ -11,7 +10,6 @@
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
-
   <ion-side-menu side="left">
     <ion-content>
       <ion-list class="nav">
@@ -26,18 +24,18 @@
         </ion-item>
 				<ion-item ng-click="toggle()" class="item-icon-left"><i class="icon ion-help"></i>Help
 				</ion-item>
-				<div id="help-list" style="display:none;">
-					<ion-item>Test</ion-item>
+				<ion-list id="help-list" style="display:none;">
+					<ion-item nav-clear menu-close href="#/app/sponsorship">Sponsorship</ion-item>
 					<ion-item nav-clear menu-close href="#/app/donation">Donation</ion-item>
-					<ion-item>Test</ion-item>
-				</div>
+					<ion-item nav-clear menu-close href="#/app/volunteer" class="item-icon-left"><i class="icon ion-android-hand"></i>Volunteer</ion-item>
+				</ion-list>
         <ion-item nav-clear menu-close href="#/app/social-media" class="item-icon-left"><i class="icon ion-social-facebook"></i>
           Social Media
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/index" class="item-icon-left"><i class="icon ion-ios-book"></i>
           Balagokulam
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/index" class="item-icon-left"><i class="icon ion-ios-telephone"></i>
+        <ion-item nav-clear menu-close href="#/app/contact" class="item-icon-left"><i class="icon ion-ios-telephone"></i>
           Contact Us
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/index" class="item-icon-left"><i class="icon ion-qr-scanner"></i>
