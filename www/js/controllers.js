@@ -1,6 +1,6 @@
 angular.module('app.controllers', [])
 
-	.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+	.controller('AppCtrl', function($scope) {
 
 		$scope.toggle = function() {
 			$('#help-list').toggle()
@@ -8,7 +8,7 @@ angular.module('app.controllers', [])
 
 	})
 
-	.controller('SponsorshipCtrl', function($scope, $ionicModal, $timeout) {
+	.controller('SponsorshipCtrl', function($scope, $ionicModal) {
 		// Create the login modal that we will use later
 		$ionicModal.fromTemplateUrl('templates/paypal.html', {
 			scope: $scope
@@ -82,6 +82,30 @@ angular.module('app.controllers', [])
 			window.open($(this).attr('href'), '_system');
 			return false;
 		});*/
+	})
+
+	.controller('ContactCtrl', function($scope){
+		$scope.listCanSwipe = true;
+
+		$scope.boardContacts = [
+			{name: "Mr. Vijayapal Reddy", title: "Chairman", phone: "13178438482", email: "vijayapalr@gmail.com"},
+			{name: "Mr. Arun Jain", title: "Vice-Chairman", phone: "17653763976", email: "ajmd02@gmail.com"},
+			{name: "Mr. Ramarao Yeleti", title: "Secretary", phone: "13178155811", email: "ryeleti@aol.com"},
+			{name: "Mr. Venkat Rao", title: "Treasurer", phone:"13178468086", email:"sai55@aol.com"}
+		];
+
+		$scope.executiveContacts = [
+			{name: "Mr. Ambat Babu", title: "President", phone: "13174900392", email: "htcibabu@yahoo.com"},
+			{name: "Mr. Jagannath Pandey", title: "President-Elect/Vice-President", phone: "13173400918", email: "jaypandey50@hotmail.com"}
+		];
+
+		$scope.callTel = function(number){
+			window.location.href = "tel:+" + number;
+		}
+
+		$scope.email = function(address){
+			window.location.href = "mailto:" + address;
+		}
 	})
 
 function setSliderHeight(){

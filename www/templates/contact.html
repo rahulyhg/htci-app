@@ -1,13 +1,26 @@
 <ion-view view-title="HTCI">
   <ion-content>
-		<div class="row">
-			<div class="col">
-				<h3>HTCI Board of Trustees<h3>
-			</div>
-		</div>
-		<ul class="list">
-			<li class="item">Mr.Vijayapal Reddy</li>
-			<li class="item">Mr. Aryaman Gupta</li>
-		</ul>
+		<ion-list class="list">
+			<ion-item class="item item-divider">
+				<h2>HTCI Board of Trustees</h2>
+			</ion-item>
+			<ion-item ng-repeat="contact in boardContacts" class="item">
+				<h2>{{contact.name}}</h2>
+				<p>{{contact.title}}</p>
+				<ion-option-button ng-click="callTel({{contact.phone}})" class="button-info"><button class="button-icon icon ion-ios-telephone-outline"></button><!-- These extra button elements are a bit of a visual workaround -->
+				</ion-option-button>
+				<ion-option-button ng-click="email('{{contact.email}}')" class="button-info"><button class="button-icon icon ion-ios-email-outline"></button>
+				</ion-option-button>
+			</ion-item>
+			<ion-item class="item item-divider">HTCI Executive Committee</ion-item>
+			<ion-item ng-repeat="contact in executiveContacts" class="item">
+				<h2>{{contact.name}}</h2>
+				<p>{{contact.title}}</p>
+				<ion-option-button ng-click="callTel({{contact.phone}})" class="button-info"><button class="button-icon icon ion-ios-telephone-outline"></button>
+				</ion-option-button>
+				<ion-option-button ng-click="email('{{contact.email}}')" class="button-info"><button class="button-icon icon ion-ios-email-outline"></button>
+				</ion-option-button>
+			</ion-item>
+		</ion-list>
   </ion-content>
 </ion-view>
