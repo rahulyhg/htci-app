@@ -4,21 +4,23 @@
 			<ion-item class="item item-divider">
 				<h2>HTCI Board of Trustees</h2>
 			</ion-item>
-			<ion-item ng-repeat="contact in boardContacts" class="item">
+			<ion-item ng-repeat="contact in boardContacts" class="item item-icon-right">
 				<h2>{{contact.name}}</h2>
 				<p>{{contact.title}}</p>
-				<ion-option-button ng-click="callTel({{contact.phone}})" class="button-info"><button class="button-icon icon ion-ios-telephone-outline"></button><!-- These extra button elements are a bit of a visual workaround -->
+				<i class="icon ion-ios-arrow-left"></i>
+				<ion-option-button ng-click="callTel({{contact.phone}})" class="button-positive">Call
 				</ion-option-button>
-				<ion-option-button ng-click="email('{{contact.email}}')" class="button-info"><button class="button-icon icon ion-ios-email-outline"></button>
+				<ion-option-button ng-click="email('{{contact.email}}')" class="button-balanced">Email
 				</ion-option-button>
 			</ion-item>
 			<ion-item class="item item-divider">HTCI Executive Committee</ion-item>
-			<ion-item ng-repeat="contact in executiveContacts" class="item">
+			<ion-item ng-repeat="contact in executiveContacts" class="item item-icon-right">
 				<h2>{{contact.name}}</h2>
 				<p>{{contact.title}}</p>
-				<ion-option-button ng-click="callTel({{contact.phone}})" class="button-info"><button class="button-icon icon ion-ios-telephone-outline"></button>
+				<i class="icon ion-ios-arrow-left"></i>
+				<ion-option-button ng-click="callTel({{contact.phone}})" class="button-positive">Call
 				</ion-option-button>
-				<ion-option-button ng-click="email('{{contact.email}}')" class="button-info"><button class="button-icon icon ion-ios-email-outline"></button>
+				<ion-option-button ng-click="email('{{contact.email}}')" class="button-balanced">Email
 				</ion-option-button>
 			</ion-item>
 		</ion-list>
