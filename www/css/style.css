@@ -58,3 +58,7 @@ ion-slide {
 #help-list .item .item-content {
 	background-color: blue; /* This is temporary */
 }
+
+.button-contact {
+	font-size: 32px;
+}
