@@ -56,9 +56,14 @@ ion-slide {
 
 #help-list .item,
 #help-list .item .item-content {
-	background-color: blue; /* This is temporary */
+	background-color: blue; /* This blue is temporary */
 }
 
 .button-contact {
 	font-size: 32px;
+}
+
+/* Make the arrow icon in contact list a little more subtle */
+.list > .item > .item-content > i.icon {
+	color: #ddd;
 }
