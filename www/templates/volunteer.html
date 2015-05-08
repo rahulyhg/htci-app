@@ -1,6 +1,16 @@
-<ion-view view-title="Donation">
+<ion-view view-title="Volunteer">
   <ion-content>
-		<h3>Donation</h3>
-		<button class="button" ng-click="paypal()">Paypal</button>
+		<div class="row">
+			<div class="col">
+				<h4>Areas that need volunteer service:</h4>
+			</div>
+		</div>
+		<ul class="list">
+			<li class="item" ng-repeat="item in list">
+				<h2>{{item.area}}</h2>
+				<p>{{item.description}}</p>
+			</li>
+		</ul>
+		<a class="button" href="https://docs.google.com/forms/d/18FBDGJKO-Sj7dTeoypBpziBZtwhy4GQlQlculmSeytk/viewform?c=0&w=1">Volunteer Pledge Sheet</a>
   </ion-content>
 </ion-view>

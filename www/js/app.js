@@ -87,8 +87,8 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/volunteer",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/volunteer.html"
-					//controller: "DonationCtrl"
+					templateUrl: "templates/volunteer.html",
+					controller: "VolunteerCtrl"
 				}
 			}
 		})

@@ -108,6 +108,16 @@ angular.module('app.controllers', [])
 		}
 	})
 
+	.controller('VolunteerCtrl', function($scope){
+		$scope.list = [
+			{area: "Kitchen", description: "To prepare and serve food (Weekends)."},
+			{area: "Front Desk", description: "To assist devotees at the front desk and answer the phone (Every day during Temple hours)."},
+			{area: "Computer Work", description: "To assist in data entry, installation/maintenance of electronic equipment."},
+			{area: "Cleaning", description: "To help clean the kitchen and the worship hall (Weekends)."},
+			{area: "Special Event Preparation", description: "To decorate the worship hall, to decorate the temple exterior, event coordination."}
+		]
+	})
+
 function setSliderHeight(){
 	var above = $('.slider').offset().top;
 	var windowHeight = $(window).innerHeight();
