@@ -64,6 +64,6 @@ ion-slide {
 }
 
 /* Make the arrow icon in contact list a little more subtle */
-.list > .item > .item-content > i.icon {
+.contact-list.item > .item-content > i.icon {
 	color: #ddd;
 }
