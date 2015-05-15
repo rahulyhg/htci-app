@@ -118,6 +118,10 @@ angular.module('app.controllers', [])
 		]
 	})
 
+	.controller('QRCtrl', function($scope){
+		
+	})
+
 function setSliderHeight(){
 	var above = $('.slider').offset().top;
 	var windowHeight = $(window).innerHeight();

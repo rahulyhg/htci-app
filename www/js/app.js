@@ -93,12 +93,31 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			}
 		})
 
+		.state('app.qr', {
+			url: "/qr",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/qr.html",
+					controller: "QRCtrl"
+				}
+			}
+		})
+
 		.state('app.contact', {
 			url: "/contact",
 			views: {
 				'menuContent': {
 					templateUrl: "templates/contact.html",
 					controller: "ContactCtrl"
+				}
+			}
+		})
+
+		.state('app.balagokulam', {
+			url: "/balagokulam",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/balagokulam.html"
 				}
 			}
 		})
