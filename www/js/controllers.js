@@ -43,8 +43,8 @@ angular.module('app.controllers', [])
 		};
 		$scope.createPayment = function() {
 			// for simplicity use predefined amount
-			var paymentDetails = new PayPalPaymentDetails("50.00", "0.00", "0.00");
-			var payment = new PayPalPayment("50.00", "USD", "Awesome Sauce", "Sale",
+			var paymentDetails = new PayPalPaymentDetails("1.75", "0.00", "0.00");
+			var payment = new PayPalPayment("1.75", "USD", "Awesome Sauce", "Sale",
 											paymentDetails);
 			return payment;
 		};
@@ -61,10 +61,8 @@ angular.module('app.controllers', [])
 			// buttons defined in index.html
 			//  <button id="buyNowBtn"> Buy Now !</button>
 			//  <button id="buyInFutureBtn"> Pay in Future !</button>
-			//  <button id="profileSharingBtn"> ProfileSharing !</button>
 			var buyNowBtn = document.getElementById("buyNowBtn");
 			var buyInFutureBtn = document.getElementById("buyInFutureBtn");
-			var profileSharingBtn = document.getElementById("profileSharingBtn");
 
 			buyNowBtn.onclick = function(e) {
 				// single payment
@@ -74,15 +72,7 @@ angular.module('app.controllers', [])
 
 			buyInFutureBtn.onclick = function(e) {
 				// future payment
-				PayPalMobile.renderFuturePaymentUI($scope.onAuthorizationCallback, app
-												   .onUserCanceled);
-			};
-
-			profileSharingBtn.onclick = function(e) {
-				// profile sharing
-				PayPalMobile.renderProfileSharingUI(["profile", "email", "phone",
-													 "address", "futurepayments", "paypalattributes"
-													], $scope.onAuthorizationCallback, $scope.onUserCanceled);
+				PayPalMobile.renderFuturePaymentUI($scope.onAuthorizationCallback, $scope.onUserCanceled);
 			};
 		};
 		$scope.onPayPalMobileInit = function() {
