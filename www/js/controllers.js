@@ -3,7 +3,7 @@ angular.module('app.controllers', [])
 	.controller('AppCtrl', function($scope) {
 
 		$scope.toggle = function() {
-			$('#help-list').toggle()
+			$('#help-list').toggle();
 		}
 
 	})
@@ -26,6 +26,76 @@ angular.module('app.controllers', [])
 			$scope.modal.show();
 		};
 
+		$scope.initPaymentUI = function() {
+			var clientIDs = {
+				"PayPalEnvironmentProduction": "YOUR_PRODUCTION_CLIENT_ID",
+				"PayPalEnvironmentSandbox": "YOUR_SANDBOX_CLIENT_ID"
+			};
+			PayPalMobile.init(clientIDs, $scope.onPayPalMobileInit);
+
+		};
+
+		$scope.onSuccesfulPayment = function(payment) {
+			console.log("payment success: " + JSON.stringify(payment, null, 4));
+		};
+		$scope.onAuthorizationCallback = function(authorization) {
+			console.log("authorization: " + JSON.stringify(authorization, null, 4));
+		};
+		$scope.createPayment = function() {
+			// for simplicity use predefined amount
+			var paymentDetails = new PayPalPaymentDetails("50.00", "0.00", "0.00");
+			var payment = new PayPalPayment("50.00", "USD", "Awesome Sauce", "Sale",
+											paymentDetails);
+			return payment;
+		};
+		$scope.configuration = function() {
+			// for more options see `paypal-mobile-js-helper.js`
+			var config = new PayPalConfiguration({
+				merchantName: "My test shop",
+				merchantPrivacyPolicyURL: "https://mytestshop.com/policy",
+				merchantUserAgreementURL: "https://mytestshop.com/agreement"
+			});
+			return config;
+		};
+		$scope.onPrepareRender = function() {
+			// buttons defined in index.html
+			//  <button id="buyNowBtn"> Buy Now !</button>
+			//  <button id="buyInFutureBtn"> Pay in Future !</button>
+			//  <button id="profileSharingBtn"> ProfileSharing !</button>
+			var buyNowBtn = document.getElementById("buyNowBtn");
+			var buyInFutureBtn = document.getElementById("buyInFutureBtn");
+			var profileSharingBtn = document.getElementById("profileSharingBtn");
+
+			buyNowBtn.onclick = function(e) {
+				// single payment
+				PayPalMobile.renderSinglePaymentUI($scope.createPayment(), $scope.onSuccesfulPayment,
+												   $scope.onUserCanceled);
+			};
+
+			buyInFutureBtn.onclick = function(e) {
+				// future payment
+				PayPalMobile.renderFuturePaymentUI($scope.onAuthorizationCallback, app
+												   .onUserCanceled);
+			};
+
+			profileSharingBtn.onclick = function(e) {
+				// profile sharing
+				PayPalMobile.renderProfileSharingUI(["profile", "email", "phone",
+													 "address", "futurepayments", "paypalattributes"
+													], $scope.onAuthorizationCallback, $scope.onUserCanceled);
+			};
+		};
+		$scope.onPayPalMobileInit = function() {
+			// must be called
+			// use PayPalEnvironmentNoNetwork mode to get look and feel of the flow
+			PayPalMobile.prepareToRender("PayPalEnvironmentNoNetwork", $scope.configuration(),
+										 $scope.onPrepareRender);
+		};
+		$scope.onUserCanceled = function(result) {
+			console.log(result);
+		};
+
+		$scope.initPaymentUI();
 	})
 
 	.controller('CalendarCtrl', function($scope){
