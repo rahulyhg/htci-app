@@ -102,16 +102,19 @@ angular.module('app.controllers', ['app.services','ionic'])
 				},
 				allDayText: 'All Day',
 				height: "auto",
-				//aspectRatio: 1
 				views: {
 					list: {
 						type: 'ListView',
+						height: 'auto',
 						duration: { days: 30 },
 						buttonText: 'List',
 						titleFormat: 'D MMMM YYYY'
 					}
 				},
-				defaultView: "list"
+				defaultView: "list",
+				eventAfterAllRender: function() {					
+					$('#calendar').fullCalendar('getView').setHeight('auto');
+				}
 			});
 		});
 	})
@@ -199,9 +202,3 @@ angular.module('app.controllers', ['app.services','ionic'])
 	.controller('EventCtrl', function($scope, $stateParams, eventService) {
 		$scope.event = eventService.get($stateParams.eventId);
     });
-
-function setSliderHeight(){
-	var above = $('.slider').offset().top;
-	var windowHeight = $(window).innerHeight();
-	$('.slider').height(windowHeight - above);
-}

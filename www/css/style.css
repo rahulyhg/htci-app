@@ -27,16 +27,12 @@ hr {
 	font-weight: 600;
 }
 
-.item .item-content.activated {
+.temple-orange .item .item-content.activated {
 	background-color: #F07700;
 }
 
 .nav .list .item {
 	border: none;
-}
-
-.menu .scroll-content {
-	background-color: #FF9A00;
 }
 
 .temple-orange {
@@ -71,6 +67,10 @@ ion-slide {
 	background-color: blue; /* This blue is temporary */
 }
 
+#help-list .item .item-content.activated {
+	background-color: green; /* Also temporary */
+}
+
 .button-contact {
 	font-size: 32px;
 }
@@ -87,4 +87,9 @@ ion-slide {
 .fc-header,
 .fc-time {
 	font-weight: bold;
+}
+
+.fc-list-view {
+	padding-right: 1px;
+	overflow-y: hidden;
 }
