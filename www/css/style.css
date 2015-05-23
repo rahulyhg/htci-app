@@ -1,4 +1,4 @@
-\/* Empty. Add your own CSS if you like */
+/* Empty. Add your own CSS if you like */
 hr {
 	border: 0;
 	margin: 20px 0;
@@ -9,10 +9,6 @@ hr {
   Color Changes
   Eventually change these all into classes
 */
-
-[nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
-	background-color: #FF9A00;
-}
 
 .bar.bar-stable {
 	border-color: #D58700;
@@ -41,6 +37,16 @@ hr {
 
 .menu .scroll-content {
 	background-color: #FF9A00;
+}
+
+.temple-orange {
+	background-color: #FF9A00;
+}
+
+.temple-orange .button,
+.temple-orange .button:hover,
+.temple-orange .title {
+	color: #fff;
 }
 
 .tabs-temple {

@@ -1,4 +1,4 @@
-angular.module('app.controllers', [])
+angular.module('app.controllers', ['app.services','ionic'])
 
 	.controller('AppCtrl', function($scope) {
 
@@ -189,6 +189,16 @@ angular.module('app.controllers', [])
 	.controller('QRCtrl', function($scope){
 		
 	})
+
+
+	.controller('EventsCtrl', function($scope, eventService) {
+		$scope.events = eventService.all();
+
+	})
+
+	.controller('EventCtrl', function($scope, $stateParams, eventService) {
+		$scope.event = eventService.get($stateParams.eventId);
+    });
 
 function setSliderHeight(){
 	var above = $('.slider').offset().top;

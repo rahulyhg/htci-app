@@ -40,6 +40,26 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			}
 		})
 
+		.state('kumbhabhishekam.events', {
+            url: "/events",
+            views: {
+				'menuContent': {
+					templateUrl: "templates/events.html",
+					controller: 'EventsCtrl'
+				}
+            }
+        })
+
+        .state('kumbhabhishekam.single', {
+			url: "/events/:eventId",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/event.html",
+					controller: 'EventCtrl'
+				}
+			}
+        })
+
 		.state('app.index', {
 			url: "/index",
 			views: {
