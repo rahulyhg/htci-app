@@ -60,6 +60,15 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			}
         })
 
+        .state('kumbhabhishekam.parking', {
+			url: "/parking",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/parking.html"
+				}
+			}
+        })
+
 		.state('app.index', {
 			url: "/index",
 			views: {
