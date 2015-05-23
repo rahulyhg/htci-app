@@ -21,21 +21,21 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 		.state('app', {
 			url: "/app",
 			abstract: true,
-			templateUrl: "templates/main/app-menu.html",
+			templateUrl: "templates/main/menu.html",
 			controller: 'AppCtrl'
 		})
 
 		.state('kumbhabhishekam', {
 			url: "/kumbhabhishekam",
 			abstract: true,
-			templateUrl: "templates/kumb/kumbhabhishekam-menu.html"
+			templateUrl: "templates/kumb/menu.html"
 		})
 
 		.state('kumbhabhishekam.index', {
 			url: "/index",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/main/donation.html" //change this
+					templateUrl: "templates/kumb/info.html"
 				}
 			}
 		})
@@ -65,6 +65,24 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'menuContent': {
 					templateUrl: "templates/kumb/parking.html"
+				}
+			}
+        })
+
+        .state('kumbhabhishekam.volunteers', {
+			url: "/volunteers",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/kumb/volunteers.html"
+				}
+			}
+        })
+
+        .state('kumbhabhishekam.contact', {
+			url: "/contact",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/kumb/contact.html"
 				}
 			}
         })
