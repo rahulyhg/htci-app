@@ -21,8 +21,23 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 		.state('app', {
 			url: "/app",
 			abstract: true,
-			templateUrl: "templates/menu.html",
+			templateUrl: "templates/app-menu.html",
 			controller: 'AppCtrl'
+		})
+
+		.state('kumbhabhishekam', {
+			url: "/kumbhabhishekam",
+			abstract: true,
+			templateUrl: "templates/kumbhabhishekam-menu.html"
+		})
+
+		.state('kumbhabhishekam.index', {
+			url: "/index",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/donation.html"
+				}
+			}
 		})
 
 		.state('app.index', {
@@ -127,6 +142,16 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'menuContent': {
 					templateUrl: "http://htci.org"
+				}
+			}
+		})
+
+
+		.state('app.other', {
+			url: "/other",
+			views: {
+				'other-tab': {
+					templateUrl: "templates/donation.html"
 				}
 			}
 		})
