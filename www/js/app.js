@@ -21,21 +21,21 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 		.state('app', {
 			url: "/app",
 			abstract: true,
-			templateUrl: "templates/app-menu.html",
+			templateUrl: "templates/main/app-menu.html",
 			controller: 'AppCtrl'
 		})
 
 		.state('kumbhabhishekam', {
 			url: "/kumbhabhishekam",
 			abstract: true,
-			templateUrl: "templates/kumbhabhishekam-menu.html"
+			templateUrl: "templates/kumb/kumbhabhishekam-menu.html"
 		})
 
 		.state('kumbhabhishekam.index', {
 			url: "/index",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/donation.html"
+					templateUrl: "templates/main/donation.html" //change this
 				}
 			}
 		})
@@ -44,7 +44,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
             url: "/events",
             views: {
 				'menuContent': {
-					templateUrl: "templates/events.html",
+					templateUrl: "templates/kumb/events.html",
 					controller: 'EventsCtrl'
 				}
             }
@@ -54,7 +54,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/events/:eventId",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/event.html",
+					templateUrl: "templates/kumb/event.html",
 					controller: 'EventCtrl'
 				}
 			}
@@ -64,7 +64,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/parking",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/parking.html"
+					templateUrl: "templates/kumb/parking.html"
 				}
 			}
         })
@@ -73,7 +73,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/index",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/index.html",
+					templateUrl: "templates/main/index.html",
 					controller: "IndexCtrl"
 				}
 			}
@@ -83,7 +83,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/info",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/info.html"
+					templateUrl: "templates/main/info.html"
 				}
 			}
 		})
@@ -92,7 +92,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/calendar",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/calendar.html",
+					templateUrl: "templates/main/calendar.html",
 					controller: "CalendarCtrl"
 				}
 			}
@@ -102,7 +102,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/social-media",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/social-media.html",
+					templateUrl: "templates/main/social-media.html",
 					controller: "FacebookCtrl"
 				}
 			}
@@ -112,7 +112,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/sponsorship",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/sponsorship.html",
+					templateUrl: "templates/main/sponsorship.html",
 					controller: "SponsorshipCtrl"
 				}
 			}
@@ -122,7 +122,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/donation",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/donation.html"
+					templateUrl: "templates/main/donation.html"
 				}
 			}
 		})
@@ -131,7 +131,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/volunteer",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/volunteer.html",
+					templateUrl: "templates/main/volunteer.html",
 					controller: "VolunteerCtrl"
 				}
 			}
@@ -141,7 +141,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/qr",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/qr.html",
+					templateUrl: "templates/main/qr.html",
 					controller: "QRCtrl"
 				}
 			}
@@ -151,7 +151,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/contact",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/contact.html",
+					templateUrl: "templates/main/contact.html",
 					controller: "ContactCtrl"
 				}
 			}
@@ -161,7 +161,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/balagokulam",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/balagokulam.html"
+					templateUrl: "templates/main/balagokulam.html"
 				}
 			}
 		})
@@ -171,16 +171,6 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'menuContent': {
 					templateUrl: "http://htci.org"
-				}
-			}
-		})
-
-
-		.state('app.other', {
-			url: "/other",
-			views: {
-				'other-tab': {
-					templateUrl: "templates/donation.html"
 				}
 			}
 		})
