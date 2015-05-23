@@ -67,3 +67,12 @@ ion-slide {
 .contact-list.item > .item-content > i.icon {
 	color: #ddd;
 }
+
+/*
+  Calendar CSS
+*/
+
+.fc-header,
+.fc-time {
+	font-weight: bold;
+}

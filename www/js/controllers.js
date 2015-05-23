@@ -102,8 +102,16 @@ angular.module('app.controllers', [])
 				},
 				allDayText: 'All Day',
 				height: "auto",
-				defaultView: "basicWeek"
 				//aspectRatio: 1
+				views: {
+					list: {
+						type: 'ListView',
+						duration: { days: 30 },
+						buttonText: 'List',
+						titleFormat: 'D MMMM YYYY'
+					}
+				},
+				defaultView: "list"
 			});
 		});
 	})
