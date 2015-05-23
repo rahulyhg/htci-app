@@ -5,9 +5,10 @@ hr {
 	border-top:1px solid #444;
 }
 
-.scroll-content {
-	/*background-color: #059c93;*/
-}
+/*
+  Color Changes
+  Eventually change these all into classes
+*/
 
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
 	background-color: #FF9A00;
@@ -40,6 +41,11 @@ hr {
 
 .menu .scroll-content {
 	background-color: #FF9A00;
+}
+
+.tabs-temple {
+	background-color: #FF9A00;
+	color: #fff;
 }
 
 #calendar {
