@@ -91,5 +91,6 @@ ion-slide {
 
 .fc-list-view {
 	padding-right: 1px;
+	margin-right: -1px; /*These previous two changes are a hacky workaround to an annoying bug with the right border of the calendar*/
 	overflow-y: hidden;
 }
