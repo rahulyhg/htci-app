@@ -118,7 +118,7 @@
                             tbody.append('\
                                 <tr class="fc-header" date="">\
                                     <th colspan="2">\
-                                        <span class="fc-header-day">' + currentDayStart.format('dddd') + '</span>\
+                                        <span class="fc-header-day">' + currentDayStart.format('dddd') + ',</span>\
                                         <span class="fc-header-date">' + currentDayStart.format(this.opt('columnFormat')) + '</span>\
                                     </th>\
                                 </tr>');

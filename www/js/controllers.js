@@ -107,8 +107,8 @@ angular.module('app.controllers', ['app.services','ionic'])
 						type: 'ListView',
 						height: 'auto',
 						duration: { days: 30 },
-						buttonText: 'List',
-						titleFormat: 'D MMMM YYYY'
+						titleFormat: 'MMMM D, YYYY',
+						columnFormat: 'MMMM D, YYYY'
 					}
 				},
 				defaultView: "list",
