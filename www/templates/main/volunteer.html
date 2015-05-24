@@ -1,11 +1,9 @@
 <ion-view view-title="Volunteer">
-  <ion-content>
-		<div class="row">
-			<div class="col">
-				<h4>Areas that need volunteer service:</h4>
-			</div>
-		</div>
+	<ion-content>
 		<ul class="list">
+			<li class="item item-divider">
+				Areas that Need Volunteer Service
+			</li>
 			<li class="item" ng-repeat="item in list">
 				<h2>{{item.area}}</h2>
 				<p>{{item.description}}</p>
@@ -17,7 +15,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col">Contact Ravi Dinakaran Phone: (317) 213-6920; Email: ravi_chand@yahoo.com</div>
+			<div class="col">Contact Ravi Dinakaran Phone: <a href="+13172136920">(317)213-6920</a>; Email: <a href="mailto:ravi_chand@yahoo.com">ravi_chand@yahoo.com</a></div>
 		</div>
-  </ion-content>
+	</ion-content>
 </ion-view>

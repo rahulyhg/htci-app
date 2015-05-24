@@ -1,0 +1,17 @@
+<ion-view title="Events Information">
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-content class="has-header">
+		<ion-list>
+			<ion-item ng-repeat="event in events" href="#/kumbhabhishekam/events/{{event.id}}">
+				{{event.date}}
+			</ion-item>
+		</ion-list>
+		<div class="card">
+			<div class="item item-text-wrap">
+				Remember: Parking location is based on days so please refer the schedule of everyday parking before leaving for temple.
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

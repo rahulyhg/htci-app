@@ -1,17 +1,14 @@
-\/* Empty. Add your own CSS if you like */
+/* Empty. Add your own CSS if you like */
 hr {
 	border: 0;
 	margin: 20px 0;
 	border-top:1px solid #444;
 }
 
-.scroll-content {
-	/*background-color: #059c93;*/
-}
-
-[nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
-	background-color: #FF9A00;
-}
+/*
+  Color Changes
+  Eventually change these all into classes
+*/
 
 .bar.bar-stable {
 	border-color: #D58700;
@@ -30,7 +27,7 @@ hr {
 	font-weight: 600;
 }
 
-.item .item-content.activated {
+.temple-orange .item .item-content.activated {
 	background-color: #F07700;
 }
 
@@ -38,8 +35,19 @@ hr {
 	border: none;
 }
 
-.menu .scroll-content {
+.temple-orange {
 	background-color: #FF9A00;
+}
+
+.temple-orange .button,
+.temple-orange .button:hover,
+.temple-orange .title {
+	color: #fff;
+}
+
+.tabs-temple {
+	background-color: #FF9A00;
+	color: #fff;
 }
 
 #calendar {
@@ -59,6 +67,10 @@ ion-slide {
 	background-color: blue; /* This blue is temporary */
 }
 
+#help-list .item .item-content.activated {
+	background-color: green; /* Also temporary */
+}
+
 .button-contact {
 	font-size: 32px;
 }
@@ -75,4 +87,9 @@ ion-slide {
 .fc-header,
 .fc-time {
 	font-weight: bold;
+}
+
+.fc-list-view {
+	padding-right: 1px;
+	overflow-y: hidden;
 }

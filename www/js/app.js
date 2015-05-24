@@ -21,15 +21,77 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 		.state('app', {
 			url: "/app",
 			abstract: true,
-			templateUrl: "templates/menu.html",
+			templateUrl: "templates/main/menu.html",
 			controller: 'AppCtrl'
 		})
+
+		.state('kumbhabhishekam', {
+			url: "/kumbhabhishekam",
+			abstract: true,
+			templateUrl: "templates/kumb/menu.html"
+		})
+
+		.state('kumbhabhishekam.index', {
+			url: "/index",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/kumb/info.html"
+				}
+			}
+		})
+
+		.state('kumbhabhishekam.events', {
+            url: "/events",
+            views: {
+				'menuContent': {
+					templateUrl: "templates/kumb/events.html",
+					controller: 'EventsCtrl'
+				}
+            }
+        })
+
+        .state('kumbhabhishekam.single', {
+			url: "/events/:eventId",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/kumb/event.html",
+					controller: 'EventCtrl'
+				}
+			}
+        })
+
+        .state('kumbhabhishekam.parking', {
+			url: "/parking",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/kumb/parking.html"
+				}
+			}
+        })
+
+        .state('kumbhabhishekam.volunteers', {
+			url: "/volunteers",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/kumb/volunteers.html"
+				}
+			}
+        })
+
+        .state('kumbhabhishekam.contact', {
+			url: "/contact",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/kumb/contact.html"
+				}
+			}
+        })
 
 		.state('app.index', {
 			url: "/index",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/index.html",
+					templateUrl: "templates/main/index.html",
 					controller: "IndexCtrl"
 				}
 			}
@@ -39,7 +101,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/info",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/info.html"
+					templateUrl: "templates/main/info.html"
 				}
 			}
 		})
@@ -48,7 +110,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/calendar",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/calendar.html",
+					templateUrl: "templates/main/calendar.html",
 					controller: "CalendarCtrl"
 				}
 			}
@@ -58,7 +120,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/social-media",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/social-media.html",
+					templateUrl: "templates/main/social-media.html",
 					controller: "FacebookCtrl"
 				}
 			}
@@ -68,7 +130,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/sponsorship",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/sponsorship.html",
+					templateUrl: "templates/main/sponsorship.html",
 					controller: "SponsorshipCtrl"
 				}
 			}
@@ -78,7 +140,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/donation",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/donation.html"
+					templateUrl: "templates/main/donation.html"
 				}
 			}
 		})
@@ -87,7 +149,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/volunteer",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/volunteer.html",
+					templateUrl: "templates/main/volunteer.html",
 					controller: "VolunteerCtrl"
 				}
 			}
@@ -97,7 +159,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/qr",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/qr.html",
+					templateUrl: "templates/main/qr.html",
 					controller: "QRCtrl"
 				}
 			}
@@ -107,7 +169,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/contact",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/contact.html",
+					templateUrl: "templates/main/contact.html",
 					controller: "ContactCtrl"
 				}
 			}
@@ -117,7 +179,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/balagokulam",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/balagokulam.html"
+					templateUrl: "templates/main/balagokulam.html"
 				}
 			}
 		})
