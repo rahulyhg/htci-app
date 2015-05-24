@@ -64,11 +64,11 @@ ion-slide {
 
 #help-list .item,
 #help-list .item .item-content {
-	background-color: blue; /* This blue is temporary */
+	background-color: #003BFF; /* This blue is temporary */
 }
 
 #help-list .item .item-content.activated {
-	background-color: green; /* Also temporary */
+	background-color: #002FC9 /* Also temporary */
 }
 
 .button-contact {

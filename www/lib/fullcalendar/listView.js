@@ -137,10 +137,11 @@
                             <td class="fc-time">' + (e.allDay ? this.opt('allDayText') : e.start.format('H:mm') + '-' + e.end.format('H:mm')) + '</td>\
                             <td>\
                                 <div class="fc-title">' + e.title + '</div>\
-                                <div class="fc-description">' + e.location + '</div>\
                             </td>\
                         </tr>');
                         tbody.append(segEl);
+
+						//Removed this line from underneath the title: <div class="fc-description">' + e.location + '</div>\
 
                         //Tried to use fullcalendar code for this stuff but to no avail
                         (function(_this, myEvent, mySegEl) { //temp bug fix because 'e' seems to change
