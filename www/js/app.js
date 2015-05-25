@@ -31,6 +31,12 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: "templates/kumb/menu.html"
 		})
 
+		.state('updates', {
+			url: "/updates",
+			abstract: true,
+			templateUrl: "templates/updates/menu.html"
+		})
+
 		.state('kumbhabhishekam.index', {
 			url: "/index",
 			views: {
@@ -184,8 +190,8 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			}
 		})
 
-		.state('app.updates', {
-			url: "/updates",
+		.state('updates.index', {
+			url: "/index",
 			views: {
 				'menuContent': {
 					templateUrl: "http://htci.org"
