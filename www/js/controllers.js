@@ -189,11 +189,6 @@ angular.module('app.controllers', ['app.services','ionic'])
 		]
 	})
 
-	.controller('QRCtrl', function($scope){
-		
-	})
-
-
 	.controller('EventsCtrl', function($scope, eventService) {
 		$scope.events = eventService.all();
 
@@ -201,4 +196,17 @@ angular.module('app.controllers', ['app.services','ionic'])
 
 	.controller('EventCtrl', function($scope, $stateParams, eventService) {
 		$scope.event = eventService.get($stateParams.eventId);
-    });
+    })
+
+	.controller('QRCtrl', function($scope, $cordovaBarcodeScanner){
+		$scope.scanBarcode = function() {
+			$cordovaBarcodeScanner.scan().then(function(imageData) {
+				alert(imageData.text);
+				console.log("Barcode Format -> " + imageData.format);
+				console.log("Cancelled -> " + imageData.cancelled);
+			}, function(error) {
+				console.log("An error happened -> " + error);
+			});
+		};
+	});
+
