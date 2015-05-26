@@ -33,6 +33,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 
 		.state('updates', {
 			url: "/updates",
+			//cache: false,
 			abstract: true,
 			templateUrl: "templates/updates/menu.html",
 			controller: 'UpdatesCtrl'
@@ -195,7 +196,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			url: "/",
 			views: {
 				'menuContent': {
-					templateUrl: "http://htci.org"
+					templateUrl: "templates/updates/index.html"
 				}
 			}
 		})

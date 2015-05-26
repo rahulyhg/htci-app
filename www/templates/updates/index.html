@@ -1,0 +1,16 @@
+<ion-view view-title="Updates">
+	<ion-content>
+		<ion-refresher
+			 pulling-text="Pull to refresh..."
+			 on-refresh="doRefresh()">
+		</ion-refresher>
+		<div class="card" ng-repeat="update in data">
+			<div class="item item-divider">
+				{{update.title}}
+			</div>
+			<div class="item item-text-wrap">
+				{{update.description}}
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

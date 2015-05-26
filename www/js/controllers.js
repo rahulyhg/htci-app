@@ -133,10 +133,10 @@ angular.module('app.controllers', ['app.services','ionic'])
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 		/*$('a').on('click', function(e) {
-			e.preventDefault();
-			window.open($(this).attr('href'), '_system');
-			return false;
-		});*/
+		  e.preventDefault();
+		  window.open($(this).attr('href'), '_system');
+		  return false;
+		  });*/
 	})
 
 	.controller('ContactCtrl', function($scope){
@@ -151,7 +151,16 @@ angular.module('app.controllers', ['app.services','ionic'])
 
 		$scope.executiveContacts = [
 			{name: "Mr. Ambat Babu", title: "President", phone: "13174900392", email: "htcibabu@yahoo.com"},
-			{name: "Mr. Jagannath Pandey", title: "President-Elect/Vice-President", phone: "13173400918", email: "jaypandey50@hotmail.com"}
+			{name: "Mr. Jagannath Pandey", title: "President-Elect/Vice-President", phone: "13173400918", email: "jaypandey50@hotmail.com"},
+			{name: "Mr. Sathyaraj Chawan", title: "Secretary", phone: "13174400133", email: "chawan@sbcglobal.net"},
+			{name: "Mr. Ravi Dinakaran", title: "Treasurer", phone: "13172136920", email: "ravi_chand@yahoo.com"},
+			{name: "Mrs. Kusum Patel", title: "Joint Treasurer/Secretary", phone: "13178755263", email: "vkpuniversal@comcast.net"},
+			{name: "Mr. Rajendra Kedlaya", title: "Function Coordination Committee", phone: "13172704850", email: "rked14@yahoo.com"},
+			{name: "Mr. Krishnakumar Padmanabhan", title: "Pooja Coordination Committee", phone: "13172585356", email: "mailkpk@yahoo.com"},
+			{name: "Mrs. Tripti Vyas", title: "Membership Committee", phone: "13174595530", email: "triptidv@yahoo.com"},
+			{name: "Mr. Raveendran Dudlhur", title: "Maintenance Committee", phone: "13176446121", email: "raveendrand@gmail.com"},
+			{name: "Mr. Nabin Pudasaini", title: "Library Committee", phone: "13177091537", email: "nabin.pudasaini@yahoo.com"},
+			{name: "Mr. Priyash Kheradia", title: "Youth Activity Coordinator", phone: "13179669033", email: "pkheradia@yahoo.com"}
 		];
 
 		$scope.callTel = function(number){
@@ -182,7 +191,7 @@ angular.module('app.controllers', ['app.services','ionic'])
 		$scope.event = eventService.get($stateParams.eventId);
     })
 
-	.controller('UpdatesCtrl', function($scope, $ionicHistory, $state) {
+	.controller('UpdatesCtrl', function($scope, $ionicHistory, $state, $http) {
 		var previous;
 
 		$scope.$on("$ionicView.beforeEnter", function() {
@@ -195,6 +204,26 @@ angular.module('app.controllers', ['app.services','ionic'])
 			console.log("going back!");
 			$state.go(previous["stateId"]);
 		}
+
+		$scope.getData = function() {
+			$http.get('http://htci.org/HTCI_APP/test.json').then(function(resp) {
+				$scope.data = resp.data.data;
+				//alert($scope.data);
+				
+			}, function(err) {
+				console.error('ERR', err);
+				// err.status will contain the status code
+			})
+		}
+
+		$scope.doRefresh = function() {
+			//$state.reload();
+			$scope.getData();
+			// Stop the ion-refresher from spinning
+			$scope.$broadcast('scroll.refreshComplete');
+		};
+
+		$scope.getData();
 	})
 
 	.controller('QRCtrl', function($scope, $cordovaBarcodeScanner){
