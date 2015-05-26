@@ -34,14 +34,15 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 		.state('updates', {
 			url: "/updates",
 			abstract: true,
-			templateUrl: "templates/updates/menu.html"
+			templateUrl: "templates/updates/menu.html",
+			controller: 'UpdatesCtrl'
 		})
 
 		.state('kumbhabhishekam.index', {
-			url: "/index",
+			url: "/",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/kumb/info.html"
+					templateUrl: "templates/kumb/info.html",
 				}
 			}
 		})
@@ -94,7 +95,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
         })
 
 		.state('app.index', {
-			url: "/index",
+			url: "/",
 			views: {
 				'menuContent': {
 					templateUrl: "templates/main/index.html",
@@ -191,7 +192,7 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 		})
 
 		.state('updates.index', {
-			url: "/index",
+			url: "/",
 			views: {
 				'menuContent': {
 					templateUrl: "http://htci.org"
@@ -200,5 +201,5 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 		})
 
 	// if none of the above states are matched, use this as the fallback
-	$urlRouterProvider.otherwise('/app/index');
+	$urlRouterProvider.otherwise('/app/');
 });

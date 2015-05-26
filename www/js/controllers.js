@@ -9,23 +9,7 @@ angular.module('app.controllers', ['app.services','ionic'])
 	})
 
 	.controller('SponsorshipCtrl', function($scope, $ionicModal) {
-		// Create the login modal that we will use later
-		$ionicModal.fromTemplateUrl('templates/paypal.html', {
-			scope: $scope
-		}).then(function(modal) {
-			$scope.modal = modal;
-		});
-
-		// Triggered in the login modal to close it
-		$scope.closePaypal = function() {
-			$scope.modal.hide();
-		};
-
-		// Open the login modal
-		$scope.paypal = function() {
-			$scope.modal.show();
-		};
-
+		
 		$scope.initPaymentUI = function() {
 			var clientIDs = {
 				"PayPalEnvironmentProduction": "YOUR_PRODUCTION_CLIENT_ID",
@@ -85,7 +69,7 @@ angular.module('app.controllers', ['app.services','ionic'])
 			console.log(result);
 		};
 
-		$scope.initPaymentUI();
+		//$scope.initPaymentUI();
 	})
 
 	.controller('CalendarCtrl', function($scope){
@@ -133,11 +117,11 @@ angular.module('app.controllers', ['app.services','ionic'])
 			$ionicSlideBoxDelegate.update();
 
 			setSliderHeight();
-		})
+		});
 
 		$(window).on("resize",function(){
 			setSliderHeight();
-		})
+		});
 	})
 
 	.controller('FacebookCtrl', function($scope){
@@ -197,6 +181,21 @@ angular.module('app.controllers', ['app.services','ionic'])
 	.controller('EventCtrl', function($scope, $stateParams, eventService) {
 		$scope.event = eventService.get($stateParams.eventId);
     })
+
+	.controller('UpdatesCtrl', function($scope, $ionicHistory, $state) {
+		var previous;
+
+		$scope.$on("$ionicView.beforeEnter", function() {
+			previous = $ionicHistory.backView();
+			console.log(previous);
+			console.log(previous["title"]);
+		})
+
+		$scope.goBack = function() {
+			console.log("going back!");
+			$state.go(previous["stateId"]);
+		}
+	})
 
 	.controller('QRCtrl', function($scope, $cordovaBarcodeScanner){
 		$scope.scanBarcode = function() {
