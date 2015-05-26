@@ -146,7 +146,17 @@ angular.module('app.controllers', ['app.services','ionic'])
 			{name: "Mr. Vijayapal Reddy", title: "Chairman", phone: "13178438482", email: "vijayapalr@gmail.com"},
 			{name: "Mr. Arun Jain", title: "Vice-Chairman", phone: "17653763976", email: "ajmd02@gmail.com"},
 			{name: "Mr. Ramarao Yeleti", title: "Secretary", phone: "13178155811", email: "ryeleti@aol.com"},
-			{name: "Mr. Venkat Rao", title: "Treasurer", phone:"13178468086", email:"sai55@aol.com"}
+			{name: "Mr. Venkat Rao", title: "Treasurer", phone:"13178468086", email:"sai55@aol.com"},
+			{name: "Mr. Ravi Pattar", title: "Joint Treasurer", phone:"13178627871", email:"pattarcpa@yahoo.com"},
+			{name: "Mr. Rama Belagaje", title: "Kumbhabhshekam Committee", phone:"13178155524", email:"rama_belagaje@yahoo.com"},
+			{name: "Mr. Prabhakar Kasarabada", title: "Facilities", phone:"13172414818", email:"prabhakark94@hotmail.com"},
+			{name: "Mr. Kannan Natarajan", title: "Long Range Planning", phone:"13175669399", email:"knatarajan@indy.rr.com"},
+			{name: "Mr. Ram Bhargava", title: "Education & Communication", phone:"13178622228", email:"rammadhu@aol.com"},
+			{name: "Mr. Subash Khanna", title: "Community & Public Relations", phone:"13175809877", email:"subashkhanna@sbcglobal.net"},
+			{name: "Mr. M.R. Ivaturi", title: "Social & Charitable Activities", phone:"13176962346", email:"ivaturi1@gmail.com"},
+			{name: "Mr. Anil Bajpaj", title: "Fund Raising", phone:"13172501431", email:"bajpaja@yahoo.com"},
+			{name: "Mr. Mani Subramaniam", title: "Human Resources", phone:"13172703825", email:"mani_subramaniam@yahoo.com"},
+			{name: "Mr. Sathya Thulasiraman", title: "Project Manager, Construction", phone:"13177539521", email:"stindpls@yahoo.com"}
 		];
 
 		$scope.executiveContacts = [
@@ -158,9 +168,14 @@ angular.module('app.controllers', ['app.services','ionic'])
 			{name: "Mr. Rajendra Kedlaya", title: "Function Coordination Committee", phone: "13172704850", email: "rked14@yahoo.com"},
 			{name: "Mr. Krishnakumar Padmanabhan", title: "Pooja Coordination Committee", phone: "13172585356", email: "mailkpk@yahoo.com"},
 			{name: "Mrs. Tripti Vyas", title: "Membership Committee", phone: "13174595530", email: "triptidv@yahoo.com"},
-			{name: "Mr. Raveendran Dudlhur", title: "Maintenance Committee", phone: "13176446121", email: "raveendrand@gmail.com"},
+			{name: "Mr. Raveendran Dudhlur", title: "Maintenance Committee", phone: "13176446121", email: "raveendrand@gmail.com"},
 			{name: "Mr. Nabin Pudasaini", title: "Library Committee", phone: "13177091537", email: "nabin.pudasaini@yahoo.com"},
-			{name: "Mr. Priyash Kheradia", title: "Youth Activity Coordinator", phone: "13179669033", email: "pkheradia@yahoo.com"}
+			{name: "Mr. Priyash Kheradia", title: "Youth Activity Coordinator", phone: "13179669033", email: "pkheradia@yahoo.com"},
+			{name: "Mrs. Shanti Pathak,", title: "Kitchen Committee", phone: "13178440466", email: "pathakgee@sbcglobal.net"},
+			{name: "Mr. Vijay Narayanan", title: "Communication Committee", phone: "13174901628", email: "vnarayanan99@gmail.com"},
+			{name: "Mr. Aryaman Gupta", title: "Youth Committee", phone: "13174426877", email: "arygupta123@gmail.com"},
+			{name: "Miss Kamna Gupta", title: "Youth Committee", phone: "13173137916", email: "kamnagupta3@gmail.com"},
+			{name: "Mrs. Suneela Ramaswamy", title: "Geeta Mandal Contact", phone: "13178049927", email: "suneelaramaswamy@gmail.com"}
 		];
 
 		$scope.callTel = function(number){
