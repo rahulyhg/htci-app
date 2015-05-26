@@ -92,7 +92,8 @@ angular.module('app.controllers', ['app.services','ionic'])
 						height: 'auto',
 						duration: { days: 30 },
 						titleFormat: 'MMMM D, YYYY',
-						columnFormat: 'MMMM D, YYYY'
+						columnFormat: 'MMMM D, YYYY',
+						timeFormat: 'h:mm'
 					}
 				},
 				defaultView: "list",

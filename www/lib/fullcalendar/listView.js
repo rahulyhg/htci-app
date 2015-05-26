@@ -134,7 +134,7 @@
 
                         var segEl = $('\
                         <tr class="fc-row fc-event-container fc-content">\
-                            <td class="fc-time">' + (e.allDay ? this.opt('allDayText') : e.start.format('H:mm') + '-' + e.end.format('H:mm')) + '</td>\
+                            <td class="fc-time">' + (e.allDay ? this.opt('allDayText') : e.start.format('h:mmt') + '-' + e.end.format('h:mmt')) + '</td>\
                             <td>\
                                 <div class="fc-title">' + e.title + '</div>\
                             </td>\

@@ -1,19 +1,15 @@
 <ion-view view-title="Volunteer">
 	<ion-content>
-		<ul class="list">
-			<li class="item item-divider">
+		<div class="list">
+			<div class="item item-divider">
 				Areas that Need Volunteer Service
-			</li>
-			<li class="item" ng-repeat="item in list">
+			</div>
+			<div class="item item-text-wrap" ng-repeat="item in list">
 				<h2>{{item.area}}</h2>
 				<p>{{item.description}}</p>
-			</li>
-		</ul>
-		<div class="row">
-			<div class="col">
-				<button class="button button-block" onclick="window.open('https://docs.google.com/forms/d/18FBDGJKO-Sj7dTeoypBpziBZtwhy4GQlQlculmSeytk/viewform?c=0&w=1', '_system')">Volunteer Pledge Sheet</button>
 			</div>
 		</div>
+		<button class="button button-block" onclick="window.open('https://docs.google.com/forms/d/18FBDGJKO-Sj7dTeoypBpziBZtwhy4GQlQlculmSeytk/viewform?c=0&w=1', '_system')">Volunteer Pledge Sheet</button>
 		<div class="card">
 			<div class="item item-text-wrap">
 				Contact Ravi Dinakaran Phone: <a href="+13172136920">(317)213-6920</a>; Email: <a href="mailto:ravi_chand@yahoo.com">ravi_chand@yahoo.com</a>
