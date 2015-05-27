@@ -222,7 +222,7 @@ angular.module('app.controllers', ['app.services','ionic'])
 		}
 
 		$scope.getData = function() {
-			$http.get('http://htci.org/HTCI_APP/test.json').then(function(resp) {
+			$http.get('http://htci.org/HTCI_APP/updates.json').then(function(resp) {
 				$scope.data = resp.data.data;
 				//alert($scope.data);
 				
