@@ -90,6 +90,17 @@ ion-slide {
 }
 
 .fc-list-view {
-	padding-right: 1px;
-	overflow-y: hidden;
+	overflow: visible;
+	//border-right: 1px solid #ddd;
+}
+
+.fc-list-view table {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.fc-list-view table tbody{ /*Stupid solution to a stupid bug*/
+	border-right: 2px solid #ddd;
 }
