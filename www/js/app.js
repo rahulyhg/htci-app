@@ -1,5 +1,5 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
-var htci = angular.module('app', ['ionic', 'app.controllers', 'ngCordova','ngSanitize'])
+var htci = angular.module('app', ['ionic','ionic.service.core', 'app.controllers', 'ngCordova','ngSanitize'])
 
 htci.run(function($ionicPlatform) {
 	$ionicPlatform.ready(function() {
@@ -12,6 +12,44 @@ htci.run(function($ionicPlatform) {
 			// org.apache.cordova.statusbar required
 			StatusBar.styleDefault();
 		}
+
+		Ionic.io();
+		var push = new Ionic.Push({
+			"debug": true,
+			"onNotification": function(notification) {
+				var payload = notification.payload;
+				console.log(notification, payload);
+				//alert(JSON.stringify(notification));
+				alert(notification.text);
+			},
+			"onRegister": function(data) {
+				console.log(data.token);
+			},
+			"pluginConfig": {
+				"android": {
+					"iconColor": "#FFFFFF"
+				}
+			}
+		});
+		var user = Ionic.User.current();
+
+		if (!user.id) {
+			user.id = Ionic.User.anonymousId();
+		}
+
+		user.save();
+		//console.log("ldaosd");
+
+		var callback = function(data) {
+			//console.log("dloae");
+			console.log(data.token);
+			//push.addTokenToUser(user);
+			user.addPushToken(data);
+			//console.log("dloae");
+			user.save();
+		};
+		push.register(callback);
+		//console.log("dasdaw");
 	});
 })
 
