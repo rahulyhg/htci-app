@@ -63,12 +63,6 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			controller: 'AppCtrl'
 		})
 
-		.state('kumbhabhishekam', {
-			url: "/kumbhabhishekam",
-			abstract: true,
-			templateUrl: "templates/kumb/menu.html"
-		})
-
 		.state('updates', {
 			url: "/updates",
 			//cache: false,
@@ -76,62 +70,6 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: "templates/updates/menu.html",
 			controller: 'UpdatesCtrl'
 		})
-
-		.state('kumbhabhishekam.index', {
-			url: "/",
-			views: {
-				'menuContent': {
-					templateUrl: "templates/kumb/info.html",
-				}
-			}
-		})
-
-		.state('kumbhabhishekam.events', {
-            url: "/events",
-            views: {
-				'menuContent': {
-					templateUrl: "templates/kumb/events.html",
-					controller: 'EventsCtrl'
-				}
-            }
-        })
-
-        .state('kumbhabhishekam.single', {
-			url: "/events/:eventId",
-			views: {
-				'menuContent': {
-					templateUrl: "templates/kumb/event.html",
-					controller: 'EventCtrl'
-				}
-			}
-        })
-
-        .state('kumbhabhishekam.parking', {
-			url: "/parking",
-			views: {
-				'menuContent': {
-					templateUrl: "templates/kumb/parking.html"
-				}
-			}
-        })
-
-        .state('kumbhabhishekam.volunteers', {
-			url: "/volunteers",
-			views: {
-				'menuContent': {
-					templateUrl: "templates/kumb/volunteers.html"
-				}
-			}
-        })
-
-        .state('kumbhabhishekam.contact', {
-			url: "/contact",
-			views: {
-				'menuContent': {
-					templateUrl: "templates/kumb/contact.html"
-				}
-			}
-        })
 
 		.state('app.index', {
 			url: "/",
@@ -148,6 +86,15 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'menuContent': {
 					templateUrl: "templates/main/info.html"
+				}
+			}
+		})
+
+		.state('app.about', {
+			url: "/about",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/main/about.html"
 				}
 			}
 		})
