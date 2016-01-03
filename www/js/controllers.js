@@ -105,7 +105,7 @@ angular.module('app.controllers', ['app.services','ionic'])
 	})
 
 	.controller('IndexCtrl', function($scope, $ionicSlideBoxDelegate){
-		var d = new Date();
+		/*var d = new Date();
 		var day = d.getDay();
 		var month = d.getMonth();
 		var date = d.getDate();
@@ -122,7 +122,7 @@ angular.module('app.controllers', ['app.services','ionic'])
 
 		$(window).on("resize",function(){
 			setSliderHeight();
-		});
+		});*/
 	})
 
 	.controller('FacebookCtrl', function($scope){
