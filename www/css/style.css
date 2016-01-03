@@ -10,6 +10,10 @@ hr {
   Eventually change these all into classes
 */
 
+.scroll {
+	height: 100%;
+}
+
 .bar.bar-stable {
 	border-color: #D58700;
 	background-color: #FF9A00;
