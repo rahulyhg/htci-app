@@ -177,6 +177,16 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			}
 		})
 
+		.state('app.priests', {
+			url: "/priests",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/main/priests.html",
+					controller: "PriestsCtrl"
+				}
+			}
+		})
+
 		.state('updates.index', {
 			url: "/",
 			views: {

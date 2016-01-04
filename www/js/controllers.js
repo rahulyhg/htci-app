@@ -236,6 +236,21 @@ angular.module('app.controllers', ['app.services','ionic'])
 		$scope.getData();
 	})
 
+	.controller('PriestsCtrl', function($scope, $ionicModal) {
+		$ionicModal.fromTemplateUrl('templates/main/priestsModal.html', {
+			scope: $scope,
+			animation: 'slide-in-up'
+		}).then(function(modal) {
+			$scope.modal = modal;
+		});
+		$scope.openModal = function() {
+			$scope.modal.show();
+		};
+		$scope.closeModal = function() {
+			$scope.modal.hide();
+		};
+	})
+
 	.controller('QRCtrl', function($scope, $cordovaBarcodeScanner){
 		$scope.scanBarcode = function() {
 			$cordovaBarcodeScanner.scan().then(function(imageData) {
@@ -247,4 +262,3 @@ angular.module('app.controllers', ['app.services','ionic'])
 			});
 		};
 	});
-
