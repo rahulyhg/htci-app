@@ -1,0 +1,71 @@
+<ion-view view-title="Book Your Event">
+<ion-content>
+    <!--<div class="card">-->
+        <!--<div class="item item-text-wrap">-->
+            <!--Please complete form below to schedule any pooja service with priest.-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="card">
+        <form name="serviceReqForm" ng-submit="SubmitRequestForm(fullname, emailaddress, pooja, priest, date, slot, note )" novalidate="false">
+        <div class="item item-text-wrap">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Full Name</span>
+                    <input type="text" ng-model="fullname" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Email Address</span>
+                    <input type="email" name="email" ng-model="emailaddress" required>
+                </label>
+
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Service
+                    </div>
+                    <select ng-model="pooja" ng-options="p.name for p in allPoojas">
+                       <option value="" selected> Choose PoojaType</option>
+                    </select>
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Preferred Priest
+                    </div>
+
+                    <select ng-model="priest" ng-options="pr.name for pr in allPriests">
+                        <option value="" selected>Choose Priest</option>
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <div class="input-label">
+                        Service Date
+                    </div>
+                    <input type="date" ng-model="date">
+
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Choose Slot
+                    </div>
+                    <select  ng-model="slot" ng-options="sl.time for sl in allTimes">
+                        <option value="" selected>choose slot</option>
+                    </select>
+
+                </label>
+                <label class="item item-input">
+                    <div class="input-label">
+                        Note
+                    </div>
+                    <textarea ng-model="note" id="comment-textarea" class="style: bg-color: green;"></textarea>
+                </label>
+
+                <button type="submit" class="button button-full button-energized">
+                    Submit Request ${{pooja.fee}}.00 {{serviceReqForm.$valid}}
+                </button>
+            </div>
+
+
+        </div>
+        </form>
+    </div>
+  </ion-content>
+</ion-view>

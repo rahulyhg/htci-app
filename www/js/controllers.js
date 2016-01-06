@@ -1,4 +1,4 @@
-angular.module('app.controllers', ['app.services','ionic'])
+angular.module('app.controllers', [])
 
 	.controller('AppCtrl', function($scope) {
 
@@ -249,6 +249,62 @@ angular.module('app.controllers', ['app.services','ionic'])
 		$scope.closeModal = function() {
 			$scope.modal.hide();
 		};
+	})
+
+	.controller('EventBookingCtrl', function($scope, Poojas, $http, $state){
+		$scope.allPoojas = Poojas.all();
+		$scope.allPriests = Poojas.allPriests();
+		$scope.allTimes = Poojas.allSlot();
+		$scope.SubmitRequestForm = function(fullname, emailaddress, pooja, priest, date, slot, note){
+
+			var mailJSON ={
+       			"key": "ZvCHjI8MtG8KW0Wz5b7PUA",
+       			"message": {
+       				"html": "<p>Pooja chair, I, "+fullname+", Interested to perform "+pooja +" POOJA on "+ date +"  Please schedule and update me.</p><p>Thanks, <br/>"+fullname+"</p>",
+       				"text": "Example text content",
+       				"subject": "Request for Service-via APP",
+       				"from_email": emailaddress,
+       				"from_name": fullname,
+       				"to": [
+       					{
+       						"email": "tqm397@gmail.com",
+       						"name": "Vincent Mai",
+       						"type": "to"
+       					}
+
+
+       				],
+       				"important": true,
+       				"track_opens": null,
+       				"track_clicks": null,
+       				"auto_text": null,
+       				"auto_html": null,
+       				"inline_css": null,
+       				"url_strip_qs": null,
+       				"preserve_recipients": null,
+       				"view_content_link": null,
+       				"tracking_domain": null,
+       				"signing_domain": null,
+       				"return_path_domain": null
+       			},
+       			"async": false,
+       			"ip_pool": "Main Pool"
+       		};
+			//reference to the Mandrill REST api
+			var apiURL = "https://mandrillapp.com/api/1.0/messages/send.json";
+
+        	$http.post(apiURL, mailJSON).
+        		success(function(data, status, headers, config) {
+        			$state.go('app.mailack',{"id": 1234})
+        			console.log('successful email send.');
+        			console.log('status: ' + status);
+        		}).error(function(data, status, headers, config) {
+        			alert("Please check form");
+        			console.log('error sending email.');
+        			console.log('status: ' + status);
+        		});
+        };
+
 	})
 
 	.controller('QRCtrl', function($scope, $cordovaBarcodeScanner){
