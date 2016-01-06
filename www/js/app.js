@@ -81,11 +81,11 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			}
 		})
 
-		.state('app.info', {
-			url: "/info",
+		.state('app.hours', {
+			url: "/hours",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/main/info.html"
+					templateUrl: "templates/main/hours.html"
 				}
 			}
 		})
@@ -125,15 +125,6 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 				'menuContent': {
 					templateUrl: "templates/main/sponsorship.html",
 					controller: "SponsorshipCtrl"
-				}
-			}
-		})
-
-		.state('app.donation', {
-			url: "/donation",
-			views: {
-				'menuContent': {
-					templateUrl: "templates/main/donation.html"
 				}
 			}
 		})
