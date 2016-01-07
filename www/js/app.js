@@ -10,7 +10,8 @@ htci.run(function($ionicPlatform) {
 		}
 		if (window.StatusBar) {
 			// org.apache.cordova.statusbar required
-			StatusBar.styleLightContent();
+			//StatusBar.styleLightContent();
+			StatusBar.styleDefault();
 		}
 
 		Ionic.io();
