@@ -1,0 +1,18 @@
+<ion-view view-title="HTCI Facebook Feed">
+  <ion-content>
+    <ion-refresher
+       pulling-text="Pull to refresh..."
+       on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-list>
+      <ion-item class="item item-avatar item-text-wrap" ng-repeat="feed in feeds" ng-click="openAlbum(album.id)">
+        <img src="{{picture}}">
+				<h2>{{feed.time}}</h2>
+        <p>{{feed.message}}</p>
+				<span ng-if="feed.hasOwnProperty('picture')">
+					<img src="{{feed.picture}}" />
+				</span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
