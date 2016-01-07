@@ -19,7 +19,9 @@
     "org.apache.cordova.console",
     "com.ionic.keyboard",
     "phonegap-plugin-push",
-    "cordova-plugin-whitelist"
+    "cordova-plugin-whitelist",
+    "cordova-plugin-dialogs",
+    "phonegap-plugin-barcodescanner"
   ],
   "cordovaPlatforms": [
     "ios",
