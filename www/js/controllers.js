@@ -119,19 +119,34 @@ angular.module('app.controllers', [])
 		};
 	})
 
-	.controller('FacebookCtrl', function($scope){
-		(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=342374259303120";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-		/*$('a').on('click', function(e) {
-		  e.preventDefault();
-		  window.open($(this).attr('href'), '_system');
-		  return false;
-		  });*/
+	.controller('FacebookCtrl', function($scope, $stateParams, MyFb){
+		var posts = [];
+		MyFb.getAccessToken().then(function(result){
+            var url = 'https://graph.facebook.com/244766008966857/posts?'+result.data;
+			MyFb.getPage('https://graph.facebook.com/244766008966857/picture?redirect=0').then(function(r){
+				//console.log(r.data.data);
+				$scope.picture = r.data.data.url;
+			});
+            MyFb.getFeed(url).then(function(r){
+				//console.log(r.data.data.length);
+				for(var i = 0; i<r.data.data.length ; i++)
+                {
+					//console.log(r.data.data[i]);
+					var post = {
+						"time": r.data.data[i].created_time,
+						"message": r.data.data[i].message,
+						"picture": r.data.data[i].picture
+					}
+					console.log(post);
+					posts.push(post);
+                }
+                $scope.feeds = posts;
+				//console.log($scope.feeds);
+            });
+		});
+
+		$scope.doRefresh = function() {
+		};
 	})
 
 	.controller('ContactCtrl', function($scope){

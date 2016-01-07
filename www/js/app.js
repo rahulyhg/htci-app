@@ -110,11 +110,11 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			}
 		})
 
-		.state('app.social-media', {
-			url: "/social-media",
+		.state('app.facebook', {
+			url: "/facebook",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/main/social-media.html",
+					templateUrl: "templates/main/facebook.html",
 					controller: "FacebookCtrl"
 				}
 			}
