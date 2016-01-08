@@ -22,7 +22,8 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-dialogs",
     "phonegap-plugin-barcodescanner",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "cordova-plugin-statusbar"
   ],
   "cordovaPlatforms": [
     "ios",

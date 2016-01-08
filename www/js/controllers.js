@@ -166,26 +166,25 @@ angular.module('app.controllers', [])
 			{name: "Mr. M.R. Ivaturi", title: "Social & Charitable Activities", phone:"13176962346", email:"ivaturi1@gmail.com"},
 			{name: "Mr. Anil Bajpaj", title: "Fund Raising", phone:"13172501431", email:"bajpaja@yahoo.com"},
 			{name: "Mr. Mani Subramaniam", title: "Human Resources", phone:"13172703825", email:"mani_subramaniam@yahoo.com"},
-			{name: "Mr. Sathya Thulasiraman", title: "Project Manager, Construction", phone:"13177539521", email:"stindpls@yahoo.com"}
+			{name: "Mr. Sathya Thulasiraman", title: "Project Manager, Construction", phone:"13177539521", email:"stindpls@yahoo.com"},
+			{name: "Sgt. Javed Khan", title: "Safety & Security Coordinator", phone:"13178919199", email:"tkdindia@hotmail.com"}
 		];
 
 		$scope.executiveContacts = [
-			{name: "Mr. Ambat Babu", title: "President", phone: "13174900392", email: "htcibabu@yahoo.com"},
-			{name: "Mr. Jagannath Pandey", title: "President-Elect/Vice-President", phone: "13173400918", email: "jaypandey50@hotmail.com"},
-			{name: "Mr. Sathyaraj Chawan", title: "Secretary", phone: "13174400133", email: "chawan@sbcglobal.net"},
-			{name: "Mr. Ravi Dinakaran", title: "Treasurer", phone: "13172136920", email: "ravi_chand@yahoo.com"},
-			{name: "Mrs. Kusum Patel", title: "Joint Treasurer/Secretary", phone: "13178755263", email: "vkpuniversal@comcast.net"},
-			{name: "Mr. Rajendra Kedlaya", title: "Function Coordination Committee", phone: "13172704850", email: "rked14@yahoo.com"},
-			{name: "Mr. Krishnakumar Padmanabhan", title: "Pooja Coordination Committee", phone: "13172585356", email: "mailkpk@yahoo.com"},
-			{name: "Mrs. Tripti Vyas", title: "Membership Committee", phone: "13174595530", email: "triptidv@yahoo.com"},
-			{name: "Mr. Raveendran Dudhlur", title: "Maintenance Committee", phone: "13176446121", email: "raveendrand@gmail.com"},
-			{name: "Mr. Nabin Pudasaini", title: "Library Committee", phone: "13177091537", email: "nabin.pudasaini@yahoo.com"},
-			{name: "Mr. Priyash Kheradia", title: "Youth Activity Coordinator", phone: "13179669033", email: "pkheradia@yahoo.com"},
-			{name: "Mrs. Shanti Pathak,", title: "Kitchen Committee", phone: "13178440466", email: "pathakgee@sbcglobal.net"},
-			{name: "Mr. Vijay Narayanan", title: "Communication Committee", phone: "13174901628", email: "vnarayanan99@gmail.com"},
-			{name: "Mr. Aryaman Gupta", title: "Youth Committee", phone: "13174426877", email: "arygupta123@gmail.com"},
-			{name: "Miss Kamna Gupta", title: "Youth Committee", phone: "13173137916", email: "kamnagupta3@gmail.com"},
-			{name: "Mrs. Suneela Ramaswamy", title: "Geeta Mandal Contact", phone: "13178049927", email: "suneelaramaswamy@gmail.com"}
+			{name: "Sri. Jagannath Pandey", title: "President", phone: "13173400918", email: "jay.pandey@htci.org"},
+			{name: "Sri. Krishnakumar Padmanabhan", title: "President Elect/Vice President", email: "Krishna.padmanabhan@htci.org"},
+			{name: "Sri. Sandeep Gupta", title: "Secretary", email: "sandeep.gupta@htci.org"},
+			{name: "Sri. Ravi Dinakaran", title: "Treasurer", email: "treasurer@htci.org"},
+			{name: "Smt. Kusum Patel", title: "Joint Treasurer/Secretary", email: "kusum.patel@htci.org"},
+			{name: "Smt. Nalini Belagaje", title: "Function Coordination Committee", email: "cultural@htci.org"},
+			{name: "Sri. Ananth Duvvuri", title: "Pooja Coordination Committee", email: "seva@htci.org"},
+			{name: "Sri. Nabin Pudasaini", title: "Membership Committee", email: "membership@htci.org"},
+			{name: "Sri. Raveendran Dudhlur", title: "Maintenance Committee", email: "maintenance@htci.org"},
+			{name: "Smt. Shanti Pathak", title: "Library Committee", email: "library@htci.org"},
+			{name: "Sri. Priyesh Kheradia", title: "Youth Activity Coordinator", email: "Priyesh.kheradia@htci.org"},
+			{name: "Sri. Raghava Ayyagari", title: "Communication Committee", email: "communications@htci.org"},
+			{name: "Sri. Aryaman Gupta", title: "Youth Committee", email: "Aryaman.gupta@htci.org"},
+			{name: "Smt. Suneela Ramaswamy", title: "Geeta Session Coordinator", email: "suneelaramaswamy@gmail.com"}
 		];
 
 		$scope.callTel = function(number){
@@ -279,17 +278,15 @@ angular.module('app.controllers', [])
 	})
 
 	.controller('EventBookingCtrl', function($scope, Poojas, $http, $state){
-		$scope.allPoojas = Poojas.all();
-		$scope.allPriests = Poojas.allPriests();
 		$scope.allTimes = Poojas.allSlot();
-		$scope.SubmitRequestForm = function(fullname, emailaddress, pooja, priest, date, slot, note){
+		$scope.SubmitRequestForm = function(fullname, address, city, state, zip, phone, emailaddress, pooja, date, slot, note){
 
 			var mailJSON ={
        			"key": "ZvCHjI8MtG8KW0Wz5b7PUA",
        			"message": {
-       				"html": "<p>Pooja chair, I, "+fullname+", Interested to perform "+pooja +" POOJA on "+ date +"  Please schedule and update me.</p><p>Thanks, <br/>"+fullname+"</p>",
+       				"html": "Name: "+ fullname +"<br>Address: "+ address +"<br>City: "+ city +"<br>State: "+ state +"<br>Zip: "+ zip +"<br>Phone: "+ phone +"<br><p>Pooja chair, I, "+fullname+", am interested to perform "+pooja +" Pooja on "+ date +". I have a preference of " + slot.time + ". Please schedule and update me.</p><p>Thanks, <br/>"+fullname+"</p>",
        				"text": "Example text content",
-       				"subject": "Request for Service-via APP",
+       				"subject": "Request for Service",
        				"from_email": emailaddress,
        				"from_name": fullname,
        				"to": [
@@ -297,9 +294,12 @@ angular.module('app.controllers', [])
        						"email": "tqm397@gmail.com",
        						"name": "Vincent Mai",
        						"type": "to"
-       					}
-
-
+       					},
+						{
+							"email": emailaddress,
+							"name": fullname,
+							"type": "to"
+						}
        				],
        				"important": true,
        				"track_opens": null,
@@ -320,8 +320,8 @@ angular.module('app.controllers', [])
 			//reference to the Mandrill REST api
 			var apiURL = "https://mandrillapp.com/api/1.0/messages/send.json";
 
-        	$http.post(apiURL, mailJSON).
-        		success(function(data, status, headers, config) {
+        	$http.post(apiURL, mailJSON)
+				.success(function(data, status, headers, config) {
         			$state.go('app.mailack',{"id": 1234})
         			console.log('successful email send.');
         			console.log('status: ' + status);
@@ -331,15 +331,17 @@ angular.module('app.controllers', [])
         			console.log('status: ' + status);
         		});
         };
-
 	})
 
-	.controller('PhotosCtrl', function($scope,$ionicLoading,$state,Flickr){
+	.controller('PhotosCtrl', function($scope, Key, $ionicLoading,$state,Flickr){
 		$ionicLoading.show();
+		//testing firebase
+		$scope.key = Key;
+		console.log($scope.key.$id);
 
 		// Getting Photosets Detail from Flickr Service
 		Flickr.getPhotoSets().then(function(result){
-			console.log(result.data);
+			//console.log(result.data);
 			$scope.photoList = result.data.photosets.photoset;
 			$scope.photoList.reverse();
 			$ionicLoading.hide();

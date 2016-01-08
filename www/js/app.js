@@ -1,5 +1,5 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
-var htci = angular.module('app', ['ionic','ionic.service.core', 'app.controllers', 'ngCordova','ngSanitize','flickrApp.services'])
+var htci = angular.module('app', ['ionic','ionic.service.core', 'app.controllers', 'ngCordova','ngSanitize','flickrApp.services','firebase'])
 
 htci.run(function($ionicPlatform) {
 	$ionicPlatform.ready(function() {
@@ -20,8 +20,8 @@ htci.run(function($ionicPlatform) {
 			"onNotification": function(notification) {
 				var payload = notification.payload;
 				console.log(notification, payload);
-				//alert(JSON.stringify(notification));
-				navigator.notification.alert(notification.text, function(){}, "Alert");
+				alert(JSON.stringify(notification));
+				//navigator.notification.alert(notification.text, function(){}, "Alert");
 			},
 			"onRegister": function(data) {
 				console.log(data.token);
@@ -51,7 +51,7 @@ htci.run(function($ionicPlatform) {
 		};
 		push.register(callback);
 		//console.log("dasdaw");
-		console.log(navigator.notification);
+		//console.log(navigator.notification);
 	});
 })
 
