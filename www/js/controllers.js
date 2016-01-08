@@ -203,7 +203,8 @@ angular.module('app.controllers', [])
 			{area: "Front Desk", description: "To assist devotees at the front desk and answer the phone (Every day during Temple hours)."},
 			{area: "Computer Work", description: "To assist in data entry, installation/maintenance of electronic equipment."},
 			{area: "Cleaning", description: "To help clean the kitchen and the worship hall (Weekends)."},
-			{area: "Special Event Preparation", description: "To decorate the worship hall, to decorate the temple exterior, event coordination."}
+			{area: "Special Event Preparation", description: "To decorate the worship hall, to decorate the temple exterior, event coordination."},
+			{area: "Maintenance", description: "To assist in Temple upkeep and maintenance."}
 		]
 	})
 
