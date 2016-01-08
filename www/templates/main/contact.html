@@ -6,9 +6,9 @@
 			</ion-item>
 			<ion-item ng-repeat="contact in boardContacts" class="contact-list item item-icon-right">
 				<h2>{{contact.name}}</h2>
-				<p>{{contact.title}}</p>
+				<p ng-if="contact.hasOwnProperty('title')">{{contact.title}}</p>
 				<i class="icon ion-ios-arrow-left"></i>
-				<ion-option-button ng-click="callTel({{contact.phone}})" class="button-positive button-contact ion-ios-telephone">
+				<ion-option-button ng-if="contact.hasOwnProperty('phone')" ng-click="callTel({{contact.phone}})" class="button-positive button-contact ion-ios-telephone">
 				</ion-option-button>
 				<ion-option-button ng-click="email('{{contact.email}}')" class="button-balanced button-contact ion-ios-email">
 				</ion-option-button>

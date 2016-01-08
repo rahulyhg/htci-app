@@ -122,6 +122,27 @@ angular.module('flickrApp.services', [])
 			}
 		];
 
+		var transportationOptions = [
+			{
+				id: 0,
+				method: "We Will Transport Priest"
+			},
+			{
+				id: 1,
+				method: "Priest Needs to Drive"
+			}
+		];
+
+		var memberOptions = [
+			{
+				id: 0,
+				option: "Yes"
+			},
+			{
+				id: 1,
+				option: "No"
+			}
+		];
 
 		return {
             allSlot: function(){
@@ -133,5 +154,11 @@ angular.module('flickrApp.services', [])
             allLocations: function(){
                 return locations;
             },
+            allTransportationOptions: function(){
+                return transportationOptions;
+            },
+            allMemberOptions: function(){
+                return memberOptions;
+            }
 		}
 	});

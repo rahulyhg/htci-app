@@ -153,21 +153,20 @@ angular.module('app.controllers', [])
 		$scope.listCanSwipe = true;
 
 		$scope.boardContacts = [
-			{name: "Mr. Vijayapal Reddy", title: "Chairman", phone: "13178438482", email: "vijayapalr@gmail.com"},
-			{name: "Mr. Arun Jain", title: "Vice-Chairman", phone: "17653763976", email: "ajmd02@gmail.com"},
-			{name: "Mr. Ramarao Yeleti", title: "Secretary", phone: "13178155811", email: "ryeleti@aol.com"},
-			{name: "Mr. Venkat Rao", title: "Treasurer", phone:"13178468086", email:"sai55@aol.com"},
-			{name: "Mr. Ravi Pattar", title: "Joint Treasurer", phone:"13178627871", email:"pattarcpa@yahoo.com"},
-			{name: "Mr. Rama Belagaje", title: "Kumbhabhshekam Committee", phone:"13178155524", email:"rama_belagaje@yahoo.com"},
-			{name: "Mr. Prabhakar Kasarabada", title: "Facilities", phone:"13172414818", email:"prabhakark94@hotmail.com"},
-			{name: "Mr. Kannan Natarajan", title: "Long Range Planning", phone:"13175669399", email:"knatarajan@indy.rr.com"},
-			{name: "Mr. Ram Bhargava", title: "Education & Communication", phone:"13178622228", email:"rammadhu@aol.com"},
-			{name: "Mr. Subash Khanna", title: "Community & Public Relations", phone:"13175809877", email:"subashkhanna@sbcglobal.net"},
-			{name: "Mr. M.R. Ivaturi", title: "Social & Charitable Activities", phone:"13176962346", email:"ivaturi1@gmail.com"},
-			{name: "Mr. Anil Bajpaj", title: "Fund Raising", phone:"13172501431", email:"bajpaja@yahoo.com"},
-			{name: "Mr. Mani Subramaniam", title: "Human Resources", phone:"13172703825", email:"mani_subramaniam@yahoo.com"},
-			{name: "Mr. Sathya Thulasiraman", title: "Project Manager, Construction", phone:"13177539521", email:"stindpls@yahoo.com"},
-			{name: "Sgt. Javed Khan", title: "Safety & Security Coordinator", phone:"13178919199", email:"tkdindia@hotmail.com"}
+			{name: "Mr. Ramarao Yeleti", title: "Secretary", email: "ryeleti@aol.com"},
+			{name: "Mr. Ravi Pattar", title: "Joint Treasurer", email:"pattarcpa@yahoo.com"},
+			{name: "Mr. Rama Belagaje", title: "Kumbhabhshekam Committee", email:"rama_belagaje@yahoo.com"},
+			{name: "Mr. Prabhakar Kasarabada", title: "Facilities", email:"prabhakark94@hotmail.com"},
+			{name: "Mr. Kannan Natarajan", title: "Long Range Planning", email:"knatarajan@indy.rr.com"},
+			{name: "Mr. Subash Khanna", title: "Community & Public Relations", email:"subashkhanna@sbcglobal.net"},
+			{name: "Mr. M.R. Ivaturi", title: "Social & Charitable Activities", email:"ivaturi1@gmail.com"},
+			{name: "Mr. Anil Bajpaj", title: "Fund Raising", email:"bajpaja@yahoo.com"},
+			{name: "Mr. Mani Subramaniam", title: "Human Resources", email:"mani_subramaniam@yahoo.com"},
+			{name: "Mr. Sathya Thulasiraman", title: "Project Manager, Construction", email:"stindpls@yahoo.com"},
+			{name: "Sgt. Javed Khan", title: "Safety & Security Coordinator", email:"tkdindia@hotmail.com"},
+			{name: "Smt. Kshitija Dube", email:"sdube62@hotmail.com"},
+			{name: "Sri. Dilip Vadlumudi", email:"dvadlamudi@yahoo.com"},
+			{name: "Sri. Om Narla", email:"om@golars.com"}
 		];
 
 		$scope.executiveContacts = [
@@ -184,6 +183,7 @@ angular.module('app.controllers', [])
 			{name: "Sri. Priyesh Kheradia", title: "Youth Activity Coordinator", email: "Priyesh.kheradia@htci.org"},
 			{name: "Sri. Raghava Ayyagari", title: "Communication Committee", email: "communications@htci.org"},
 			{name: "Sri. Aryaman Gupta", title: "Youth Committee", email: "Aryaman.gupta@htci.org"},
+			{name: "Smt. Kamna Gupta", title: "Youth Committee", email: "Kamna.gupta@htci.org"},
 			{name: "Smt. Suneela Ramaswamy", title: "Geeta Session Coordinator", email: "suneelaramaswamy@gmail.com"}
 		];
 
@@ -280,12 +280,14 @@ angular.module('app.controllers', [])
 	.controller('EventBookingCtrl', function($scope, Poojas, $http, $state){
 		$scope.allTimes = Poojas.allSlot();
 		$scope.allLocations = Poojas.allLocations();
-		$scope.SubmitRequestForm = function(fullname, address, city, state, zip, phone, emailaddress, pooja, date, slot, location note){
+		$scope.allMemberOptions = Poojas.allMemberOptions();
+		$scope.allTransportationOptions = Poojas.allTransportationOptions();
+		$scope.SubmitRequestForm = function(fullname, address, city, state, zip, phone, emailaddress, pooja, date, slot, location, transportation, member, note){
 
 			var mailJSON ={
        			"key": "ZvCHjI8MtG8KW0Wz5b7PUA",
        			"message": {
-       				"html": "Name: "+ fullname +"<br>Address: "+ address +"<br>City: "+ city +"<br>State: "+ state +"<br>Zip: "+ zip +"<br>Phone: "+ phone +"<br><p>Pooja chair, I, "+fullname+", am interested to perform "+pooja +" Pooja on "+ date +". I have a preference of " + slot.time + ". Please schedule and update me.</p><p>Thanks, <br/>"+fullname+"</p>",
+       				"html": "Name: "+ fullname +"<br>Address: "+ address +"<br>City: "+ city +"<br>State: "+ state +"<br>Zip: "+ zip +"<br>Phone: "+ phone +"<br>Pooja: "+ pooja +"<br>Date: "+ date +"<br>Timeslot: "+ slot.time +"<br>Location: "+ location.location +"<br>Transportation Method: "+ transportation.method +"<br>Member of HTCI: "+ member.option +"<br>Notes: "+ note,
        				"text": "Example text content",
        				"subject": "Request for Service",
        				"from_email": emailaddress,
