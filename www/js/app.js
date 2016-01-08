@@ -21,7 +21,7 @@ htci.run(function($ionicPlatform) {
 				var payload = notification.payload;
 				console.log(notification, payload);
 				//alert(JSON.stringify(notification));
-				alert(notification.text);
+				navigator.notification.alert(notification.text, function(){}, "Alert");
 			},
 			"onRegister": function(data) {
 				console.log(data.token);
@@ -51,6 +51,7 @@ htci.run(function($ionicPlatform) {
 		};
 		push.register(callback);
 		//console.log("dasdaw");
+		console.log(navigator.notification);
 	});
 })
 

@@ -322,11 +322,15 @@ angular.module('app.controllers', [])
 
 	})
 
-	.controller('QRCtrl', function($scope, $cordovaBarcodeScanner){
+	.controller('QRCtrl', function($scope, $cordovaBarcodeScanner, $timeout){
 		$scope.scanBarcode = function() {
 			$cordovaBarcodeScanner.scan().then(function(imageData) {
-				navigator.notification.alert("Hey there",function(){}, "Test title");
-				alert(imageData.text);
+				//A timeout is needed because the scanner window does not allow for the alert to display
+				if(imageData.cancelled === 0){
+					$timeout(function(){
+						navigator.notification.alert(imageData.text, function(){}, "QR Scanner");
+					}, 500);
+				}
 				console.log("Barcode Format -> " + imageData.format);
 				console.log("Cancelled -> " + imageData.cancelled);
 			}, function(error) {
