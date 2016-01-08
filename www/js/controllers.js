@@ -279,7 +279,8 @@ angular.module('app.controllers', [])
 
 	.controller('EventBookingCtrl', function($scope, Poojas, $http, $state){
 		$scope.allTimes = Poojas.allSlot();
-		$scope.SubmitRequestForm = function(fullname, address, city, state, zip, phone, emailaddress, pooja, date, slot, note){
+		$scope.allLocations = Poojas.allLocations();
+		$scope.SubmitRequestForm = function(fullname, address, city, state, zip, phone, emailaddress, pooja, date, slot, location note){
 
 			var mailJSON ={
        			"key": "ZvCHjI8MtG8KW0Wz5b7PUA",

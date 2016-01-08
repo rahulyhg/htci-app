@@ -5,7 +5,7 @@
     <!--Please complete form below to schedule any pooja service with priest.-->
     <!--</div>-->
     <!--</div>-->
-    <form name="serviceReqForm" ng-submit="SubmitRequestForm(fullname, address, city, state, zip, phone, emailaddress, pooja, date, slot, note)" novalidate="false">
+    <form name="serviceReqForm" ng-submit="SubmitRequestForm(fullname, address, city, state, zip, phone, emailaddress, pooja, date, slot, location, note)" novalidate="false">
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Full Name</span>
@@ -53,12 +53,20 @@
             <option value="" selected disabled>Choose a Time</option>
           </select>
         </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Pooja Location
+          </div>
+          <select ng-model="location" ng-options="location.location for location in allLocations">
+            <option value="" selected disabled>Choose a Location</option>
+          </select>
+        </label>
         <label class="item item-input">
           <span class="input-label">Note</span>
           <textarea ng-model="note" id="comment-textarea"></textarea>
         </label>
         <button type="submit" class="button button-full button-energized">
-          Submit Request ${{pooja.fee}}.00 {{serviceReqForm.$valid}}
+          Submit Request
         </button>
       </div>
     </form>

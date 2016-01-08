@@ -88,7 +88,7 @@ angular.module('flickrApp.services', [])
 	})
 
 	.factory('Poojas', function(){
-		var times =[
+		var times = [
             {
                 id: 0,
                 time: "Based On Availability"
@@ -107,6 +107,21 @@ angular.module('flickrApp.services', [])
             }
         ];
 
+		var locations = [
+			{
+				id: 0,
+				location: "Temple"
+			},
+			{
+				id: 1,
+				location: "Home"
+			},
+			{
+				id: 2,
+				location: "Other (Put in Notes)"
+			}
+		];
+
 
 		return {
             allSlot: function(){
@@ -114,6 +129,9 @@ angular.module('flickrApp.services', [])
             },
             getSlot: function(id){
 				return times[id];
+            },
+            allLocations: function(){
+                return locations;
             },
 		}
 	});
