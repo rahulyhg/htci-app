@@ -1,31 +1,46 @@
 <ion-view view-title="Priests">
-<ion-content>
+	<ion-content>
+		<!--
+				<div class="list card" ng-click="openModal()">
 
-    <div class="list card" ng-click="openModal()">
-
-        <div class="item item-avatar">
+					<div class="item item-avatar">
             <img src="img/HTCI.jpg">
             <h2>Sri Badrinath Shastri</h2>
             <p>Hindi, Nepali & English</p>
-        </div>
+					</div>
 
-    </div>
+				</div>
 
-    <div class="list card" ng-click="openModal()">
-        <div class="item item-avatar">
+				<div class="list card" ng-click="openModal()">
+					<div class="item item-avatar">
             <img src="img/HTCI.jpg">
             <h2>Sri Kirthivasan</h2>
             <p>Hindi, English, Tamil & Telugu</p>
-        </div>
-    </div>
-    <div class="list card" ng-click="openModal()">
+					</div>
+				</div>
+				<div class="list card" ng-click="openModal()">
 
-        <div class="item item-avatar">
+					<div class="item item-avatar">
             <img src="img/HTCI.jpg">
             <h2>Sri Ramaswami Bhattar</h2>
             <p>Hindi, English, Telugu, Kannada & Tamil</p>
-        </div>
-    </div>
+					</div>
+				</div>
+				-->
+		<ion-list>
 
+			<ion-item ng-repeat="priest in priests" ng-click="toggleItem(priest)" class="item item-avatar item-text-wrap">
+				<img src="{{priest.avatar}}" />
+				<div ng-class="isItemShown(priest) ? 'item-expand active' : 'item-expand inactive'">
+					<h2>{{priest.title}}</h2>
+					<p>{{priest.text}}</p>
+				</div>
+				<div class="item-expand-footer">
+					<i ng-class="isItemShown(priest) ? 'ion-ios-minus-outline' : 'ion-ios-plus-outline'"></i>
+					{{ isItemShown(priest) ? 'Less' : 'More' }}
+				</div>
+			</ion-item>
+
+		</ion-list>
   </ion-content>
 </ion-view>
