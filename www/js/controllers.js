@@ -153,17 +153,17 @@ angular.module('app.controllers', [])
 		$scope.listCanSwipe = true;
 
 		$scope.boardContacts = [
-			{name: "Mr. Ramarao Yeleti", title: "Secretary", email: "ryeleti@aol.com"},
-			{name: "Mr. Ravi Pattar", title: "Joint Treasurer", email:"pattarcpa@yahoo.com"},
-			{name: "Mr. Rama Belagaje", title: "Kumbhabhshekam Committee", email:"rama_belagaje@yahoo.com"},
-			{name: "Mr. Prabhakar Kasarabada", title: "Facilities", email:"prabhakark94@hotmail.com"},
-			{name: "Mr. Kannan Natarajan", title: "Long Range Planning", email:"knatarajan@indy.rr.com"},
-			{name: "Mr. Subash Khanna", title: "Community & Public Relations", email:"subashkhanna@sbcglobal.net"},
-			{name: "Mr. M.R. Ivaturi", title: "Social & Charitable Activities", email:"ivaturi1@gmail.com"},
-			{name: "Mr. Anil Bajpaj", title: "Fund Raising", email:"bajpaja@yahoo.com"},
-			{name: "Mr. Mani Subramaniam", title: "Human Resources", email:"mani_subramaniam@yahoo.com"},
-			{name: "Mr. Sathya Thulasiraman", title: "Project Manager, Construction", email:"stindpls@yahoo.com"},
-			{name: "Sgt. Javed Khan", title: "Safety & Security Coordinator", email:"tkdindia@hotmail.com"},
+			{name: "Sri. Ramarao Yeleti", email: "ryeleti@aol.com"},
+			{name: "Sri. Ravi Pattar", email:"pattarcpa@yahoo.com"},
+			{name: "Sri. Rama Belagaje", email:"rama_belagaje@yahoo.com"},
+			{name: "Sri. Prabhakar Kasarabada", email:"prabhakark94@hotmail.com"},
+			{name: "Sri. Kannan Natarajan", email:"knatarajan@indy.rr.com"},
+			{name: "Sri. Subash Khanna", email:"subashkhanna@sbcglobal.net"},
+			{name: "Sri. M.R. Ivaturi", email:"ivaturi1@gmail.com"},
+			{name: "Sri. Anil Bajpai", email:"bajpaia@yahoo.com"},
+			{name: "Sri. Mani Subramaniam", email:"mani_subramaniam@yahoo.com"},
+			{name: "Sri. Sathya Thulasiraman", email:"stindpls@yahoo.com"},
+			{name: "Sgt. Javed Khan", email:"tkdindia@hotmail.com"},
 			{name: "Smt. Kshitija Dube", email:"sdube62@hotmail.com"},
 			{name: "Sri. Dilip Vadlumudi", email:"dvadlamudi@yahoo.com"},
 			{name: "Sri. Om Narla", email:"om@golars.com"}
@@ -385,10 +385,13 @@ angular.module('app.controllers', [])
 		$scope.scanBarcode = function() {
 			$cordovaBarcodeScanner.scan().then(function(imageData) {
 				//A timeout is needed because the scanner window does not allow for the alert to display
-				if(imageData.cancelled === 0){
-					$timeout(function(){
-						navigator.notification.alert(imageData.text, function(){}, "QR Scanner");
-					}, 500);
+				if(imageData.cancelled === 0 || imageData.cancelled === false){
+					//$timeout(function(){
+					//	navigator.notification.alert(imageData.text, function(){}, "QR Scanner");
+					//}, 1000);
+					//alert(imageData.text);
+					document.getElementById("text").innerHTML = imageData.text;
+					//alert(JSON.stringify(imageData));
 				}
 				console.log("Barcode Format -> " + imageData.format);
 				console.log("Cancelled -> " + imageData.cancelled);

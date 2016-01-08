@@ -20,8 +20,8 @@ htci.run(function($ionicPlatform) {
 			"onNotification": function(notification) {
 				var payload = notification.payload;
 				console.log(notification, payload);
-				alert(JSON.stringify(notification));
-				//navigator.notification.alert(notification.text, function(){}, "Alert");
+				//alert(JSON.stringify(notification));
+				navigator.notification.alert(notification.text, function(){}, "Alert");
 			},
 			"onRegister": function(data) {
 				console.log(data.token);

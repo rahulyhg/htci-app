@@ -136,11 +136,11 @@ angular.module('flickrApp.services', [])
 		var memberOptions = [
 			{
 				id: 0,
-				option: "Yes"
+				option: "No"
 			},
 			{
 				id: 1,
-				option: "No"
+				option: "Yes"
 			}
 		];
 
