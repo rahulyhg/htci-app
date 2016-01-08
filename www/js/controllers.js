@@ -333,6 +333,48 @@ angular.module('app.controllers', [])
 
 	})
 
+	.controller('PhotosCtrl', function($scope,$ionicLoading,$state,Flickr){
+		$ionicLoading.show();
+
+		// Getting Photosets Detail from Flickr Service
+		Flickr.getPhotoSets().then(function(result){
+			console.log(result.data);
+			$scope.photoList = result.data.photosets.photoset;
+			$scope.photoList.reverse();
+			$ionicLoading.hide();
+		});
+
+		// Opening Album
+		$scope.openAlbum = function(album_id) {
+			$state.go('app.album',{id: album_id });
+		};
+	})
+
+	.controller('AlbumCtrl', function($scope,$ionicLoading,$stateParams,Flickr) {
+		$ionicLoading.show();
+		$scope.id = $stateParams.id;
+		$scope.photoList = [];
+
+		// Getting List of Photos from a Photoset
+		Flickr.getPhotos($scope.id).then(function(result){
+			$ionicLoading.hide();
+			console.log(result);
+			$scope.photos = result.data.photoset.photo;
+			console.log($scope.photos);
+			$scope.title = result.data.photoset.title;
+
+			angular.forEach($scope.photos, function(photo,key) {
+				var id = photo.id;
+				var secret = photo.secret;
+				Flickr.getInfo(id,secret).then(function(result) {
+					$scope.photoList.push({sizes: result[0].data, info: result[1].data});
+					console.log($scope.photoList);
+
+				});
+			});
+		});
+	})
+
 	.controller('QRCtrl', function($scope, $cordovaBarcodeScanner, $timeout){
 		$scope.scanBarcode = function() {
 			$cordovaBarcodeScanner.scan().then(function(imageData) {

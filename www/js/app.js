@@ -121,6 +121,26 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			}
 		})
 
+		.state('app.photos', {
+			url: "/photos",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/main/photos.html",
+					controller: "PhotosCtrl"
+				}
+			}
+		})
+
+		.state('app.album', {
+            url: "/album/:id",
+            views: {
+                'menuContent': {
+					templateUrl: "templates/main/album.html",
+					controller: 'AlbumCtrl'
+                }
+            }
+		})
+
 		.state('app.eventbooking', {
 			url: "/eventbooking",
 			views: {
