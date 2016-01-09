@@ -300,8 +300,8 @@ angular.module('app.controllers', [])
        				"from_name": fullname,
        				"to": [
        					{
-       						"email": "tqm397@gmail.com",
-       						"name": "Vincent Mai",
+							"email": "seva@htci.org",
+							"name": "HTCI Seva",
        						"type": "to"
        					},
 						{
