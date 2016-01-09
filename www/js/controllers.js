@@ -335,7 +335,7 @@ angular.module('app.controllers', [])
         			console.log('successful email send.');
         			console.log('status: ' + status);
         		}).error(function(data, status, headers, config) {
-        			alert("Please check form");
+        			//alert("Please check form");
         			console.log('error sending email.');
         			console.log('status: ' + status);
         		});
