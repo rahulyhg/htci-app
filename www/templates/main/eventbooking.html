@@ -1,10 +1,5 @@
 <ion-view view-title="Request a Pooja">
 	<ion-content>
-    <!--<div class="card">-->
-    <!--<div class="item item-text-wrap">-->
-    <!--Please complete form below to schedule any pooja service with priest.-->
-    <!--</div>-->
-    <!--</div>-->
     <form name="serviceReqForm" ng-submit="SubmitRequestForm(fullname, address, city, state, zip, phone, emailaddress, pooja, date, slot, location, transportation, member, note)" novalidate="false">
       <div class="list">
         <label class="item item-input">
@@ -55,6 +50,14 @@
         </label>
         <label class="item item-input item-select">
           <div class="input-label">
+            Location of Pooja
+          </div>
+          <select ng-model="location" ng-options="location.location for location in allLocations">
+            <option value="" selected disabled>Choose a Location</option>
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
             Priest Transportation
           </div>
           <select ng-model="transportation" ng-options="option.method for option in allTransportationOptions">
@@ -63,29 +66,27 @@
         </label>
         <label class="item item-input item-select">
           <div class="input-label">
-            Pooja Location
-          </div>
-          <select ng-model="location" ng-options="location.location for location in allLocations">
-            <option value="" selected disabled>Choose a Location</option>
-          </select>
-        </label>
-        <label class="item item-input item-select">
-          <div class="input-label">
             Member of HTCI
           </div>
           <select ng-model="member" ng-options="option.option for option in allMemberOptions">
+						<option value="" selected disabled>Choose</option>
           </select>
         </label>
         <label class="item item-input">
-          <span class="input-label">Note</span>
-          <textarea ng-model="note" id="comment-textarea"></textarea>
+          <span class="input-label">Notes</span>
+          <input type="text" ng-model="note" required>
         </label>
-        <button type="submit" class="button button-full button-energized">
+        <button type="submit" class="button button-full button-stable">
           Submit Request
         </button>
 				<div class="card">
 					<div class="item item-text-wrap">
-						Your request will be sent to seva@htci.org and you will receive a receipt of the email. You will receive a reply within 48 hours.
+						<strong>Your request will not be sent unless all information is correctly filled in.</strong>
+					</div>
+				</div>
+				<div class="card">
+					<div class="item item-text-wrap">
+						Your request will be sent to seva@htci.org and you will receive a receipt of the email.
 					</div>
 				</div>
       </div>

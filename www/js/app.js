@@ -151,6 +151,15 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			}
 		})
 
+		.state('app.confirmation', {
+			url: "/confirmation",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/main/confirmation.html"
+				}
+			}
+		})
+
 		.state('app.sponsorship', {
 			url: "/sponsorship",
 			views: {

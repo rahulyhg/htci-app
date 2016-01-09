@@ -119,7 +119,8 @@ angular.module('app.controllers', [])
 		};
 	})
 
-	.controller('FacebookCtrl', function($scope, $stateParams, MyFb){
+	.controller('FacebookCtrl', function($scope, $ionicLoading, $stateParams, MyFb){
+		$ionicLoading.show();
 		var posts = [];
 		MyFb.getAccessToken().then(function(result){
             var url = 'https://graph.facebook.com/244766008966857/posts?'+result.data;
@@ -141,12 +142,10 @@ angular.module('app.controllers', [])
 					posts.push(post);
                 }
                 $scope.feeds = posts;
+				$ionicLoading.hide();
 				//console.log($scope.feeds);
             });
 		});
-
-		$scope.doRefresh = function() {
-		};
 	})
 
 	.controller('ContactCtrl', function($scope){
@@ -287,7 +286,7 @@ angular.module('app.controllers', [])
 			var mailJSON ={
        			"key": "ZvCHjI8MtG8KW0Wz5b7PUA",
        			"message": {
-       				"html": "Name: "+ fullname +"<br>Address: "+ address +"<br>City: "+ city +"<br>State: "+ state +"<br>Zip: "+ zip +"<br>Phone: "+ phone +"<br>Pooja: "+ pooja +"<br>Date: "+ date +"<br>Timeslot: "+ slot.time +"<br>Location: "+ location.location +"<br>Transportation Method: "+ transportation.method +"<br>Member of HTCI: "+ member.option +"<br>Notes: "+ note,
+					"html": "Full Name: "+ fullname +"<br>Address: "+ address +"<br>City: "+ city +"<br>State: "+ state +"<br>Zip: "+ zip +"<br>Phone: "+ phone +"<br>Name of Pooja: "+ pooja +"<br>Date of Pooja: "+ date +"<br>Time of Pooja: "+ slot.time +"<br>Location of Pooja: "+ location.location +"<br>Priest Transportation: "+ transportation.method +"<br>Member of HTCI: "+ member.option +"<br>Notes: "+ note,
        				"text": "Example text content",
        				"subject": "Request for Service",
        				"from_email": emailaddress,
@@ -325,7 +324,7 @@ angular.module('app.controllers', [])
 
         	$http.post(apiURL, mailJSON)
 				.success(function(data, status, headers, config) {
-        			$state.go('app.mailack',{"id": 1234})
+					$state.go('app.confirmation')
         			console.log('successful email send.');
         			console.log('status: ' + status);
         		}).error(function(data, status, headers, config) {
@@ -336,7 +335,7 @@ angular.module('app.controllers', [])
         };
 	})
 
-	.controller('PhotosCtrl', function($scope, Key, $ionicLoading,$state,Flickr){
+	.controller('PhotosCtrl', function($scope, Key, $ionicLoading, $state, Flickr){
 		$ionicLoading.show();
 		//testing firebase
 		$scope.key = Key;
