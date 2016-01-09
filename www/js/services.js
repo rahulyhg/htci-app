@@ -1,14 +1,14 @@
 angular.module('flickrApp.services', [])
 	.value('Flickr_data',{
-		key: '5354a2ab2c8fc9202dcf5a30276cfbad',
+		key: '4b28f71da5c6469b58267d5d9b6f4094',
 		endpoint: 'https://api.flickr.com/services/rest/',
-		user_id : '71032065@N03'
+		user_id : '139276335@N07'
 	})
 
-	.factory('Key', function($firebaseObject){
-		var key = new Firebase('https://htci-app.firebaseio.com/key');
-		return $firebaseObject(key);
-	})
+	//.factory('Key', function($firebaseObject){
+	//	var key = new Firebase('https://htci-app.firebaseio.com/key');
+	//	return $firebaseObject(key);
+	//})
 
 	.factory('Flickr', function($http,$q,Flickr_data){
 		var result = {};

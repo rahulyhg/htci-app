@@ -133,8 +133,13 @@ angular.module('app.controllers', [])
 				for(var i = 0; i<r.data.data.length ; i++)
                 {
 					//console.log(r.data.data[i]);
+					var d = new Date(r.data.data[i].created_time);
+					var month = d.getMonth();
+					var date = d.getDate();
+					var year = d.getFullYear();
+					var monthsArray = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 					var post = {
-						"time": r.data.data[i].created_time,
+						"time": monthsArray[month] + " " + date + ", " + year,
 						"message": r.data.data[i].message,
 						"picture": r.data.data[i].picture
 					}
@@ -254,15 +259,17 @@ angular.module('app.controllers', [])
 		$scope.priests = [{
 			avatar: 'img/home/logo.png',
 			title: 'Sri Badrinath Shastri',
-			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+			text1: 'Sri Shastriji hails from a family of revered priests from Kathmandu, Nepal. He is the third generation priest in his family. Shastriji received his MA (Acharya) degree in Hindu Philosophy from Banaras Hindu University and is well versed in Ashtadasa (18) puranas, and also possesses competent awareness of all four Vedas. Sri Shastriji joined HTCI in 2013 after serving as a priest for 28 years at various Temples in India and Nepal that include Kurmanarayan Temple in Ayodhya (10 years), Radhakrishna Temple in Brindavan (3 years), and Sri Venkateshwara Temple in Kathmandu (13 years).',
+			text2: 'Sri Shastriji is highly proficient in Nepali, Sanskrit, Hindi, and English and is an expert in all shodasa (16) samskaras, all types of Abhishekams for all deities, all types of poojas (including Satyanarayana Pooja, Grihapravesam, and Navagraha Pooja), diverse types of Homams (including Sudarsana, Navagraga, Ganapathi, and Chandi Homams), as well as Kumbhabhishekam, Annapraasana, Namakaranam, and Shashtipoorthi ceremonies. He has extensive as well as deep knowledge of all types of Karma kandas and rituals. Sri Shastriji is also an acclaimed expert in the chanting of all stothrams, suktams and in giving discourses on Puranas, Bhagavatham, Mahabharat and Ramayan.'
 		},{
 			avatar: 'img/home/logo.png',
 			title: 'Sri Kirthivasan',
-			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+			text1: 'Sri Keethi Vasanji was initiated into Vedic Studies at the Deekshitar Gurukulam Virudhasram Trust, Kumbakonam in Tamil Nadu, India. He continued his studies in Veda and Prayoga Shastra at Sri Bharati Theertha Prayoga Pathashala (certified by Sringeri Mutt) in Salem under the expert tutelage of Brahmasri Venkataraju Sastrigal. He worked as a priest at the Raja Rajeswari Temple in Salem for four years and then at the Shiva Temple in Rajasthan and at the Om Shakti Temple in Bengaluru. He is familiar with all forms of Archana, Abhishekam and Homams (such as Chandi Homam, Durga Lakshmi and Saraswathy Homam, Dhanwanthri Homam) as well as the performance of Gruha Pooja such as Namakaranam, Upanayanam, Vivaham and many others. He is also familiar with Aparakriyas of all types (Death related) and Pithru Karya. He speaks fluent Tamil and Telugu and has good communication skills in Hindi and English. He previously served as the priest at the Parasakthi Temple in Michigan. Sri Vasanji is the newest priest to join HTCI after commencing his services on June 2, 2015.'
 		},{
 			avatar: 'img/home/logo.png',
 			title: 'Sri Ramaswami Bhattar',
-			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+			text1: 'Sri Bhattarji comes from a long lineage of accomplished priests and is the 7th generation priest from Sugganahalli in Karnataka state, India. He is a graduate from Mysore Maharaja Sanskrit College, Mysore, and a recipient of Paancharathraagama Praveena in 1983. Sri Bhattarji has more than forty years working experience as a priest and has the distinction of working at diverse and popular temples in India and USA – in the state of Karnataka he worked for 26 years at Sri Lakshminarasimhaswamy Temple (Sugganahalli), Fort Prasanna Venteshwara Temple (Bangalore), Sri Lakshmi Venkateshwara Temple (Koramangala, Bangalore), and Nimishambha Temple (Bangalore). He has been working in USA since 1998 at various Temples in Kentucky, Florida, Ohio, and Alabama. He joined HTCI on November 1, 2013.',
+			text2: 'Sri Bhattarji is an expert in shodasa karmas, all types of Poojas (Satyanarayana vratam, Grihapravesam etc.), Homams (Ganapathi, Lakshmi, Lakshminarayana etc.), abhishekams (including Sahasrakalasabhishekam and Kumbhabhishekam), and utsavams (Rathotsavam, Deepotsavam, Pavitrotsavam etc.). He is an expert and degree holder in Paancharathraagama Paadmasamhita (one of the 108 samhitas associated with temple Poojas). Sri Bhattaji has demonstrated working knowledge of the Vedas and puranas. He is a polyglot and is conversant in Sanskrit, English, Kannada, Tamil, Telugu and Hindi. His knowledge of Sanskrit language and literature comes across in his pure diction and rendition of the various shlokas and rituals. Bhattarji has a wonderful voice that makes his Vedic chants and Shloka renditions a treat to listen to.'
 		}];
 		$scope.toggleItem = function(item) {
 			if ($scope.isItemShown(item)) {
@@ -335,15 +342,15 @@ angular.module('app.controllers', [])
         };
 	})
 
-	.controller('PhotosCtrl', function($scope, Key, $ionicLoading, $state, Flickr){
+	.controller('PhotosCtrl', function($scope, $ionicLoading, $state, Flickr){
 		$ionicLoading.show();
 		//testing firebase
-		$scope.key = Key;
-		console.log($scope.key.$id);
+		//$scope.key = Key;
+		//console.log($scope.key.$id);
 
 		// Getting Photosets Detail from Flickr Service
 		Flickr.getPhotoSets().then(function(result){
-			//console.log(result.data);
+			console.log(result.data.photosets);
 			$scope.photoList = result.data.photosets.photoset;
 			$scope.photoList.reverse();
 			$ionicLoading.hide();
