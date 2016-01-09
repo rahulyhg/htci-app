@@ -14,13 +14,16 @@ hr {
 	height: 100%;
 }
 
-.bar.bar-stable {
+.bar.bar-stable,
+.bar.bar-header {
 	border-color: #D58700;
 	background-color: #FF9A00;
 }
 
 .bar-stable .button.button-clear,
-.bar.bar-stable .title {
+.bar-header .button.button-clear,
+.bar.bar-stable .title,
+.bar.bar-header .title {
 	color: #fff;
 }
 
