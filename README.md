@@ -14,3 +14,6 @@ phonegap-plugin-barcodescanner
 cordova-plugin-dialogs
 ionic-plugin-keyboard
 ```
+
+# Note to Self
+Change bundle id to htci-app before updating on android.
