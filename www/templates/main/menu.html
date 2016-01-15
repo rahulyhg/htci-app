@@ -1,5 +1,5 @@
 <ion-side-menus enable-menu-with-back-views="false">
-	<ion-side-menu-content class="has-tabs">
+	<ion-side-menu-content>
 		<ion-nav-bar class="bar-stable">
 			<ion-nav-back-button>
 			</ion-nav-back-button>
@@ -14,7 +14,7 @@
     <ion-header-bar class="bar-stable">
       <h1 class="title">HTCI</h1>
     </ion-header-bar>
-		<ion-content class="has-tabs">
+		<ion-content>
 			<ion-list class="nav">
 				<ion-item nav-clear menu-close href="#/app/index" class="item-icon-left"><i class="icon ion-home"></i>
 					Home
@@ -24,6 +24,9 @@
 				</ion-item>
 				<ion-item nav-clear menu-close href="#/app/calendar" class="item-icon-left"><i class="icon ion-calendar"></i>
 					Calendar
+				</ion-item>
+				<ion-item nav-clear menu-close href="#/app/updates" class="item-icon-left"><i class="icon ion-ios-refresh"></i>
+					Updates
 				</ion-item>
 				<ion-item nav-clear menu-close href="#/app/eventbooking" class="item-icon-left"><i class="icon ion-ios-bookmarks"></i>
 					Request a Pooja
@@ -49,12 +52,6 @@
 				<ion-item nav-clear menu-close href="#/app/facebook" class="item-icon-left"><i class="icon ion-social-facebook"></i>
 					Facebook
 				</ion-item>
-				<!--<ion-item nav-clear menu-close href="#/app/social-media" class="item-icon-left"><i class="icon ion-social-facebook"></i>
-					Social Media
-				</ion-item>
-				<ion-item nav-clear menu-close onclick="window.open('https://www.facebook.com/pages/HTCI-Hindu-Temple/244766008966857', '_system')" class="item-icon-left"><i class="icon ion-social-facebook"></i>
-					Facebook
-				</ion-item>-->
 				<ion-item nav-clear menu-close href="#/app/contact" class="item-icon-left"><i class="icon ion-ios-telephone"></i>
 					Contact
 				</ion-item>
@@ -65,11 +62,3 @@
 		</ion-content>
 	</ion-side-menu>
 </ion-side-menus>
-<div class="tabs tabs-temple">
-	<a class="tab-item active" href="#/app/">
-		HTCI
-	</a>
-	<a class="tab-item" href="#/updates/">
-		Updates
-	</a>
-</div>

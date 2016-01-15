@@ -225,19 +225,6 @@ angular.module('app.controllers', [])
     })
 
 	.controller('UpdatesCtrl', function($scope, $ionicHistory, $state, $http) {
-		var previous;
-
-		$scope.$on("$ionicView.beforeEnter", function() {
-			previous = $ionicHistory.backView();
-			console.log(previous);
-			console.log(previous["title"]);
-		})
-
-		$scope.goBack = function() {
-			console.log("going back!");
-			$state.go(previous["stateId"]);
-		}
-
 		$scope.getData = function() {
 			$http.get('http://htci.org/HTCI_APP/updates.json').then(function(resp) {
 				$scope.data = resp.data.data;

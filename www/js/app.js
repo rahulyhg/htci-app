@@ -65,20 +65,22 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			controller: 'AppCtrl'
 		})
 
-		.state('updates', {
-			url: "/updates",
-			//cache: false,
-			abstract: true,
-			templateUrl: "templates/updates/menu.html",
-			controller: 'UpdatesCtrl'
-		})
-
 		.state('app.index', {
 			url: "/",
 			views: {
 				'menuContent': {
 					templateUrl: "templates/main/index.html",
 					controller: "IndexCtrl"
+				}
+			}
+		})
+
+		.state('app.updates', {
+			url: "/updates",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/main/updates.html",
+					controller: 'UpdatesCtrl'
 				}
 			}
 		})
@@ -215,15 +217,6 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 				'menuContent': {
 					templateUrl: "templates/main/priests.html",
 					controller: "PriestsCtrl"
-				}
-			}
-		})
-
-		.state('updates.index', {
-			url: "/",
-			views: {
-				'menuContent': {
-					templateUrl: "templates/updates/index.html"
 				}
 			}
 		})
