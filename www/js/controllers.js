@@ -130,16 +130,20 @@ angular.module('app.controllers', [])
 			});
             MyFb.getFeed(url).then(function(r){
 				//console.log(r.data.data.length);
-				for(var i = 0; i<r.data.data.length ; i++)
+				for(var i = 0; i<r.data.data.length; i++)
                 {
 					//console.log(r.data.data[i]);
-					var d = new Date(r.data.data[i].created_time);
-					var month = d.getMonth();
-					var date = d.getDate();
-					var year = d.getFullYear();
 					var monthsArray = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+					var date = r.data.data[i].created_time;
+					var dateArray = date.split(/[- T : +]/);
+					var month = dateArray[1] - 1;
+					var day = dateArray[2];
+					var year = dateArray[0];
+
+					var d = new Date(year, month, day);
 					var post = {
-						"time": monthsArray[month] + " " + date + ", " + year,
+						"time": monthsArray[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear(),
 						"message": r.data.data[i].message,
 						"picture": r.data.data[i].picture
 					}
