@@ -24,7 +24,8 @@
     "phonegap-plugin-barcodescanner",
     "ionic-plugin-keyboard",
     "cordova-plugin-statusbar",
-    "cordova-plugin-inappbrowser"
+    "cordova-plugin-inappbrowser",
+    "onesignal-cordova-plugin"
   ],
   "cordovaPlatforms": [
     "ios",

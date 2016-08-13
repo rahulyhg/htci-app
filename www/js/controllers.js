@@ -291,15 +291,15 @@ angular.module('app.controllers', [])
        				"from_name": fullname,
        				"to": [
        					{
-							"email": "seva@htci.org",
-							"name": "HTCI Seva",
+						"email": "tqm397@gmail.com",
+						"name": "HTCI Seva",
        						"type": "to"
        					},
-						{
-							"email": emailaddress,
-							"name": fullname,
-							"type": "to"
-						}
+					{
+						"email": emailaddress,
+						"name": fullname,
+						"type": "to"
+					}
        				],
        				"important": true,
        				"track_opens": null,
@@ -317,8 +317,8 @@ angular.module('app.controllers', [])
        			"async": false,
        			"ip_pool": "Main Pool"
        		};
-			//reference to the Mandrill REST api
-			var apiURL = "https://mandrillapp.com/api/1.0/messages/send.json";
+		//reference to the Mandrill REST api
+		var apiURL = "https://mandrillapp.com/api/1.0/messages/send.json";
 
         	$http.post(apiURL, mailJSON)
 				.success(function(data, status, headers, config) {
@@ -327,7 +327,7 @@ angular.module('app.controllers', [])
         			console.log('status: ' + status);
         		}).error(function(data, status, headers, config) {
         			//alert("Please check form");
-        			console.log('error sending email.');
+        		    console.log(data, headers, config);
         			console.log('status: ' + status);
         		});
         };

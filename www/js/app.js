@@ -13,8 +13,21 @@ htci.run(function($ionicPlatform) {
 			StatusBar.styleLightContent();
 			//StatusBar.styleDefault();
 		}
-
-		Ionic.io();
+	    // Enable to debug issues.
+	    // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+	    
+	    var notificationOpenedCallback = function(jsonData) {
+		//console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+		navigator.notification.alert("didReceiveRemoteNotificationCallBack: " + JSON.stringify(jsonData), function(){}, "Alert");
+	    };
+	    
+	    window.plugins.OneSignal.init("c6708fa0-97d0-4ca3-91b3-70cf7c4a0b16",
+					  {googleProjectNumber: "868132298708"},
+					  notificationOpenedCallback);
+	    
+	    // Show an alert box if a notification comes in when the user is in your app.
+	    window.plugins.OneSignal.enableInAppAlertNotification(true);
+		/*Ionic.io();
 		var push = new Ionic.Push({
 			"debug": true,
 			"onNotification": function(notification) {
@@ -52,6 +65,7 @@ htci.run(function($ionicPlatform) {
 		push.register(callback);
 		//console.log("dasdaw");
 		//console.log(navigator.notification);
+		*/
 	});
 })
 
