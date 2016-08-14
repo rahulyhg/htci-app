@@ -72,9 +72,21 @@ angular.module('app.controllers', [])
 		//$scope.initPaymentUI();
 	})
 
-	.controller('CalendarCtrl', function($scope){
-		ionic.Platform.ready(function(){
-			$('#calendar').fullCalendar({
+    .controller('CalendarCtrl', function($scope, googleClient){
+	    googleClient.afterApiLoaded().then(function(){
+		gapi.client.setApiKey('AIzaSyCg14xL8h6KPVDA2q1AAaRAUj6UYbtZNS4');
+		gapi.client.calendar.events.list({'calendarId': 'htci.org_98m1srpu6julj5fe4pufoh233c@group.calendar.google.com',
+						  'timeMin': (new Date()).toISOString(),
+						  'showDeleted': false,
+						  'singleEvents': true,
+						  'maxResults': 10,
+						  'orderBy': 'startTime'}).execute(function(resp) {
+		    console.log(resp);
+		    $scope.$apply();
+		    });
+		
+	    });
+			/*$('#calendar').fullCalendar({
 				googleCalendarApiKey: 'AIzaSyDWxFLiU_MMAq2RwAAVlp3o-xSsg6Iq1KE',
 				events: {
 					googleCalendarId: 'ndevt2o5ag5rkc9aobvtp9rmdc@group.calendar.google.com'
@@ -100,8 +112,8 @@ angular.module('app.controllers', [])
 				eventAfterAllRender: function() {					
 					$('#calendar').fullCalendar('getView').setHeight('auto');
 				}
-			});
-		});
+			});*/
+	//	});
 	})
 
 	.controller('IndexCtrl', function($scope, $ionicModal){

@@ -1,5 +1,5 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
-var htci = angular.module('app', ['ionic', 'app.controllers', 'ngCordova','ngSanitize','flickrApp.services','firebase'])
+var htci = angular.module('app', ['ionic', 'app.controllers', 'ngCordova','ngSanitize','flickrApp.services','firebase', 'cmGoogleApi'])
 
 htci.run(function($ionicPlatform) {
 	$ionicPlatform.ready(function() {
@@ -27,6 +27,12 @@ htci.run(function($ionicPlatform) {
 	    window.plugins.OneSignal.enableInAppAlertNotification(true);
 	});
 })
+
+htci.config(function (googleClientProvider) {
+    googleClientProvider
+        .addScope('https://www.googleapis.com/auth/calendar.readonly')
+	.addApi('calendar','v3')
+});
 
 htci.config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider
