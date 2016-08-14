@@ -81,8 +81,30 @@ angular.module('app.controllers', [])
 						  'singleEvents': true,
 						  'maxResults': 10,
 						  'orderBy': 'startTime'}).execute(function(resp) {
-		    console.log(resp);
-		    $scope.$apply();
+						      var events = resp.items;
+						      console.log(events);
+						      for(var i = 0; i < events.length; i++) {
+							  var startTime = events[i].start;
+							  var endTime = events[i].end;
+							  if(startTime.hasOwnProperty('dateTime')) {
+							      var date = new Date(startTime.dateTime);							      
+							      //console.log(date);
+							      //console.log(date.getHours());
+							  }
+							  else if(startTime.hasOwnProperty('date')) {
+							      var date = new Date(startTime.date);
+							      console.log(events[i]);
+							      console.log(date);
+							      //console.log(date.getHours());
+							  }
+
+							  if(endTime.hasOwnProperty('dateTime')) {
+							      var date = new Date(endTime.dateTime);
+							      //console.log(date);
+							      //console.log(date.getHours());
+							  }
+						      }
+						      $scope.$apply();
 		    });
 		
 	    });
