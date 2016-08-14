@@ -18,7 +18,6 @@
     "org.apache.cordova.device",
     "org.apache.cordova.console",
     "com.ionic.keyboard",
-    "phonegap-plugin-push",
     "cordova-plugin-whitelist",
     "cordova-plugin-dialogs",
     "phonegap-plugin-barcodescanner",
@@ -28,7 +27,7 @@
     "onesignal-cordova-plugin"
   ],
   "cordovaPlatforms": [
-    "ios",
-    "android"
+    "android",
+    "ios"
   ]
 }

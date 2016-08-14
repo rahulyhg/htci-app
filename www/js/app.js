@@ -1,5 +1,5 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
-var htci = angular.module('app', ['ionic','ionic.service.core', 'app.controllers', 'ngCordova','ngSanitize','flickrApp.services','firebase'])
+var htci = angular.module('app', ['ionic', 'app.controllers', 'ngCordova','ngSanitize','flickrApp.services','firebase'])
 
 htci.run(function($ionicPlatform) {
 	$ionicPlatform.ready(function() {
@@ -20,52 +20,12 @@ htci.run(function($ionicPlatform) {
 		//console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
 		navigator.notification.alert("didReceiveRemoteNotificationCallBack: " + JSON.stringify(jsonData), function(){}, "Alert");
 	    };
-	    
-	    window.plugins.OneSignal.init("c6708fa0-97d0-4ca3-91b3-70cf7c4a0b16",
+
+	    window.plugins.OneSignal.init("16522ff3-d3af-41df-a465-e0963d92a469",
 					  {googleProjectNumber: "868132298708"},
 					  notificationOpenedCallback);
-	    
 	    // Show an alert box if a notification comes in when the user is in your app.
 	    window.plugins.OneSignal.enableInAppAlertNotification(true);
-		/*Ionic.io();
-		var push = new Ionic.Push({
-			"debug": true,
-			"onNotification": function(notification) {
-				var payload = notification.payload;
-				console.log(notification, payload);
-				//alert(JSON.stringify(notification));
-				navigator.notification.alert(notification.text, function(){}, "Alert");
-			},
-			"onRegister": function(data) {
-				console.log(data.token);
-			},
-			"pluginConfig": {
-				"android": {
-					"iconColor": "#FFFFFF"
-				}
-			}
-		});
-		var user = Ionic.User.current();
-
-		if (!user.id) {
-			user.id = Ionic.User.anonymousId();
-		}
-
-		user.save();
-		//console.log("ldaosd");
-
-		var callback = function(data) {
-			//console.log("dloae");
-			console.log(data.token);
-			//push.addTokenToUser(user);
-			user.addPushToken(data);
-			//console.log("dloae");
-			user.save();
-		};
-		push.register(callback);
-		//console.log("dasdaw");
-		//console.log(navigator.notification);
-		*/
 	});
 })
 
