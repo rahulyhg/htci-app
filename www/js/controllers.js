@@ -190,8 +190,8 @@ angular.module('app.controllers', [])
 			{name: "Smt. Shanti Pathak", title: "Library Committee", email: "library@htci.org"},
 			{name: "Sri. Priyesh Kheradia", title: "Youth Activity Coordinator", email: "Priyesh.kheradia@htci.org"},
 			{name: "Sri. Raghava Ayyagari", title: "Communication Committee", email: "communications@htci.org"},
-			{name: "Sri. Aryaman Gupta", title: "Youth Committee", email: "Aryaman.gupta@htci.org"},
-			{name: "Smt. Kamna Gupta", title: "Youth Committee", email: "Kamna.gupta@htci.org"},
+			{name: "Nikhil Jain", title: "Youth Committee", email: "chetanahtci@htci.org"},
+			{name: "Kum. Bhavi Sarda", title: "Youth Committee", email: "chetanahtci@htci.org"},
 			{name: "Smt. Suneela Ramaswamy", title: "Geeta Session Coordinator", email: "suneelaramaswamy@gmail.com"}
 		];
 
