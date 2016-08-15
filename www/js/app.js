@@ -92,6 +92,16 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			}
 		})
 
+	.state('app.panchangam', {
+	    url: "/panchangam",
+	    views: {
+		'menuContent': {
+		    templateUrl: "templates/main/calendar.html",
+		    controller: "PanchangamCtrl"
+		}
+	    }
+	})
+
 		.state('app.facebook', {
 			url: "/facebook",
 			views: {

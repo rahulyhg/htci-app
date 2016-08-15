@@ -72,9 +72,9 @@ angular.module('app.controllers', [])
 		//$scope.initPaymentUI();
 	})
 
-    .controller('CalendarCtrl', function($scope, googleClient, $ionicPopup){
+    .controller('CalendarCtrl', function($scope, googleClient, $ionicLoading){
 	var eventList = [];
-	
+	$ionicLoading.show();
 	    googleClient.afterApiLoaded().then(function(){
 		gapi.client.setApiKey('AIzaSyCg14xL8h6KPVDA2q1AAaRAUj6UYbtZNS4');
 		gapi.client.calendar.events.list({'calendarId': 'htci.org_98m1srpu6julj5fe4pufoh233c@group.calendar.google.com',
@@ -139,6 +139,113 @@ angular.module('app.controllers', [])
 	$scope.loadEvents = function () {
 	    //$scope.calendar.eventSource = [{title: 'Test', startTime: new Date(Date.UTC(2016, 7, 10)), endTime: new Date(Date.UTC(2016, 7, 11)), allDay: true}];
 	    $scope.calendar.eventSource = eventList;
+	    $ionicLoading.hide();
+	};
+
+	$scope.onEventSelected = function (event) {
+	    var notification = "";
+	    var flag = false;
+	    if(event.location !== "") {
+		flag = true;
+		notification = "Location: " + event.location;
+	    }
+	    if(event.description !== "") {
+		flag = true;
+		notification += "\n\n" + event.description;
+	    }
+	    if(flag) {
+		navigator.notification.alert(notification, function(){}, event.title);
+	    }
+	    //$ionicPopup.alert({title: event.title});
+	};
+
+	$scope.onViewTitleChanged = function (title) {
+	    $scope.viewTitle = title;
+	};
+
+	$scope.today = function () {
+	    $scope.calendar.currentDate = new Date();
+	};
+
+	$scope.isToday = function () {
+	    var today = new Date(),
+		currentCalendarDate = new Date($scope.calendar.currentDate);
+
+	    today.setHours(0, 0, 0, 0);
+	    currentCalendarDate.setHours(0, 0, 0, 0);
+	    return today.getTime() === currentCalendarDate.getTime();
+	};
+    })
+
+
+    .controller('PanchangamCtrl', function($scope, googleClient, $ionicLoading){
+	var eventList = [];
+	$ionicLoading.show();
+	googleClient.afterApiLoaded().then(function(){
+	    gapi.client.setApiKey('AIzaSyCg14xL8h6KPVDA2q1AAaRAUj6UYbtZNS4');
+	    gapi.client.calendar.events.list({'calendarId': 'htci.org_beaja34s0lhr9kbafgskj7b430@group.calendar.google.com',
+					      'timeMin': (new Date()).toISOString(),
+					      'showDeleted': false,
+					      'singleEvents': true,
+					      'maxResults': 10,
+					      'orderBy': 'startTime'}).execute(function(resp) {
+						  var events = resp.items;
+					          console.log(events);
+						  for(var i = 0; i < events.length; i++) {
+						      var startTime = events[i].start;
+						      var endTime = events[i].end;
+
+						      var startDate;
+						      var endDate;
+
+						      var allDay = false;
+						      var description = "";
+						      var location = "";
+						      //console.log(events[i]);
+
+						      if(startTime.hasOwnProperty('dateTime')) {
+							  var date = new Date(startTime.dateTime);
+							  startDate = date;
+						      }
+						      else if(startTime.hasOwnProperty('date')) {
+							  allDay = true;
+							  var date = new Date(startTime.date);
+							  startDate = date;
+						      }
+
+						      if(endTime.hasOwnProperty('dateTime')) {
+							  var date = new Date(endTime.dateTime);
+							  endDate = date;
+						      }
+						      else if(endTime.hasOwnProperty('date')) {
+							  var date = new Date(endTime.date);
+							  endDate = date;
+						      }
+
+						      if(events[i].hasOwnProperty("description")) {
+							  description = events[i].description;
+						      }
+
+						      if(events[i].hasOwnProperty("location")) {
+							  location = events[i].location;
+						      }
+						      eventList.push({title: events[i].summary, startTime: startDate, endTime: endDate, allDay: allDay, description: description, location: location});
+						  }
+						  $scope.loadEvents();
+						  $scope.$apply();
+					      });
+
+	});
+
+	$scope.calendar = {};
+	$scope.changeMode = function (mode) {
+	    $scope.calendar.mode = mode;
+	};
+
+	$scope.loadEvents = function () {
+	    //$scope.calendar.eventSource = [{title: 'Test', startTime: new Date(Date.UTC(2016, 7, 10)), endTime: new Date(Date.UTC(2016, 7, 11)), allDay: true}];
+	    $scope.calendar.eventSource = eventList;
+	    $ionicLoading.hide();
 	};
 
 	$scope.onEventSelected = function (event) {
