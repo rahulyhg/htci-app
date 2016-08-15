@@ -1,5 +1,5 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
-var htci = angular.module('app', ['ionic', 'app.controllers', 'ngCordova','ngSanitize','flickrApp.services','firebase', 'cmGoogleApi'])
+var htci = angular.module('app', ['ionic', 'app.controllers', 'ngCordova','ngSanitize','flickrApp.services','firebase', 'cmGoogleApi', 'ui.rCalendar'])
 
 htci.run(function($ionicPlatform) {
 	$ionicPlatform.ready(function() {

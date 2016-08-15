@@ -73,70 +73,99 @@ angular.module('app.controllers', [])
 	})
 
     .controller('CalendarCtrl', function($scope, googleClient){
+	var eventList = [];
+	
 	    googleClient.afterApiLoaded().then(function(){
 		gapi.client.setApiKey('AIzaSyCg14xL8h6KPVDA2q1AAaRAUj6UYbtZNS4');
 		gapi.client.calendar.events.list({'calendarId': 'htci.org_98m1srpu6julj5fe4pufoh233c@group.calendar.google.com',
 						  'timeMin': (new Date()).toISOString(),
 						  'showDeleted': false,
 						  'singleEvents': true,
-						  'maxResults': 10,
+						  'maxResults': 250,
 						  'orderBy': 'startTime'}).execute(function(resp) {
 						      var events = resp.items;
 						      console.log(events);
 						      for(var i = 0; i < events.length; i++) {
 							  var startTime = events[i].start;
 							  var endTime = events[i].end;
+
+							  var startDate;
+							  var endDate;
+
+							  var dayLong = false;
+
+							  console.log(events[i]);
 							  if(startTime.hasOwnProperty('dateTime')) {
-							      var date = new Date(startTime.dateTime);							      
-							      //console.log(date);
-							      //console.log(date.getHours());
+							      var date = new Date(startTime.dateTime);
+							      startDate = date;
+							      console.log(date);
+							      console.log(date.getHours());
+							      console.log(date.getDate());
+							      console.log(date.getMonth());
 							  }
 							  else if(startTime.hasOwnProperty('date')) {
+							      dayLong = true;
 							      var date = new Date(startTime.date);
-							      console.log(events[i]);
+							      startDate = date;
 							      console.log(date);
-							      //console.log(date.getHours());
+							      console.log(date.getDate());
+							      console.log(date.getMonth());
 							  }
 
 							  if(endTime.hasOwnProperty('dateTime')) {
 							      var date = new Date(endTime.dateTime);
-							      //console.log(date);
-							      //console.log(date.getHours());
+							      endDate = date;
+							      console.log(date);
+							      console.log(date.getHours());
+							      console.log(date.getDate());
+							      console.log(date.getMonth());
 							  }
+							  else if(endTime.hasOwnProperty('date')) {
+							      var date = new Date(endTime.date);
+							      endDate = date;
+							      console.log(date);
+							      console.log(date.getDate());
+							      console.log(date.getMonth());
+							  }
+							  eventList.push({title: events[i].summary, startTime: startDate, endTime: endDate, allDay: dayLong, test: "blah"});
 						      }
+						      $scope.loadEvents();
 						      $scope.$apply();
 		    });
 		
 	    });
-			/*$('#calendar').fullCalendar({
-				googleCalendarApiKey: 'AIzaSyDWxFLiU_MMAq2RwAAVlp3o-xSsg6Iq1KE',
-				events: {
-					googleCalendarId: 'ndevt2o5ag5rkc9aobvtp9rmdc@group.calendar.google.com'
-				},
-				header: {
-					left: 'prev,next',
-					center: '',
-					right: 'title'
-				},
-				allDayText: 'All Day',
-				height: "auto",
-				views: {
-					list: {
-						type: 'ListView',
-						height: 'auto',
-						duration: { days: 30 },
-						titleFormat: 'MMMM D, YYYY',
-						columnFormat: 'MMMM D, YYYY',
-						timeFormat: 'h:mm'
-					}
-				},
-				defaultView: "list",
-				eventAfterAllRender: function() {					
-					$('#calendar').fullCalendar('getView').setHeight('auto');
-				}
-			});*/
-	//	});
-	})
+	
+	$scope.calendar = {};
+	$scope.changeMode = function (mode) {
+	    $scope.calendar.mode = mode;
+	};
+
+	$scope.loadEvents = function () {
+	    //$scope.calendar.eventSource = [{title: 'Test', startTime: new Date(Date.UTC(2016, 7, 10)), endTime: new Date(Date.UTC(2016, 7, 11)), allDay: true}];
+	    $scope.calendar.eventSource = eventList;
+	};
+
+	$scope.onEventSelected = function (event) {
+	    alert('Event selected:' + event.startTime + '-' + event.endTime + ',' + event.title + ',' + event.test);
+	};
+
+	$scope.onViewTitleChanged = function (title) {
+	    $scope.viewTitle = title;
+	};
+
+	$scope.today = function () {
+	    $scope.calendar.currentDate = new Date();
+	};
+
+	$scope.isToday = function () {
+	    var today = new Date(),
+		currentCalendarDate = new Date($scope.calendar.currentDate);
+
+	    today.setHours(0, 0, 0, 0);
+	    currentCalendarDate.setHours(0, 0, 0, 0);
+	    return today.getTime() === currentCalendarDate.getTime();
+	};
+    })
 
 	.controller('IndexCtrl', function($scope, $ionicModal){
 		$ionicModal.fromTemplateUrl('templates/main/map.html', {
