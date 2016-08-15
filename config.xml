@@ -14,6 +14,8 @@
     <access launch-external="yes" origin="geo:*" />
     <access launch-external="yes" origin="maps:*" />
     <allow-navigation href="https://www.google.com/maps/*" />
+    <allow-navigation href="https://accounts.google.com/o/oauth2/*" />
+    <allow-navigation href="https://content.googleapis.com/*" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />

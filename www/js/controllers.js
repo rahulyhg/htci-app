@@ -72,7 +72,7 @@ angular.module('app.controllers', [])
 		//$scope.initPaymentUI();
 	})
 
-    .controller('CalendarCtrl', function($scope, googleClient){
+    .controller('CalendarCtrl', function($scope, googleClient, $ionicPopup){
 	var eventList = [];
 	
 	    googleClient.afterApiLoaded().then(function(){
@@ -81,10 +81,10 @@ angular.module('app.controllers', [])
 						  'timeMin': (new Date()).toISOString(),
 						  'showDeleted': false,
 						  'singleEvents': true,
-						  'maxResults': 250,
+						  //'maxResults': 10,
 						  'orderBy': 'startTime'}).execute(function(resp) {
 						      var events = resp.items;
-						      console.log(events);
+						      //console.log(events);
 						      for(var i = 0; i < events.length; i++) {
 							  var startTime = events[i].start;
 							  var endTime = events[i].end;
@@ -92,42 +92,38 @@ angular.module('app.controllers', [])
 							  var startDate;
 							  var endDate;
 
-							  var dayLong = false;
+							  var allDay = false;
+							  var description = "";
+							  var location = "";
+							  //console.log(events[i]);
 
-							  console.log(events[i]);
 							  if(startTime.hasOwnProperty('dateTime')) {
 							      var date = new Date(startTime.dateTime);
 							      startDate = date;
-							      console.log(date);
-							      console.log(date.getHours());
-							      console.log(date.getDate());
-							      console.log(date.getMonth());
 							  }
 							  else if(startTime.hasOwnProperty('date')) {
-							      dayLong = true;
+							      allDay = true;
 							      var date = new Date(startTime.date);
 							      startDate = date;
-							      console.log(date);
-							      console.log(date.getDate());
-							      console.log(date.getMonth());
 							  }
 
 							  if(endTime.hasOwnProperty('dateTime')) {
 							      var date = new Date(endTime.dateTime);
 							      endDate = date;
-							      console.log(date);
-							      console.log(date.getHours());
-							      console.log(date.getDate());
-							      console.log(date.getMonth());
 							  }
 							  else if(endTime.hasOwnProperty('date')) {
 							      var date = new Date(endTime.date);
 							      endDate = date;
-							      console.log(date);
-							      console.log(date.getDate());
-							      console.log(date.getMonth());
 							  }
-							  eventList.push({title: events[i].summary, startTime: startDate, endTime: endDate, allDay: dayLong, test: "blah"});
+
+							  if(events[i].hasOwnProperty("description")) {
+							      description = events[i].description;
+							  }
+
+							  if(events[i].hasOwnProperty("location")) {
+							      location = events[i].location;
+							  }
+							  eventList.push({title: events[i].summary, startTime: startDate, endTime: endDate, allDay: allDay, description: description, location: location});
 						      }
 						      $scope.loadEvents();
 						      $scope.$apply();
@@ -146,7 +142,20 @@ angular.module('app.controllers', [])
 	};
 
 	$scope.onEventSelected = function (event) {
-	    alert('Event selected:' + event.startTime + '-' + event.endTime + ',' + event.title + ',' + event.test);
+	    var notification = "";
+	    var flag = false;
+	    if(event.location !== "") {
+		flag = true;
+		notification = "Location: " + event.location;
+	    }
+	    if(event.description !== "") {
+		flag = true;
+		notification += "\n\n" + event.description;
+	    }
+	    if(flag) {
+		navigator.notification.alert(notification, function(){}, event.title);
+	    }
+	    //$ionicPopup.alert({title: event.title});
 	};
 
 	$scope.onViewTitleChanged = function (title) {
