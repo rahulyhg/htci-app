@@ -151,7 +151,10 @@ angular.module('app.controllers', [])
 			}
 			if(event.description !== "") {
 				flag = true;
-				notification += "\n\n" + event.description;
+				if(event.location !== "") {
+					notification += "\n\n";
+				}
+				notification += event.description;
 			}
 			if(flag) {
 				navigator.notification.alert(notification, function(){}, event.title);
@@ -251,10 +254,7 @@ angular.module('app.controllers', [])
 		$scope.onEventSelected = function (event) {
 			var notification = "";
 			var flag = false;
-			if(event.location !== "") {
-				flag = true;
-				notification = "Location: " + event.location;
-			}
+
 			if(event.description !== "") {
 				flag = true;
 				notification += "\n\n" + event.description;
