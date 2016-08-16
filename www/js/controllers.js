@@ -159,7 +159,6 @@ angular.module('app.controllers', [])
 			if(flag) {
 				navigator.notification.alert(notification, function(){}, event.title);
 			}
-			//$ionicPopup.alert({title: event.title});
 		};
 
 		$scope.onViewTitleChanged = function (title) {
@@ -257,12 +256,11 @@ angular.module('app.controllers', [])
 
 			if(event.description !== "") {
 				flag = true;
-				notification += "\n\n" + event.description;
+				notification += event.description;
 			}
 			if(flag) {
 				navigator.notification.alert(notification, function(){}, event.title);
 			}
-			//$ionicPopup.alert({title: event.title});
 		};
 
 		$scope.onViewTitleChanged = function (title) {
