@@ -4,12 +4,13 @@
 			 pulling-text="Pull to refresh..."
 			 on-refresh="doRefresh()">
 		</ion-refresher>
-		<div class="card" ng-repeat="update in data">
+		<div class="card" ng-repeat="notification in data">
 			<div class="item item-divider">
-				{{update.title}}
+				<h2>{{notification.headings.en}}</h2>
+				<p>{{notification.queued_at}}</p>
 			</div>
 			<div class="item item-text-wrap">
-				{{update.description}}
+				{{notification.contents.en}}
 			</div>
 		</div>
 	</ion-content>

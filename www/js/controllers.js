@@ -401,16 +401,25 @@ angular.module('app.controllers', [])
 		$scope.event = eventService.get($stateParams.eventId);
 	})
 
-	.controller('UpdatesCtrl', function($scope, $ionicHistory, $state, $http) {
+	.controller('UpdatesCtrl', function($scope, $ionicHistory, $state) {
 		$scope.getData = function() {
-			$http.get('http://htci.org/HTCI_APP/updates.json').then(function(resp) {
-				$scope.data = resp.data.data;
-				//alert($scope.data);
-				
-			}, function(err) {
-				console.error('ERR', err);
-				// err.status will contain the status code
-			})
+
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					console.log(JSON.parse(xhr.responseText).notifications);
+					notifications  = JSON.parse(xhr.responseText).notifications;
+					for(var i = 0; i < notifications.length; i++) {
+						//notifications[i].queued_at = notifications[i].queued_at * 1000;
+						var date = new Date(notifications[i].queued_at * 1000);
+						notifications[i].queued_at = (date.getMonth() + 1) + "-" + date.getDate() + "-" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
+					}
+					$scope.data = notifications;
+				}
+			};
+			xhr.open("GET", "https://onesignal.com/api/v1/notifications?app_id=16522ff3-d3af-41df-a465-e0963d92a469&limit=3", true);
+			xhr.setRequestHeader("Authorization", "Basic ZDk5MGU5NWUtMzk2Ny00NmQ5LTlkZDAtOGNmZmQ4ZGY3MWVj");
+			xhr.send();
 		}
 
 		$scope.doRefresh = function() {
@@ -419,7 +428,6 @@ angular.module('app.controllers', [])
 			// Stop the ion-refresher from spinning
 			$scope.$broadcast('scroll.refreshComplete');
 		};
-
 		$scope.getData();
 	})
 
