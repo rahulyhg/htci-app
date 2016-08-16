@@ -187,10 +187,10 @@ angular.module('app.controllers', [])
 											  'timeMin': (new Date()).toISOString(),
 											  'showDeleted': false,
 											  'singleEvents': true,
-											  'maxResults': 10,
+											  //'maxResults': 10,
 											  'orderBy': 'startTime'}).execute(function(resp) {
 												  var events = resp.items;
-												  console.log(events);
+												  //console.log(events);
 												  for(var i = 0; i < events.length; i++) {
 													  var startTime = events[i].start;
 													  var endTime = events[i].end;
