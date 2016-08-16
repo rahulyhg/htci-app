@@ -43,8 +43,8 @@ angular.module('app.controllers', [])
 		};
 		$scope.onPrepareRender = function() {
 			// buttons defined in index.html
-			//  <button id="buyNowBtn"> Buy Now !</button>
-			//  <button id="buyInFutureBtn"> Pay in Future !</button>
+			//	<button id="buyNowBtn"> Buy Now !</button>
+			//	<button id="buyInFutureBtn"> Pay in Future !</button>
 			var buyNowBtn = document.getElementById("buyNowBtn");
 			var buyInFutureBtn = document.getElementById("buyInFutureBtn");
 
@@ -72,216 +72,216 @@ angular.module('app.controllers', [])
 		//$scope.initPaymentUI();
 	})
 
-    .controller('CalendarCtrl', function($scope, googleClient, $ionicLoading){
-	var eventList = [];
-	$ionicLoading.show();
-	    googleClient.afterApiLoaded().then(function(){
-		gapi.client.setApiKey('AIzaSyCg14xL8h6KPVDA2q1AAaRAUj6UYbtZNS4');
-		gapi.client.calendar.events.list({'calendarId': 'htci.org_98m1srpu6julj5fe4pufoh233c@group.calendar.google.com',
-						  'timeMin': (new Date()).toISOString(),
-						  'showDeleted': false,
-						  'singleEvents': true,
-						  //'maxResults': 10,
-						  'orderBy': 'startTime'}).execute(function(resp) {
-						      var events = resp.items;
-						      //console.log(events);
-						      for(var i = 0; i < events.length; i++) {
-							  var startTime = events[i].start;
-							  var endTime = events[i].end;
+	.controller('CalendarCtrl', function($scope, googleClient, $ionicLoading){
+		var eventList = [];
+		$ionicLoading.show();
+		googleClient.afterApiLoaded().then(function(){
+			gapi.client.setApiKey('AIzaSyCg14xL8h6KPVDA2q1AAaRAUj6UYbtZNS4');
+			gapi.client.calendar.events.list({'calendarId': 'htci.org_98m1srpu6julj5fe4pufoh233c@group.calendar.google.com',
+											  'timeMin': (new Date()).toISOString(),
+											  'showDeleted': false,
+											  'singleEvents': true,
+											  //'maxResults': 10,
+											  'orderBy': 'startTime'}).execute(function(resp) {
+												  var events = resp.items;
+												  //console.log(events);
+												  for(var i = 0; i < events.length; i++) {
+													  var startTime = events[i].start;
+													  var endTime = events[i].end;
 
-							  var startDate;
-							  var endDate;
+													  var startDate;
+													  var endDate;
 
-							  var allDay = false;
-							  var description = "";
-							  var location = "";
-							  //console.log(events[i]);
+													  var allDay = false;
+													  var description = "";
+													  var location = "";
+													  //console.log(events[i]);
 
-							  if(startTime.hasOwnProperty('dateTime')) {
-							      var date = new Date(startTime.dateTime);
-							      startDate = date;
-							  }
-							  else if(startTime.hasOwnProperty('date')) {
-							      allDay = true;
-							      var date = new Date(startTime.date);
-							      startDate = date;
-							  }
+													  if(startTime.hasOwnProperty('dateTime')) {
+														  var date = new Date(startTime.dateTime);
+														  startDate = date;
+													  }
+													  else if(startTime.hasOwnProperty('date')) {
+														  allDay = true;
+														  var date = new Date(startTime.date);
+														  startDate = date;
+													  }
 
-							  if(endTime.hasOwnProperty('dateTime')) {
-							      var date = new Date(endTime.dateTime);
-							      endDate = date;
-							  }
-							  else if(endTime.hasOwnProperty('date')) {
-							      var date = new Date(endTime.date);
-							      endDate = date;
-							  }
+													  if(endTime.hasOwnProperty('dateTime')) {
+														  var date = new Date(endTime.dateTime);
+														  endDate = date;
+													  }
+													  else if(endTime.hasOwnProperty('date')) {
+														  var date = new Date(endTime.date);
+														  endDate = date;
+													  }
 
-							  if(events[i].hasOwnProperty("description")) {
-							      description = events[i].description;
-							  }
+													  if(events[i].hasOwnProperty("description")) {
+														  description = events[i].description;
+													  }
 
-							  if(events[i].hasOwnProperty("location")) {
-							      location = events[i].location;
-							  }
-							  eventList.push({title: events[i].summary, startTime: startDate, endTime: endDate, allDay: allDay, description: description, location: location});
-						      }
-						      $scope.loadEvents();
-						      $scope.$apply();
-		    });
+													  if(events[i].hasOwnProperty("location")) {
+														  location = events[i].location;
+													  }
+													  eventList.push({title: events[i].summary, startTime: startDate, endTime: endDate, allDay: allDay, description: description, location: location});
+												  }
+												  $scope.loadEvents();
+												  $scope.$apply();
+											  });
+			
+		});
 		
-	    });
-	
-	$scope.calendar = {};
-	$scope.changeMode = function (mode) {
-	    $scope.calendar.mode = mode;
-	};
+		$scope.calendar = {};
+		$scope.changeMode = function (mode) {
+			$scope.calendar.mode = mode;
+		};
 
-	$scope.loadEvents = function () {
-	    //$scope.calendar.eventSource = [{title: 'Test', startTime: new Date(Date.UTC(2016, 7, 10)), endTime: new Date(Date.UTC(2016, 7, 11)), allDay: true}];
-	    $scope.calendar.eventSource = eventList;
-	    $ionicLoading.hide();
-	};
+		$scope.loadEvents = function () {
+			//$scope.calendar.eventSource = [{title: 'Test', startTime: new Date(Date.UTC(2016, 7, 10)), endTime: new Date(Date.UTC(2016, 7, 11)), allDay: true}];
+			$scope.calendar.eventSource = eventList;
+			$ionicLoading.hide();
+		};
 
-	$scope.onEventSelected = function (event) {
-	    var notification = "";
-	    var flag = false;
-	    if(event.location !== "") {
-		flag = true;
-		notification = "Location: " + event.location;
-	    }
-	    if(event.description !== "") {
-		flag = true;
-		notification += "\n\n" + event.description;
-	    }
-	    if(flag) {
-		navigator.notification.alert(notification, function(){}, event.title);
-	    }
-	    //$ionicPopup.alert({title: event.title});
-	};
+		$scope.onEventSelected = function (event) {
+			var notification = "";
+			var flag = false;
+			if(event.location !== "") {
+				flag = true;
+				notification = "Location: " + event.location;
+			}
+			if(event.description !== "") {
+				flag = true;
+				notification += "\n\n" + event.description;
+			}
+			if(flag) {
+				navigator.notification.alert(notification, function(){}, event.title);
+			}
+			//$ionicPopup.alert({title: event.title});
+		};
 
-	$scope.onViewTitleChanged = function (title) {
-	    $scope.viewTitle = title;
-	};
+		$scope.onViewTitleChanged = function (title) {
+			$scope.viewTitle = title;
+		};
 
-	$scope.today = function () {
-	    $scope.calendar.currentDate = new Date();
-	};
+		$scope.today = function () {
+			$scope.calendar.currentDate = new Date();
+		};
 
-	$scope.isToday = function () {
-	    var today = new Date(),
-		currentCalendarDate = new Date($scope.calendar.currentDate);
+		$scope.isToday = function () {
+			var today = new Date(),
+				currentCalendarDate = new Date($scope.calendar.currentDate);
 
-	    today.setHours(0, 0, 0, 0);
-	    currentCalendarDate.setHours(0, 0, 0, 0);
-	    return today.getTime() === currentCalendarDate.getTime();
-	};
-    })
+			today.setHours(0, 0, 0, 0);
+			currentCalendarDate.setHours(0, 0, 0, 0);
+			return today.getTime() === currentCalendarDate.getTime();
+		};
+	})
 
 
-    .controller('PanchangamCtrl', function($scope, googleClient, $ionicLoading){
-	var eventList = [];
-	$ionicLoading.show();
-	googleClient.afterApiLoaded().then(function(){
-	    gapi.client.setApiKey('AIzaSyCg14xL8h6KPVDA2q1AAaRAUj6UYbtZNS4');
-	    gapi.client.calendar.events.list({'calendarId': 'htci.org_beaja34s0lhr9kbafgskj7b430@group.calendar.google.com',
-					      'timeMin': (new Date()).toISOString(),
-					      'showDeleted': false,
-					      'singleEvents': true,
-					      'maxResults': 10,
-					      'orderBy': 'startTime'}).execute(function(resp) {
-						  var events = resp.items;
-					          console.log(events);
-						  for(var i = 0; i < events.length; i++) {
-						      var startTime = events[i].start;
-						      var endTime = events[i].end;
+	.controller('PanchangamCtrl', function($scope, googleClient, $ionicLoading){
+		var eventList = [];
+		$ionicLoading.show();
+		googleClient.afterApiLoaded().then(function(){
+			gapi.client.setApiKey('AIzaSyCg14xL8h6KPVDA2q1AAaRAUj6UYbtZNS4');
+			gapi.client.calendar.events.list({'calendarId': 'htci.org_beaja34s0lhr9kbafgskj7b430@group.calendar.google.com',
+											  'timeMin': (new Date()).toISOString(),
+											  'showDeleted': false,
+											  'singleEvents': true,
+											  'maxResults': 10,
+											  'orderBy': 'startTime'}).execute(function(resp) {
+												  var events = resp.items;
+												  console.log(events);
+												  for(var i = 0; i < events.length; i++) {
+													  var startTime = events[i].start;
+													  var endTime = events[i].end;
 
-						      var startDate;
-						      var endDate;
+													  var startDate;
+													  var endDate;
 
-						      var allDay = false;
-						      var description = "";
-						      var location = "";
-						      //console.log(events[i]);
+													  var allDay = false;
+													  var description = "";
+													  var location = "";
+													  //console.log(events[i]);
 
-						      if(startTime.hasOwnProperty('dateTime')) {
-							  var date = new Date(startTime.dateTime);
-							  startDate = date;
-						      }
-						      else if(startTime.hasOwnProperty('date')) {
-							  allDay = true;
-							  var date = new Date(startTime.date);
-							  startDate = date;
-						      }
+													  if(startTime.hasOwnProperty('dateTime')) {
+														  var date = new Date(startTime.dateTime);
+														  startDate = date;
+													  }
+													  else if(startTime.hasOwnProperty('date')) {
+														  allDay = true;
+														  var date = new Date(startTime.date);
+														  startDate = date;
+													  }
 
-						      if(endTime.hasOwnProperty('dateTime')) {
-							  var date = new Date(endTime.dateTime);
-							  endDate = date;
-						      }
-						      else if(endTime.hasOwnProperty('date')) {
-							  var date = new Date(endTime.date);
-							  endDate = date;
-						      }
+													  if(endTime.hasOwnProperty('dateTime')) {
+														  var date = new Date(endTime.dateTime);
+														  endDate = date;
+													  }
+													  else if(endTime.hasOwnProperty('date')) {
+														  var date = new Date(endTime.date);
+														  endDate = date;
+													  }
 
-						      if(events[i].hasOwnProperty("description")) {
-							  description = events[i].description;
-						      }
+													  if(events[i].hasOwnProperty("description")) {
+														  description = events[i].description;
+													  }
 
-						      if(events[i].hasOwnProperty("location")) {
-							  location = events[i].location;
-						      }
-						      eventList.push({title: events[i].summary, startTime: startDate, endTime: endDate, allDay: allDay, description: description, location: location});
-						  }
-						  $scope.loadEvents();
-						  $scope.$apply();
-					      });
+													  if(events[i].hasOwnProperty("location")) {
+														  location = events[i].location;
+													  }
+													  eventList.push({title: events[i].summary, startTime: startDate, endTime: endDate, allDay: allDay, description: description, location: location});
+												  }
+												  $scope.loadEvents();
+												  $scope.$apply();
+											  });
 
-	});
+		});
 
-	$scope.calendar = {};
-	$scope.changeMode = function (mode) {
-	    $scope.calendar.mode = mode;
-	};
+		$scope.calendar = {};
+		$scope.changeMode = function (mode) {
+			$scope.calendar.mode = mode;
+		};
 
-	$scope.loadEvents = function () {
-	    //$scope.calendar.eventSource = [{title: 'Test', startTime: new Date(Date.UTC(2016, 7, 10)), endTime: new Date(Date.UTC(2016, 7, 11)), allDay: true}];
-	    $scope.calendar.eventSource = eventList;
-	    $ionicLoading.hide();
-	};
+		$scope.loadEvents = function () {
+			//$scope.calendar.eventSource = [{title: 'Test', startTime: new Date(Date.UTC(2016, 7, 10)), endTime: new Date(Date.UTC(2016, 7, 11)), allDay: true}];
+			$scope.calendar.eventSource = eventList;
+			$ionicLoading.hide();
+		};
 
-	$scope.onEventSelected = function (event) {
-	    var notification = "";
-	    var flag = false;
-	    if(event.location !== "") {
-		flag = true;
-		notification = "Location: " + event.location;
-	    }
-	    if(event.description !== "") {
-		flag = true;
-		notification += "\n\n" + event.description;
-	    }
-	    if(flag) {
-		navigator.notification.alert(notification, function(){}, event.title);
-	    }
-	    //$ionicPopup.alert({title: event.title});
-	};
+		$scope.onEventSelected = function (event) {
+			var notification = "";
+			var flag = false;
+			if(event.location !== "") {
+				flag = true;
+				notification = "Location: " + event.location;
+			}
+			if(event.description !== "") {
+				flag = true;
+				notification += "\n\n" + event.description;
+			}
+			if(flag) {
+				navigator.notification.alert(notification, function(){}, event.title);
+			}
+			//$ionicPopup.alert({title: event.title});
+		};
 
-	$scope.onViewTitleChanged = function (title) {
-	    $scope.viewTitle = title;
-	};
+		$scope.onViewTitleChanged = function (title) {
+			$scope.viewTitle = title;
+		};
 
-	$scope.today = function () {
-	    $scope.calendar.currentDate = new Date();
-	};
+		$scope.today = function () {
+			$scope.calendar.currentDate = new Date();
+		};
 
-	$scope.isToday = function () {
-	    var today = new Date(),
-		currentCalendarDate = new Date($scope.calendar.currentDate);
+		$scope.isToday = function () {
+			var today = new Date(),
+				currentCalendarDate = new Date($scope.calendar.currentDate);
 
-	    today.setHours(0, 0, 0, 0);
-	    currentCalendarDate.setHours(0, 0, 0, 0);
-	    return today.getTime() === currentCalendarDate.getTime();
-	};
-    })
+			today.setHours(0, 0, 0, 0);
+			currentCalendarDate.setHours(0, 0, 0, 0);
+			return today.getTime() === currentCalendarDate.getTime();
+		};
+	})
 
 	.controller('IndexCtrl', function($scope, $ionicModal){
 		$ionicModal.fromTemplateUrl('templates/main/map.html', {
@@ -302,15 +302,15 @@ angular.module('app.controllers', [])
 		$ionicLoading.show();
 		var posts = [];
 		MyFb.getAccessToken().then(function(result){
-            var url = 'https://graph.facebook.com/244766008966857/posts?'+result.data;
+			var url = 'https://graph.facebook.com/244766008966857/posts?'+result.data;
 			MyFb.getPage('https://graph.facebook.com/244766008966857/picture?redirect=0').then(function(r){
 				//console.log(r.data.data);
 				$scope.picture = r.data.data.url;
 			});
-            MyFb.getFeed(url).then(function(r){
+			MyFb.getFeed(url).then(function(r){
 				//console.log(r.data.data.length);
 				for(var i = 0; i<r.data.data.length; i++)
-                {
+				{
 					//console.log(r.data.data[i]);
 					var monthsArray = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
@@ -328,11 +328,11 @@ angular.module('app.controllers', [])
 					}
 					console.log(post);
 					posts.push(post);
-                }
-                $scope.feeds = posts;
+				}
+				$scope.feeds = posts;
 				$ionicLoading.hide();
 				//console.log($scope.feeds);
-            });
+			});
 		});
 	})
 
@@ -401,7 +401,7 @@ angular.module('app.controllers', [])
 
 	.controller('EventCtrl', function($scope, $stateParams, eventService) {
 		$scope.event = eventService.get($stateParams.eventId);
-    })
+	})
 
 	.controller('UpdatesCtrl', function($scope, $ionicHistory, $state, $http) {
 		$scope.getData = function() {
@@ -461,55 +461,55 @@ angular.module('app.controllers', [])
 		$scope.SubmitRequestForm = function(fullname, address, city, state, zip, phone, emailaddress, pooja, date, slot, location, transportation, member, note){
 
 			var mailJSON ={
-       			"key": "ZvCHjI8MtG8KW0Wz5b7PUA",
-       			"message": {
+			 	"key": "ZvCHjI8MtG8KW0Wz5b7PUA",
+			 	"message": {
 					"html": "Full Name: "+ fullname +"<br>Address: "+ address +"<br>City: "+ city +"<br>State: "+ state +"<br>Zip: "+ zip +"<br>Phone: "+ phone +"<br>Name of Pooja: "+ pooja +"<br>Date of Pooja: "+ date +"<br>Time of Pooja: "+ slot.time +"<br>Location of Pooja: "+ location.location +"<br>Priest Transportation: "+ transportation.method +"<br>Member of HTCI: "+ member.option +"<br>Notes: "+ note,
-       				"text": "Example text content",
-       				"subject": "Request for Service",
-       				"from_email": emailaddress,
-       				"from_name": fullname,
-       				"to": [
-       					{
-						"email": "tqm397@gmail.com",
-						"name": "HTCI Seva",
-       						"type": "to"
-       					},
-					{
-						"email": emailaddress,
-						"name": fullname,
-						"type": "to"
-					}
-       				],
-       				"important": true,
-       				"track_opens": null,
-       				"track_clicks": null,
-       				"auto_text": null,
-       				"auto_html": null,
-       				"inline_css": null,
-       				"url_strip_qs": null,
-       				"preserve_recipients": null,
-       				"view_content_link": null,
-       				"tracking_domain": null,
-       				"signing_domain": null,
-       				"return_path_domain": null
-       			},
-       			"async": false,
-       			"ip_pool": "Main Pool"
-       		};
-		//reference to the Mandrill REST api
-		var apiURL = "https://mandrillapp.com/api/1.0/messages/send.json";
+			 		"text": "Example text content",
+			 		"subject": "Request for Service",
+			 		"from_email": emailaddress,
+			 		"from_name": fullname,
+			 		"to": [
+			 			{
+							"email": "tqm397@gmail.com",
+							"name": "HTCI Seva",
+			 				"type": "to"
+			 			},
+						{
+							"email": emailaddress,
+							"name": fullname,
+							"type": "to"
+						}
+			 		],
+			 		"important": true,
+			 		"track_opens": null,
+			 		"track_clicks": null,
+			 		"auto_text": null,
+			 		"auto_html": null,
+			 		"inline_css": null,
+			 		"url_strip_qs": null,
+			 		"preserve_recipients": null,
+			 		"view_content_link": null,
+			 		"tracking_domain": null,
+			 		"signing_domain": null,
+			 		"return_path_domain": null
+			 	},
+			 	"async": false,
+			 	"ip_pool": "Main Pool"
+			};
+			//reference to the Mandrill REST api
+			var apiURL = "https://mandrillapp.com/api/1.0/messages/send.json";
 
-        	$http.post(apiURL, mailJSON)
+			$http.post(apiURL, mailJSON)
 				.success(function(data, status, headers, config) {
 					$state.go('app.confirmation')
-        			console.log('successful email send.');
-        			console.log('status: ' + status);
-        		}).error(function(data, status, headers, config) {
-        			//alert("Please check form");
-        		    console.log(data, headers, config);
-        			console.log('status: ' + status);
-        		});
-        };
+					console.log('successful email send.');
+					console.log('status: ' + status);
+				}).error(function(data, status, headers, config) {
+					//alert("Please check form");
+					console.log(data, headers, config);
+					console.log('status: ' + status);
+				});
+		};
 	})
 
 	.controller('PhotosCtrl', function($scope, $ionicLoading, $state, Flickr){
