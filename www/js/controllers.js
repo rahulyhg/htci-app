@@ -334,11 +334,36 @@ angular.module('app.controllers', [])
 		});
 	})
 
-	.controller('ContactCtrl', function($scope){
-		$scope.listCanSwipe = true;
+    .controller('ContactCtrl', function($scope, $ionicActionSheet){
+	$scope.show = function(name, phone, email) {
+
+	    var buttons = [];
+	    if(phone !== "")
+		buttons.push({text: 'Call'});
+	    if(email !== "")
+		buttons.push({text: 'Email'});
+
+	    var hideSheet = $ionicActionSheet.show({
+		buttons: buttons,
+		titleText: name,
+		cancelText: 'Cancel',
+		cancel: function() {
+		},
+		buttonClicked: function(index) {
+		    console.log(index);
+		    if(index === 0) {
+			$scope.callTel(phone);
+		    }
+		    else if(index === 1) {
+			$scope.email(email);
+		    }
+		    return true;
+		}
+	    });
+	}
 
 		$scope.boardContacts = [
-			{name: "Sri. Ramarao Yeleti", email: "ryeleti@aol.com"},
+		    {name: "Sri. Ramarao Yeleti", email: "ryeleti@aol.com"},
 			{name: "Sri. Ravi Pattar", email:"pattarcpa@yahoo.com"},
 			{name: "Sri. Rama Belagaje", email:"rama_belagaje@yahoo.com"},
 			{name: "Sri. Prabhakar Kasarabada", email:"prabhakark94@hotmail.com"},
