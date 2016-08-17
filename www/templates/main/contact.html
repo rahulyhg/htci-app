@@ -11,7 +11,7 @@
 			<ion-item class="item item-divider">HTCI Executive Committee</ion-item>
 			<ion-item ng-repeat="contact in executiveContacts" class="contact-list item item-icon-right" ng-click="show('{{contact.name}}', '{{contact.phone}}', '{{contact.email}}')">
 				<h2>{{contact.name}}</h2>
-				<p>{{contact.title}}</p>
+				<p ng-if="contact.hasOwnProperty('title')">{{contact.title}}</p>
 			</ion-item>
 		</ion-list>
 	</ion-content>

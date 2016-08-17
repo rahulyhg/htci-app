@@ -334,67 +334,67 @@ angular.module('app.controllers', [])
 		});
 	})
 
-    .controller('ContactCtrl', function($scope, $ionicActionSheet){
-	$scope.show = function(name, phone, email) {
+	.controller('ContactCtrl', function($scope, $ionicActionSheet){
+		$scope.show = function(name, phone, email) {
 
-	    var buttons = [];
-	    if(phone !== "")
-		buttons.push({text: 'Call'});
-	    if(email !== "")
-		buttons.push({text: 'Email'});
+			var buttons = [];
+			if(phone !== "")
+				buttons.push({text: 'Call'});
+			if(email !== "")
+				buttons.push({text: 'Email'});
 
-	    var hideSheet = $ionicActionSheet.show({
-		buttons: buttons,
-		titleText: name,
-		cancelText: 'Cancel',
-		cancel: function() {
-		},
-		buttonClicked: function(index) {
-		    console.log(index);
-		    if(index === 0) {
-			$scope.callTel(phone);
-		    }
-		    else if(index === 1) {
-			$scope.email(email);
-		    }
-		    return true;
+			var hideSheet = $ionicActionSheet.show({
+				buttons: buttons,
+				titleText: name,
+				cancelText: 'Cancel',
+				cancel: function() {
+				},
+				buttonClicked: function(index) {
+					console.log(index);
+					if(index === 0) {
+						$scope.callTel(phone);
+					}
+					else if(index === 1) {
+						$scope.email(email);
+					}
+					return true;
+				}
+			});
 		}
-	    });
-	}
 
 		$scope.boardContacts = [
-		    {name: "Sri. Ramarao Yeleti", email: "ryeleti@aol.com"},
-			{name: "Sri. Ravi Pattar", email:"pattarcpa@yahoo.com"},
-			{name: "Sri. Rama Belagaje", email:"rama_belagaje@yahoo.com"},
-			{name: "Sri. Prabhakar Kasarabada", email:"prabhakark94@hotmail.com"},
-			{name: "Sri. Kannan Natarajan", email:"knatarajan@indy.rr.com"},
-			{name: "Sri. Subash Khanna", email:"subashkhanna@sbcglobal.net"},
-			{name: "Sri. M.R. Ivaturi", email:"ivaturi1@gmail.com"},
-			{name: "Sri. Anil Bajpai", email:"bajpaia@yahoo.com"},
-			{name: "Sri. Mani Subramaniam", email:"mani_subramaniam@yahoo.com"},
-			{name: "Sri. Sathya Thulasiraman", email:"stindpls@yahoo.com"},
-			{name: "Sgt. Javed Khan", email:"tkdindia@hotmail.com"},
-			{name: "Smt. Kshitija Dube", email:"sdube62@hotmail.com"},
-			{name: "Sri. Dilip Vadlumudi", email:"dvadlamudi@yahoo.com"},
-			{name: "Sri. Om Narla", email:"om@golars.com"}
+			{name: "Sri. Ravi Pattar", title: "Chairman", phone: "13178627871", email:"ravi.pattar@htci.org"},
+			{name: "Sri. Anil Bajpai", title: "Vice-Chairman", phone: "13172501431", email:"anil.bajpai@htci.org"},
+			{name: "Sri. Ramarao Yeleti", title: "Secretary & Joint Treasurer", phone: "13178155811", email: "ramu.yeleti@htci.org"},
+			{name: "Sri. Mani Subramaniam", title: "Treasurer", phone: "13172703825", email:"mani.subramaniam@htci.org"},
+			{name: "Sri. Subash Khanna", title: "Community & Public Relations", phone: "13175809877", email:"subhash.khanna@htci.org"},
+			{name: "Sri. Om Narla", title: "Fund Raising", phone: "13129535804", email:"om.narla@htci.org"},
+			{name: "Sri. Prabhakar Kasarabada", title: "Long Range Planning", phone: "13172414818", email:"prabhakar.kasarabada@htci.org"},
+			{name: "Sri. Sathya Thulasiraman", title: "Facilities", phone: "13177539521", email:"sathya.thulasiraman@htci.org"},
+			{name: "Sri. Kannan Natarajan", title: "Education", phone: "13175669399", email:"kannan.natarajan@htci.org"},
+			{name: "Sri. Rama Belagaje", title: "Communications (NewsLetter)", phone: "13178155524", email:"rama.belagaje@htci.org"},
+			{name: "Smt. Kshitija Dube", title: "Functions Coordinator", phone: "13175088957", email:"kshitija.dube@htci.org"},
+			{name: "Sri. M.R. Ivaturi", title: "Social & Charitable Activities", phone: "13176962346", email:"rao.ivaturi@htci.org"},
+			{name: "Sri. Dilip Vadlumudi", title: "Human Resources", phone: "13175644484", email:"dilip.vadlamudi@htci.org"}
 		];
 
 		$scope.executiveContacts = [
 			{name: "Sri. Jagannath Pandey", title: "President", phone: "13173400918", email: "jay.pandey@htci.org"},
-			{name: "Sri. Krishnakumar Padmanabhan", title: "President Elect/Vice President", email: "Krishna.padmanabhan@htci.org"},
-			{name: "Sri. Sandeep Gupta", title: "Secretary", email: "sandeep.gupta@htci.org"},
-			{name: "Sri. Ravi Dinakaran", title: "Treasurer", email: "treasurer@htci.org"},
+			{name: "Sri. Krishnakumar Padmanabhan", title: "President Elect/Vice President", phone: "13172585356", email: "Krishna.padmanabhan@htci.org"},
+			{name: "Sri. Sandeep Gupta", title: "Secretary", phone: "13175327284", email: "sandeep.gupta@htci.org"},
+			{name: "Sri. Ravi Dinakaran", title: "Treasurer", phone: "13172136920", email: "treasurer@htci.org"},
 			{name: "Smt. Kusum Patel", title: "Joint Treasurer/Secretary", email: "kusum.patel@htci.org"},
-			{name: "Smt. Nalini Belagaje", title: "Function Coordination Committee", email: "cultural@htci.org"},
-			{name: "Sri. Ananth Duvvuri", title: "Pooja Coordination Committee", email: "seva@htci.org"},
-			{name: "Sri. Nabin Pudasaini", title: "Membership Committee", email: "membership@htci.org"},
-			{name: "Sri. Raveendran Dudhlur", title: "Maintenance Committee", email: "maintenance@htci.org"},
-			{name: "Smt. Shanti Pathak", title: "Library Committee", email: "library@htci.org"},
-			{name: "Sri. Priyesh Kheradia", title: "Youth Activity Coordinator", email: "Priyesh.kheradia@htci.org"},
-			{name: "Sri. Raghava Ayyagari", title: "Communication Committee", email: "communications@htci.org"},
+			{name: "Smt. Nalini Belagaje", title: "Function Coordination Committee", phone: "13178155524", email: "cultural@htci.org"},
+			{name: "Sri. Ananth Duvvuri", title: "Pooja Coordination Committee", phone: "15124667399", email: "seva@htci.org"},
+			{name: "Sri. Raveendran Dudhlur", title: "Maintenance Committee", phone: "13179971851", email: "maintenance@htci.org"},
+			{name: "Smt. Shanti Pathak", title: "Library Committee", phone: "13175070462", email: "library@htci.org"},
+			{name: "Sri. Priyesh Kheradia", title: "Youth Activity Coordinator", phone: "13179669033", email: "Priyesh.kheradia@htci.org"},
+			{name: "Smt. Usha Yemme", title: "Kitchen Committee", phone: "13175904875", email: "kitchen@htci.org"},
+			{name: "Sri. Raghava Ayyagari", title: "Communication Committee", phone: "13179795097", email: "communications@htci.org"},
+			{name: "Smt. Suneela Ramaswamy", title: "Geeta Session Coordinator", email: "suneelaramaswamy@gmail.com"},
+			{name: "Sri. Prakash Mahesh", title: "Membership Committee", email: "membership@htci.org"},
 			{name: "Nikhil Jain", title: "Youth Committee", email: "chetanahtci@htci.org"},
-			{name: "Kum. Bhavi Sarda", title: "Youth Committee", email: "chetanahtci@htci.org"},
-			{name: "Smt. Suneela Ramaswamy", title: "Geeta Session Coordinator", email: "suneelaramaswamy@gmail.com"}
+			{name: "Kum. Bhavi Sarda", title: "Youth Committee", email: "chetanahtci@htci.org"}
 		];
 
 		$scope.callTel = function(number){
@@ -433,10 +433,10 @@ angular.module('app.controllers', [])
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState == 4 && xhr.status == 200) {
 					console.log(JSON.parse(xhr.responseText).notifications);
-					notifications  = JSON.parse(xhr.responseText).notifications;
+					notifications = JSON.parse(xhr.responseText).notifications;
 					for(var i = 0; i < notifications.length; i++) {
 						//notifications[i].queued_at = notifications[i].queued_at * 1000;
-						var date = new Date(notifications[i].queued_at * 1000);
+						var date = new Date(notifications[i].queued_at * 1000); //convert to milliseconds
 						notifications[i].queued_at = (date.getMonth() + 1) + "-" + date.getDate() + "-" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
 					}
 					$scope.data = notifications;
