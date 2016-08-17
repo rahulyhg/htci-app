@@ -281,7 +281,10 @@ angular.module('app.controllers', [])
 		};
 	})
 
-	.controller('IndexCtrl', function($scope, $ionicModal){
+	.controller('IndexCtrl', function($scope, $ionicModal, $cordovaNetwork){
+		ionic.Platform.ready(function(){
+			alert($cordovaNetwork.getNetwork());
+		});
 		$ionicModal.fromTemplateUrl('templates/main/map.html', {
 			scope: $scope,
 			animation: 'slide-in-up'
