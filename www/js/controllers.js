@@ -439,7 +439,8 @@ angular.module('app.controllers', [])
 						var date = new Date(notifications[i].queued_at * 1000); //convert to milliseconds
 						notifications[i].queued_at = (date.getMonth() + 1) + "-" + date.getDate() + "-" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
 					}
-					$scope.data = notifications;
+				    $scope.data = notifications;
+				    $scope.$digest();
 				}
 			};
 			xhr.open("GET", "https://onesignal.com/api/v1/notifications?app_id=16522ff3-d3af-41df-a465-e0963d92a469&limit=3", true);
