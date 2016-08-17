@@ -180,7 +180,7 @@ angular.module('app.controllers', [])
 	})
 
 
-	.controller('PanchangamCtrl', function($scope, googleClient, $ionicLoading){
+	.controller('PanchangCtrl', function($scope, googleClient, $ionicLoading){
 		var eventList = [];
 		$ionicLoading.show();
 		googleClient.afterApiLoaded().then(function(){

@@ -91,12 +91,12 @@ htci.config(function($stateProvider, $urlRouterProvider) {
 			}
 		})
 
-		.state('app.panchangam', {
-			url: "/panchangam",
+		.state('app.panchang', {
+			url: "/panchang",
 			views: {
 				'menuContent': {
 					templateUrl: "templates/main/calendar.html",
-					controller: "PanchangamCtrl"
+					controller: "PanchangCtrl"
 				}
 			}
 		})
