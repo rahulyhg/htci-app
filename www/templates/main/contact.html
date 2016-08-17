@@ -4,24 +4,14 @@
 			<ion-item class="item item-divider">
 				<h2>HTCI Board of Trustees</h2>
 			</ion-item>
-			<ion-item ng-repeat="contact in boardContacts" class="contact-list item item-icon-right">
+			<ion-item ng-repeat="contact in boardContacts" class="contact-list item item-icon-right" ng-click="show('{{contact.name}}', '{{contact.phone}}', '{{contact.email}}')">
 				<h2>{{contact.name}}</h2>
 				<p ng-if="contact.hasOwnProperty('title')">{{contact.title}}</p>
-				<i class="icon ion-ios-arrow-left"></i>
-				<ion-option-button ng-if="contact.hasOwnProperty('phone')" ng-click="callTel({{contact.phone}})" class="button-positive button-contact ion-ios-telephone">
-				</ion-option-button>
-				<ion-option-button ng-click="email('{{contact.email}}')" class="button-balanced button-contact ion-ios-email">
-				</ion-option-button>
 			</ion-item>
 			<ion-item class="item item-divider">HTCI Executive Committee</ion-item>
-			<ion-item ng-repeat="contact in executiveContacts" class="contact-list item item-icon-right">
+			<ion-item ng-repeat="contact in executiveContacts" class="contact-list item item-icon-right" ng-click="show('{{contact.name}}', '{{contact.phone}}', '{{contact.email}}')">
 				<h2>{{contact.name}}</h2>
-				<p>{{contact.title}}</p>
-				<i class="icon ion-ios-arrow-left"></i>
-				<ion-option-button ng-if="contact.hasOwnProperty('phone')" ng-click="callTel({{contact.phone}})" class="button-positive button-contact ion-ios-telephone">
-				</ion-option-button>
-				<ion-option-button ng-click="email('{{contact.email}}')" class="button-balanced button-contact ion-ios-email">
-				</ion-option-button>
+				<p ng-if="contact.hasOwnProperty('title')">{{contact.title}}</p>
 			</ion-item>
 		</ion-list>
 	</ion-content>
