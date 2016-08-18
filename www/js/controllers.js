@@ -526,8 +526,8 @@ angular.module('app.controllers', [])
 					$scope.$digest();
 				}
 			};
-			xhr.open("GET", "https://onesignal.com/api/v1/notifications?app_id=16522ff3-d3af-41df-a465-e0963d92a469&limit=3", true);
-			xhr.setRequestHeader("Authorization", "Basic ZDk5MGU5NWUtMzk2Ny00NmQ5LTlkZDAtOGNmZmQ4ZGY3MWVj");
+			xhr.open("GET", "https://onesignal.com/api/v1/notifications?app_id=edfe8eff-f835-478c-b00a-0b1e4a745652&limit=15", true); //use this while testing: 16522ff3-d3af-41df-a465-e0963d92a469
+			xhr.setRequestHeader("Authorization", "Basic OThlZDMwOWYtZTVkNi00NGI3LThmNDgtNzE5ZTczYjUxNTUz"); //use this while testing: ZDk5MGU5NWUtMzk2Ny00NmQ5LTlkZDAtOGNmZmQ4ZGY3MWVj
 			xhr.send();
 		}
 

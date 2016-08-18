@@ -23,7 +23,7 @@ htci.run(function($ionicPlatform) {
 			navigator.notification.alert(jsonData.message, function(){}, jsonData.additionalData.title);
 		};
 
-		window.plugins.OneSignal.init("16522ff3-d3af-41df-a465-e0963d92a469",
+		window.plugins.OneSignal.init("edfe8eff-f835-478c-b00a-0b1e4a745652", //use this while testing: 16522ff3-d3af-41df-a465-e0963d92a469
 									  {googleProjectNumber: "868132298708"},
 									  notificationOpenedCallback);
 
