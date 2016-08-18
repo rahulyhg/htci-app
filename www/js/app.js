@@ -27,18 +27,18 @@ htci.run(function($ionicPlatform) {
 									  {googleProjectNumber: "868132298708"},
 									  notificationOpenedCallback);
 
-		var curDate = (new Date()).valueOf();
-		alert(oldDate, curDate);
-		if(navigator.connection && navigator.connection.type === Connection.NONE) {
-			navigator.notification.alert("you suck", function(){}, "Connection Error");
+		curDate = (new Date()).valueOf();
+		if(navigator.connection && navigator.connection.type === Connection.NONE && (curDate - oldDate > 90000)) {
+			oldDate = curDate;
+			navigator.notification.alert("This app relies on an internet connection for all of its functionality. Please check your internet connection or some features won't work.", function(){}, "Connection Error");
 		}
 	});
 
 	$ionicPlatform.on('resume', function(){
-		var curDate = (new Date()).valueOf();
-		alert(oldDate, curDate);
-		if(navigator.connection && navigator.connection.type === Connection.NONE) {
-			navigator.notification.alert("you suck", function(){}, "Connection Error");
+		curDate = (new Date()).valueOf();
+		if(navigator.connection && navigator.connection.type === Connection.NONE && (curDate - oldDate > 90000)) {
+			oldDate = curDate;
+			navigator.notification.alert("This app relies on an internet connection for all of its functionality. Please check your internet connection or some features won't work.", function(){}, "Connection Error");
 		}
 	});
 })

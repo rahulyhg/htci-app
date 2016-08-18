@@ -338,7 +338,7 @@ angular.module('app.controllers', [])
 		};
 	})
 
-	.controller('FacebookCtrl', function($scope, $ionicLoading, $stateParams, MyFb){
+	.controller('FacebookCtrl', function($scope, $ionicLoading, $stateParams, MyFb, $cordovaNetwork){
 		var oldDate = 0;
 		var curDate;
 
@@ -528,12 +528,10 @@ angular.module('app.controllers', [])
 		}
 
 		$scope.doRefresh = function() {
-			//$state.reload();
 			$scope.getData();
 			// Stop the ion-refresher from spinning
 			$scope.$broadcast('scroll.refreshComplete');
-		};
-		//$scope.getData();
+		}
 	})
 
 	.controller('PriestsCtrl', function($scope) {
