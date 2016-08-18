@@ -1,6 +1,6 @@
 angular.module('app.controllers', [])
 
-    .controller('AppCtrl', function($scope, $cordovaNetwork) {
+	.controller('AppCtrl', function($scope, $cordovaNetwork) {
 
 		$scope.toggle = function() {
 			$('#help-list').toggle();
@@ -72,64 +72,85 @@ angular.module('app.controllers', [])
 		//$scope.initPaymentUI();
 	})
 
-	.controller('CalendarCtrl', function($scope, googleClient, $ionicLoading){
+	.controller('CalendarCtrl', function($scope, googleClient, $ionicLoading, $cordovaNetwork){
+		var oldDate = 0;
+		var curDate;
 		var eventList = [];
-		$ionicLoading.show();
-		googleClient.afterApiLoaded().then(function(){
-			gapi.client.setApiKey('AIzaSyCg14xL8h6KPVDA2q1AAaRAUj6UYbtZNS4');
-			gapi.client.calendar.events.list({'calendarId': 'htci.org_98m1srpu6julj5fe4pufoh233c@group.calendar.google.com',
-											  'timeMin': (new Date()).toISOString(),
-											  'showDeleted': false,
-											  'singleEvents': true,
-											  //'maxResults': 10,
-											  'orderBy': 'startTime'}).execute(function(resp) {
-												  var events = resp.items;
-												  //console.log(events);
-												  for(var i = 0; i < events.length; i++) {
-													  var startTime = events[i].start;
-													  var endTime = events[i].end;
 
-													  var startDate;
-													  var endDate;
+		$scope.$on("$ionicView.afterEnter", function() {
+			var offline;
+			curDate = (new Date()).valueOf();
 
-													  var allDay = false;
-													  var description = "";
-													  var location = "";
-													  //console.log(events[i]);
-
-													  if(startTime.hasOwnProperty('dateTime')) {
-														  var date = new Date(startTime.dateTime);
-														  startDate = date;
-													  }
-													  else if(startTime.hasOwnProperty('date')) {
-														  allDay = true;
-														  var date = new Date(startTime.date);
-														  startDate = date;
-													  }
-
-													  if(endTime.hasOwnProperty('dateTime')) {
-														  var date = new Date(endTime.dateTime);
-														  endDate = date;
-													  }
-													  else if(endTime.hasOwnProperty('date')) {
-														  var date = new Date(endTime.date);
-														  endDate = date;
-													  }
-
-													  if(events[i].hasOwnProperty("description")) {
-														  description = events[i].description;
-													  }
-
-													  if(events[i].hasOwnProperty("location")) {
-														  location = events[i].location;
-													  }
-													  eventList.push({title: events[i].summary, startTime: startDate, endTime: endDate, allDay: allDay, description: description, location: location});
-												  }
-												  $scope.loadEvents();
-												  $scope.$apply();
-											  });
-			
+			if(navigator.connection) {
+				offline = $cordovaNetwork.isOffline();
+			}
+			else {
+				offline = false;
+			}
+			if(!offline && (curDate - oldDate > 90000)) {
+				oldDate = curDate;
+				loadData();
+			}
 		});
+
+		function loadData() {
+			$ionicLoading.show();
+			googleClient.afterApiLoaded().then(function(){
+				gapi.client.setApiKey('AIzaSyCg14xL8h6KPVDA2q1AAaRAUj6UYbtZNS4');
+				gapi.client.calendar.events.list({'calendarId': 'htci.org_98m1srpu6julj5fe4pufoh233c@group.calendar.google.com',
+												  'timeMin': (new Date()).toISOString(),
+												  'showDeleted': false,
+												  'singleEvents': true,
+												  //'maxResults': 10,
+												  'orderBy': 'startTime'}).execute(function(resp) {
+													  var events = resp.items;
+													  //console.log(events);
+													  for(var i = 0; i < events.length; i++) {
+														  var startTime = events[i].start;
+														  var endTime = events[i].end;
+
+														  var startDate;
+														  var endDate;
+
+														  var allDay = false;
+														  var description = "";
+														  var location = "";
+														  //console.log(events[i]);
+
+														  if(startTime.hasOwnProperty('dateTime')) {
+															  var date = new Date(startTime.dateTime);
+															  startDate = date;
+														  }
+														  else if(startTime.hasOwnProperty('date')) {
+															  allDay = true;
+															  var date = new Date(startTime.date);
+															  startDate = date;
+														  }
+
+														  if(endTime.hasOwnProperty('dateTime')) {
+															  var date = new Date(endTime.dateTime);
+															  endDate = date;
+														  }
+														  else if(endTime.hasOwnProperty('date')) {
+															  var date = new Date(endTime.date);
+															  endDate = date;
+														  }
+
+														  if(events[i].hasOwnProperty("description")) {
+															  description = events[i].description;
+														  }
+
+														  if(events[i].hasOwnProperty("location")) {
+															  location = events[i].location;
+														  }
+														  eventList.push({title: events[i].summary, startTime: startDate, endTime: endDate, allDay: allDay, description: description, location: location});
+													  }
+													  $scope.loadEvents();
+													  $scope.$apply();
+												  });
+				
+			});
+		}
 		
 		$scope.calendar = {};
 		$scope.changeMode = function (mode) {
@@ -180,82 +201,85 @@ angular.module('app.controllers', [])
 	})
 
 
-    .controller('PanchangCtrl', function($scope, googleClient, $ionicLoading, $cordovaNetwork){
-	var oldDate = 0;
-	$scope.$on("$ionicView.afterEnter", function() {
-	    var offline;
-	    var curDate = (new Date()).valueOf();
-	    console.log(oldDate, curDate);
-	    if(navigator.connection) {
-		offline = $cordovaNetwork.isOffline();
-	    }
-	    else {
-		offline = false;
-	    }
-	    if(!offline && (curDate - oldDate > 90000)) {
-		oldDate = curDate;
-		loadData();
-	    }
-	});
-	var eventList = [];
-	function loadData() {
-		$ionicLoading.show();
-		googleClient.afterApiLoaded().then(function(){
-			gapi.client.setApiKey('AIzaSyCg14xL8h6KPVDA2q1AAaRAUj6UYbtZNS4');
-			gapi.client.calendar.events.list({'calendarId': 'htci.org_beaja34s0lhr9kbafgskj7b430@group.calendar.google.com',
-											  'timeMin': (new Date()).toISOString(),
-											  'showDeleted': false,
-											  'singleEvents': true,
-											  //'maxResults': 10,
-											  'orderBy': 'startTime'}).execute(function(resp) {
-												  var events = resp.items;
-												  //console.log(events);
-												  for(var i = 0; i < events.length; i++) {
-													  var startTime = events[i].start;
-													  var endTime = events[i].end;
+	.controller('PanchangCtrl', function($scope, googleClient, $ionicLoading, $cordovaNetwork){
+		var oldDate = 0;
+		var curDate;
+		var eventList = [];
 
-													  var startDate;
-													  var endDate;
+		$scope.$on("$ionicView.afterEnter", function() {
+			var offline;
+			curDate = (new Date()).valueOf();
 
-													  var allDay = false;
-													  var description = "";
-													  var location = "";
-													  //console.log(events[i]);
-
-													  if(startTime.hasOwnProperty('dateTime')) {
-														  var date = new Date(startTime.dateTime);
-														  startDate = date;
-													  }
-													  else if(startTime.hasOwnProperty('date')) {
-														  allDay = true;
-														  var date = new Date(startTime.date);
-														  startDate = date;
-													  }
-
-													  if(endTime.hasOwnProperty('dateTime')) {
-														  var date = new Date(endTime.dateTime);
-														  endDate = date;
-													  }
-													  else if(endTime.hasOwnProperty('date')) {
-														  var date = new Date(endTime.date);
-														  endDate = date;
-													  }
-
-													  if(events[i].hasOwnProperty("description")) {
-														  description = events[i].description;
-													  }
-
-													  if(events[i].hasOwnProperty("location")) {
-														  location = events[i].location;
-													  }
-													  eventList.push({title: events[i].summary, startTime: startDate, endTime: endDate, allDay: allDay, description: description, location: location});
-												  }
-												  $scope.loadEvents();
-												  $scope.$apply();
-											  });
-
+			if(navigator.connection) {
+				offline = $cordovaNetwork.isOffline();
+			}
+			else {
+				offline = false;
+			}
+			if(!offline && (curDate - oldDate > 90000)) {
+				oldDate = curDate;
+				loadData();
+			}
 		});
-	}
+
+		function loadData() {
+			$ionicLoading.show();
+			googleClient.afterApiLoaded().then(function(){
+				gapi.client.setApiKey('AIzaSyCg14xL8h6KPVDA2q1AAaRAUj6UYbtZNS4');
+				gapi.client.calendar.events.list({'calendarId': 'htci.org_beaja34s0lhr9kbafgskj7b430@group.calendar.google.com',
+												  'timeMin': (new Date()).toISOString(),
+												  'showDeleted': false,
+												  'singleEvents': true,
+												  //'maxResults': 10,
+												  'orderBy': 'startTime'}).execute(function(resp) {
+													  var events = resp.items;
+													  //console.log(events);
+													  for(var i = 0; i < events.length; i++) {
+														  var startTime = events[i].start;
+														  var endTime = events[i].end;
+
+														  var startDate;
+														  var endDate;
+
+														  var allDay = false;
+														  var description = "";
+														  var location = "";
+														  //console.log(events[i]);
+
+														  if(startTime.hasOwnProperty('dateTime')) {
+															  var date = new Date(startTime.dateTime);
+															  startDate = date;
+														  }
+														  else if(startTime.hasOwnProperty('date')) {
+															  allDay = true;
+															  var date = new Date(startTime.date);
+															  startDate = date;
+														  }
+
+														  if(endTime.hasOwnProperty('dateTime')) {
+															  var date = new Date(endTime.dateTime);
+															  endDate = date;
+														  }
+														  else if(endTime.hasOwnProperty('date')) {
+															  var date = new Date(endTime.date);
+															  endDate = date;
+														  }
+
+														  if(events[i].hasOwnProperty("description")) {
+															  description = events[i].description;
+														  }
+
+														  if(events[i].hasOwnProperty("location")) {
+															  location = events[i].location;
+														  }
+														  eventList.push({title: events[i].summary, startTime: startDate, endTime: endDate, allDay: allDay, description: description, location: location});
+													  }
+													  $scope.loadEvents();
+													  $scope.$apply();
+												  });
+
+			});
+		}
 		$scope.calendar = {};
 		$scope.changeMode = function (mode) {
 			$scope.calendar.mode = mode;
@@ -298,7 +322,7 @@ angular.module('app.controllers', [])
 		};
 	})
 
-    .controller('IndexCtrl', function($scope, $ionicModal){
+	.controller('IndexCtrl', function($scope, $ionicModal){
 
 		$ionicModal.fromTemplateUrl('templates/main/map.html', {
 			scope: $scope,
@@ -315,40 +339,58 @@ angular.module('app.controllers', [])
 	})
 
 	.controller('FacebookCtrl', function($scope, $ionicLoading, $stateParams, MyFb){
-		$ionicLoading.show();
-		var posts = [];
-		MyFb.getAccessToken().then(function(result){
-			var url = 'https://graph.facebook.com/244766008966857/posts?'+result.data;
-			MyFb.getPage('https://graph.facebook.com/244766008966857/picture?redirect=0').then(function(r){
-				//console.log(r.data.data);
-				$scope.picture = r.data.data.url;
-			});
-			MyFb.getFeed(url).then(function(r){
-				//console.log(r.data.data.length);
-				for(var i = 0; i<r.data.data.length; i++)
-				{
-					//console.log(r.data.data[i]);
-					var monthsArray = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+		var oldDate = 0;
+		var curDate;
 
-					var date = r.data.data[i].created_time;
-					var dateArray = date.split(/[- T : +]/);
-					var month = dateArray[1] - 1;
-					var day = dateArray[2];
-					var year = dateArray[0];
+		$scope.$on("$ionicView.afterEnter", function() {
+			var offline;
+			curDate = (new Date()).valueOf();
 
-					var d = new Date(year, month, day);
-					var post = {
-						"time": monthsArray[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear(),
-						"message": r.data.data[i].message,
-						"picture": r.data.data[i].picture
-					}
-					console.log(post);
-					posts.push(post);
-				}
-				$scope.feeds = posts;
-				$ionicLoading.hide();
-				//console.log($scope.feeds);
-			});
+			if(navigator.connection) {
+				offline = $cordovaNetwork.isOffline();
+			}
+			else {
+				offline = false;
+			}
+			if(!offline && (curDate - oldDate > 90000)) {
+				oldDate = curDate;
+
+				$ionicLoading.show();
+				var posts = [];
+				MyFb.getAccessToken().then(function(result){
+					var url = 'https://graph.facebook.com/244766008966857/posts?'+result.data;
+					MyFb.getPage('https://graph.facebook.com/244766008966857/picture?redirect=0').then(function(r){
+						//console.log(r.data.data);
+						$scope.picture = r.data.data.url;
+					});
+					MyFb.getFeed(url).then(function(r){
+						//console.log(r.data.data.length);
+						for(var i = 0; i<r.data.data.length; i++)
+						{
+							//console.log(r.data.data[i]);
+							var monthsArray = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+							var date = r.data.data[i].created_time;
+							var dateArray = date.split(/[- T : +]/);
+							var month = dateArray[1] - 1;
+							var day = dateArray[2];
+							var year = dateArray[0];
+
+							var d = new Date(year, month, day);
+							var post = {
+								"time": monthsArray[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear(),
+								"message": r.data.data[i].message,
+								"picture": r.data.data[i].picture
+							}
+							console.log(post);
+							posts.push(post);
+						}
+						$scope.feeds = posts;
+						$ionicLoading.hide();
+						//console.log($scope.feeds);
+					});
+				});
+			}
 		});
 	})
 
@@ -444,7 +486,26 @@ angular.module('app.controllers', [])
 		$scope.event = eventService.get($stateParams.eventId);
 	})
 
-	.controller('UpdatesCtrl', function($scope, $ionicHistory, $state) {
+	.controller('UpdatesCtrl', function($scope, $ionicHistory, $state, $cordovaNetwork) {
+		var oldDate = 0;
+		var curDate;
+
+		$scope.$on("$ionicView.afterEnter", function() {
+			var offline;
+			curDate = (new Date()).valueOf();
+
+			if(navigator.connection) {
+				offline = $cordovaNetwork.isOffline();
+			}
+			else {
+				offline = false;
+			}
+			if(!offline && (curDate - oldDate > 90000)) {
+				oldDate = curDate;
+				$scope.getData();
+			}
+		});
+		
 		$scope.getData = function() {
 
 			var xhr = new XMLHttpRequest();
@@ -457,8 +518,8 @@ angular.module('app.controllers', [])
 						var date = new Date(notifications[i].queued_at * 1000); //convert to milliseconds
 						notifications[i].queued_at = (date.getMonth() + 1) + "-" + date.getDate() + "-" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
 					}
-				    $scope.data = notifications;
-				    $scope.$digest();
+					$scope.data = notifications;
+					$scope.$digest();
 				}
 			};
 			xhr.open("GET", "https://onesignal.com/api/v1/notifications?app_id=16522ff3-d3af-41df-a465-e0963d92a469&limit=3", true);
@@ -472,7 +533,7 @@ angular.module('app.controllers', [])
 			// Stop the ion-refresher from spinning
 			$scope.$broadcast('scroll.refreshComplete');
 		};
-		$scope.getData();
+		//$scope.getData();
 	})
 
 	.controller('PriestsCtrl', function($scope) {
@@ -562,20 +623,37 @@ angular.module('app.controllers', [])
 		};
 	})
 
-	.controller('PhotosCtrl', function($scope, $ionicLoading, $state, Flickr){
-		$ionicLoading.show();
-		//testing firebase
-		//$scope.key = Key;
-		//console.log($scope.key.$id);
+	.controller('PhotosCtrl', function($scope, $ionicLoading, $state, Flickr, $cordovaNetwork){
+		var oldDate = 0;
+		var curDate;
 
-		// Getting Photosets Detail from Flickr Service
-		Flickr.getPhotoSets().then(function(result){
-			console.log(result.data.photosets);
-			$scope.photoList = result.data.photosets.photoset;
-			$scope.photoList.reverse();
-			$ionicLoading.hide();
+		$scope.$on("$ionicView.afterEnter", function() {
+			var offline;
+			curDate = (new Date()).valueOf();
+
+			if(navigator.connection) {
+				offline = $cordovaNetwork.isOffline();
+			}
+			else {
+				offline = false;
+			}
+			if(!offline && (curDate - oldDate > 90000)) {
+				oldDate = curDate;
+
+				$ionicLoading.show();
+				//testing firebase
+				//$scope.key = Key;
+				//console.log($scope.key.$id);
+
+				// Getting Photosets Detail from Flickr Service
+				Flickr.getPhotoSets().then(function(result){
+					console.log(result.data.photosets);
+					$scope.photoList = result.data.photosets.photoset;
+					$scope.photoList.reverse();
+					$ionicLoading.hide();
+				});
+			}
 		});
-
 		// Opening Album
 		$scope.openAlbum = function(album_id) {
 			$state.go('app.album',{id: album_id });

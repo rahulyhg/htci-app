@@ -2,6 +2,8 @@
 var htci = angular.module('app', ['ionic', 'app.controllers', 'ngCordova','ngSanitize','flickrApp.services', 'cmGoogleApi', 'ui.rCalendar'])
 
 htci.run(function($ionicPlatform) {
+	var oldDate = 0;
+	var curDate = 0;
 	$ionicPlatform.ready(function() {
 		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
 		// for form inputs)
@@ -24,16 +26,21 @@ htci.run(function($ionicPlatform) {
 		window.plugins.OneSignal.init("16522ff3-d3af-41df-a465-e0963d92a469",
 									  {googleProjectNumber: "868132298708"},
 									  notificationOpenedCallback);
-	    if(navigator.connection && navigator.connection.type === Connection.NONE) {
-		navigator.notification.alert("you suck", function(){}, "alert");
-	    }
+
+		var curDate = (new Date()).valueOf();
+		alert(oldDate, curDate);
+		if(navigator.connection && navigator.connection.type === Connection.NONE) {
+			navigator.notification.alert("you suck", function(){}, "Connection Error");
+		}
 	});
 
-    $ionicPlatform.on('resume', function(){
-	if(navigator.connection && navigator.connection.type === Connection.NONE) {
-	    navigator.notification.alert("you suck", function(){}, "alert");
-	}
-    });
+	$ionicPlatform.on('resume', function(){
+		var curDate = (new Date()).valueOf();
+		alert(oldDate, curDate);
+		if(navigator.connection && navigator.connection.type === Connection.NONE) {
+			navigator.notification.alert("you suck", function(){}, "Connection Error");
+		}
+	});
 })
 
 htci.config(function (googleClientProvider) {
