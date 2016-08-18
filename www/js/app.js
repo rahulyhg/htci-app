@@ -24,7 +24,16 @@ htci.run(function($ionicPlatform) {
 		window.plugins.OneSignal.init("16522ff3-d3af-41df-a465-e0963d92a469",
 									  {googleProjectNumber: "868132298708"},
 									  notificationOpenedCallback);
+	    if(navigator.connection && navigator.connection.type === Connection.NONE) {
+		navigator.notification.alert("you suck", function(){}, "alert");
+	    }
 	});
+
+    $ionicPlatform.on('resume', function(){
+	if(navigator.connection && navigator.connection.type === Connection.NONE) {
+	    navigator.notification.alert("you suck", function(){}, "alert");
+	}
+    });
 })
 
 htci.config(function (googleClientProvider) {

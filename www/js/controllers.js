@@ -1,6 +1,6 @@
 angular.module('app.controllers', [])
 
-	.controller('AppCtrl', function($scope) {
+    .controller('AppCtrl', function($scope, $cordovaNetwork) {
 
 		$scope.toggle = function() {
 			$('#help-list').toggle();
@@ -180,8 +180,25 @@ angular.module('app.controllers', [])
 	})
 
 
-	.controller('PanchangCtrl', function($scope, googleClient, $ionicLoading){
-		var eventList = [];
+    .controller('PanchangCtrl', function($scope, googleClient, $ionicLoading, $cordovaNetwork){
+	var oldDate = 0;
+	$scope.$on("$ionicView.afterEnter", function() {
+	    var offline;
+	    var curDate = (new Date()).valueOf();
+	    console.log(oldDate, curDate);
+	    if(navigator.connection) {
+		offline = $cordovaNetwork.isOffline();
+	    }
+	    else {
+		offline = false;
+	    }
+	    if(!offline && (curDate - oldDate > 90000)) {
+		oldDate = curDate;
+		loadData();
+	    }
+	});
+	var eventList = [];
+	function loadData() {
 		$ionicLoading.show();
 		googleClient.afterApiLoaded().then(function(){
 			gapi.client.setApiKey('AIzaSyCg14xL8h6KPVDA2q1AAaRAUj6UYbtZNS4');
@@ -238,7 +255,7 @@ angular.module('app.controllers', [])
 											  });
 
 		});
-
+	}
 		$scope.calendar = {};
 		$scope.changeMode = function (mode) {
 			$scope.calendar.mode = mode;
@@ -281,10 +298,8 @@ angular.module('app.controllers', [])
 		};
 	})
 
-	.controller('IndexCtrl', function($scope, $ionicModal, $cordovaNetwork){
-		ionic.Platform.ready(function(){
-			alert($cordovaNetwork.getNetwork());
-		});
+    .controller('IndexCtrl', function($scope, $ionicModal){
+
 		$ionicModal.fromTemplateUrl('templates/main/map.html', {
 			scope: $scope,
 			animation: 'slide-in-up'
