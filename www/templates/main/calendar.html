@@ -7,6 +7,7 @@
 	  </ion-nav-buttons>
 
 	  <ion-content scroll="false" class="main-content">
+	    <h3 style="text-align: center">{{month}}</h3>
 	    <calendar ng-model="calendar.currentDate" calendar-mode="calendar.mode" event-source="calendar.eventSource"
 		      range-changed="reloadSource(startTime, endTime)"
 		      event-selected="onEventSelected(event)" title-changed="onViewTitleChanged(title)"

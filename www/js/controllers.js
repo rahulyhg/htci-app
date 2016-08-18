@@ -72,11 +72,12 @@ angular.module('app.controllers', [])
 		//$scope.initPaymentUI();
 	})
 
-	.controller('CalendarCtrl', function($scope, googleClient, $ionicLoading, $cordovaNetwork){
+    .controller('CalendarCtrl', function($scope, googleClient, $ionicLoading, $cordovaNetwork, $ionicNavBarDelegate){
 		var oldDate = 0;
 		var curDate;
 		var eventList = [];
 
+		$scope.month = getActualMonth(new Date().getMonth());
 		$scope.$on("$ionicView.afterEnter", function() {
 			var offline;
 			curDate = (new Date()).valueOf();
@@ -187,7 +188,7 @@ angular.module('app.controllers', [])
 		};
 
 		$scope.today = function () {
-			$scope.calendar.currentDate = new Date();
+		    $scope.calendar.currentDate = new Date();
 		};
 
 		$scope.isToday = function () {
@@ -196,6 +197,7 @@ angular.module('app.controllers', [])
 
 			today.setHours(0, 0, 0, 0);
 			currentCalendarDate.setHours(0, 0, 0, 0);
+			$scope.month = getActualMonth(currentCalendarDate.getMonth());
 			return today.getTime() === currentCalendarDate.getTime();
 		};
 	})
@@ -206,6 +208,7 @@ angular.module('app.controllers', [])
 		var curDate;
 		var eventList = [];
 
+		$scope.month = getActualMonth(new Date().getMonth());
 		$scope.$on("$ionicView.afterEnter", function() {
 			var offline;
 			curDate = (new Date()).valueOf();
@@ -318,6 +321,7 @@ angular.module('app.controllers', [])
 
 			today.setHours(0, 0, 0, 0);
 			currentCalendarDate.setHours(0, 0, 0, 0);
+			$scope.month = getActualMonth(currentCalendarDate.getMonth());
 			return today.getTime() === currentCalendarDate.getTime();
 		};
 	})
@@ -702,3 +706,32 @@ angular.module('app.controllers', [])
 			});
 		};
 	});
+
+function getActualMonth(month) {
+    switch(month) {
+    case 0:
+	return "January";
+    case 1:
+	return "February";
+    case 2:
+	return "March";
+    case 3:
+	return "April";
+    case 4:
+	return "May";
+    case 5:
+	return "June";
+    case 6:
+	return "July";
+    case 7:
+	return "August";
+    case 8:
+	return "September";
+    case 9:
+	return "October";
+    case 10:
+	return "November";
+    case 11:
+	return "December";
+    }
+}
